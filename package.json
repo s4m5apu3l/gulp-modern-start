@@ -23,8 +23,9 @@
     "npm": ">=10.0.0"
   },
   "browserslist": [
-    "last 2 version",
-    "not dead"
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11"
   ],
   "devDependencies": {
     "@csstools/postcss-media-minmax": "^2.0.6",

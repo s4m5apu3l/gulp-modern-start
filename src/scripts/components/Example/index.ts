@@ -21,10 +21,15 @@ export default class Example extends Base {
     }
 
     protected bindEvents(): void {
+        if (!this.root) return
         this.root.addEventListener('click', this.onClick.bind(this))
     }
 
     private onClick(): void {
         this.root.classList.toggle('is-active')
+    }
+
+    protected updateUI(): void {
+        // Не используется — компонент stateless
     }
 }

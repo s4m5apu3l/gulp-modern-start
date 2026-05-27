@@ -20,7 +20,5 @@ export default abstract class Base {
     })
   }
 
-  protected updateUI() {
-    throw new Error('Необходимо реализовать метод updateUI')
-  }
+  protected abstract updateUI(): void
 }
