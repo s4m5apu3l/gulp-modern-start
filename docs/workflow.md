@@ -92,11 +92,11 @@ new MyComponent()
 
 ### Чёрно-белая (mono)
 1. Положить SVG в `src/assets/icons/mono/icon-my-icon.svg`
-2. Спросить gulp-таск генерирует спрайт автоматически
+2. Gulp генерирует спрайт автоматически
 3. Использовать в Pug:
 
 ```pug
-+icon('icon-my-icon')(width="24" height="24" style="fill: transparent")
++icon('icon-my-icon')(width="24" height="24")
 ```
 
 ### Цветная (multi)
@@ -111,23 +111,23 @@ new MyComponent()
 ## Добавить изображение
 
 1. Положить файл в `src/assets/images/my-image.jpg`
-2. Gulp автоматически:
-   - Оптимизирует оригинал
-   - Создаёт WebP-версию
-   - Создаёт AVIF-версию
-3. Использовать в Pug:
+2. Gulp автоматически оптимизирует оригинал (imagemin)
+3. Для простых случаев:
+
+```pug
++img('my-image.jpg', 'Описание', 800, 600)
+```
+
+Для адаптивных изображений (art direction / WebP / AVIF):
 
 ```pug
 +picture('images/my-image.jpg')(width="800" height="600")
 ```
 
-Или вручную:
+При этом требуется заранее подготовить ресайзы (mobile/tablet/desktop @1x/@2x). Для генерации WebP и AVIF:
 
-```pug
-picture
-    source(srcset="img/my-image.avif" type="image/avif")
-    source(srcset="img/my-image.webp" type="image/webp")
-    img(src="img/my-image.jpg" alt="Описание" loading="lazy")
+```bash
+npx gulp imagesConvert
 ```
 
 ## Добавить шрифт

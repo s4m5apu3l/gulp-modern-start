@@ -32,7 +32,8 @@ gulpfile.mjs
 |---|---|---|
 | `clear` | Удаляет `build/` | 20 мс |
 | `spritesBuild` | Генерирует SVG-спрайты из `icons/mono/` и `icons/multi/` | 500 мс |
-| `imagesBuild` | Оптимизация картинок, копирование фавиконов, генерация WebP/AVIF | 1-2 с |
+| `imagesBuild` | Оптимизация картинок, копирование фавиконов | 1-2 с |
+| `imagesConvert` | Генерация WebP/AVIF (опционально) | 1-2 с |
 | `stylesBuild` | Компиляция `main.scss` → `css/main.css` | 1-2 с |
 | `criticalBuild` | Компиляция `critical.scss` → `css/critical.css` | 100 мс |
 | `webpackBuild` | Сборка TS через SWC → `js/main.js` | 2-3 с |

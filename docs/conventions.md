@@ -124,16 +124,16 @@ destroy() {
 
 ### Иконки
 - Всегда префикс `icon-` в названии
-- Обязательно указывай `width` и `height`
-- Добавляй `style="fill: transparent"`
+- Указывай `width` и `height` для предотвращения сдвигов layout
+- Mono-иконки наследуют цвет родителя через `currentColor`
 
 ```pug
 //- ✅ Правильно
-+icon('icon-search')(width="20" height="20" style="fill: transparent")
++icon('icon-search')(width="20" height="20")
 
 //- ❌ Неправильно
 +icon('search')                    // Нет префикса
-+icon('icon-search')               // Нет размеров
++icon('icon-search')               // Нет размеров (не критично, но нежелательно)
 ```
 
 ### Страницы

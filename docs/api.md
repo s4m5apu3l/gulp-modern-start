@@ -4,25 +4,43 @@
 
 ### `+icon(name)`
 
-Вставляет SVG из спрайта.
+Вставляет SVG из спрайта. Mono-иконки наследуют цвет через `currentColor`.
 
 **Файл:** `src/markup/mixins/_icon.pug`
 
 ```pug
-+icon('icon-search')(width="20" height="20" style="fill: transparent")
-+icon('icon-arrow')(width="16" height="16" style="fill: transparent")
++icon('icon-search')(width="20" height="20")
++icon('icon-arrow')(width="16" height="16").btn__icon
 ```
 
 **Атрибуты:**
-- `width` / `height` — обязательны
-- `style="fill: transparent"` — обязателен для корректного отображения
+- `width` / `height` — желательны для предотвращения CLS
 - Можно добавлять классы: `+icon('icon-close')(width="24" height="24").modal__close-icon`
+- Цвет задаётся через `color` родителя (mono) или сохраняется из SVG (multi)
+
+---
+
+### `+img(file, alt, width, height)`
+
+Простое изображение с lazy-loading и retina srcset.
+
+**Файл:** `src/markup/mixins/_img.pug`
+
+```pug
++img('photo.jpg', 'Описание', 800, 600)
++img('subfolder/photo.jpg', 'Описание')
+```
+
+**Параметры:**
+- `file` — путь относительно `assets/images/` (поддерживаются подпапки)
+- `alt` — описание (по умолчанию пустая строка)
+- `width` / `height` — размеры (опционально, но рекомендуются для CLS)
 
 ---
 
 ### `+picture(file)`
 
-Адаптивное изображение с WebP/AVIF и retina.
+Адаптивное изображение с art direction и форматами (WebP/AVIF).
 
 **Файл:** `src/markup/mixins/_picture.pug`
 
@@ -36,7 +54,7 @@
 - `isTablet=true` — генерировать tablet-версию
 - `isMobile=true` — генерировать mobile-версию
 
-**Структура файлов (автоматически):**
+**Структура файлов (подготавливается вручную):**
 ```
 images/
 ├── photo.jpg              # desktop 1x
