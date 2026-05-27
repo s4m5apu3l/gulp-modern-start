@@ -19,7 +19,7 @@ import webpackConfig from '../../webpack.config.mjs'
 export const webpackBuild = () => {
   const startTime = Date.now() // ОПТИМИЗАЦИЯ: Замеряем время
   
-  return src([`${config.src.script.root}/*.ts`]) // входящие файлы
+  return src([`${config.src.script.root}/*.{js,ts}`]) // входящие файлы
     .pipe(
       // Отлавливаем и показываем ошибки в таске
       plumber({
