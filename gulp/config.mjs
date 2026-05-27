@@ -10,15 +10,6 @@ const buildPath = 'build' // сборка
 const config = {
   version: packageJson.version, // версия проекта
 
-  // Настройки для modernizr
-  // https://github.com/Modernizr/Modernizr/tree/master/feature-detects
-  modernize: {
-    file: 'modernizr.js',
-    options: {
-      'feature-detects': ['img/webp', 'img/avif'],
-    },
-  },
-
   // Настройки для виртуального сервера
   server: {
     proxy: 'http://localhost', // url виртуального хоста

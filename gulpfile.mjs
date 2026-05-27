@@ -2,7 +2,6 @@ import { series, parallel } from 'gulp'
 
 import clear from './gulp/tasks/clear.mjs'
 import server from './gulp/tasks/server.mjs'
-import { modernizrBuild } from './gulp/tasks/modernizr.mjs'
 import { assetsBuild, assetsWatch } from './gulp/tasks/assets.mjs'
 import { imagesBuild, imagesWatch } from './gulp/tasks/images.mjs'
 import { spritesBuild, spritesWatch } from './gulp/tasks/sprites.mjs'
@@ -15,8 +14,6 @@ import config from './gulp/config.mjs'
 config.setEnv()
 
 export const proxy = server
-
-export const modernizr = modernizrBuild
 
 export const build = series(
   clear,

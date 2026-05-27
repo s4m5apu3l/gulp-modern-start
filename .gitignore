@@ -85,7 +85,6 @@ sitemap*.xml
 
 # Custom
 .webpack-cache
-modernizr.js
 
 # Front build artifacts
 /local/templates/main/front/front-dev/build/
