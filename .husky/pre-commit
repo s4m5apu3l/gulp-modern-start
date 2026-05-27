@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-cd local/templates/main/front/front-dev || exit 1
-npx lint-staged

@@ -1,202 +1,66 @@
-# Проект НЧ
+# Gulp Starter
 
-![Gulp сборка](https://raw.githubusercontent.com/eliofery/gulp-template/main/src/assets/images/build-logo.svg)
-[Страница документации](https://eliofery.github.io/gulp-template-docs/)
+Стартовый шаблон для вёрстки с Gulp 5, Pug, SCSS, TypeScript и Webpack.
 
-### Основа сборки
-
-Сборка содержит шаблонизатор **Pug**, препроцессор **SCSS**, сборщик модулей **Webpack**.
-
-### Особенности сборки
-
-- Оптимизация под Page Speed
-
-  - Отложенная загрузка
-  - Критические стили
-
-- Базовая SEO оптимизация
-
-  - Open Graph / Twitter Cards
-  - JSON-LD микроразметка
-  - Google Analytics / Yandex Metrika
-
-- Pug шаблонизатор
-
-  - Улучшенный фильтр markdown-it
-  - Возможность добавлять свои фильтры на примере фильтра special-chars
-  - Работа с json данными
-
-- SCSS препроцессор
-
-- Webpack сборщик
-
-  - Возможность использовать новый формат JS по максимуму
-  - Оптимизация кода через Babel
-  - Поддержка Typescript
-
-- SVG спрайты
-
-  - Цветные
-  - Черно-белые
-
-- Оптимизированные изображения
-
-  - Генерация webp и avif форматов
-
-- Настроенные линтеры
-
-  - Stylelint
-  - Pug-lint
-  - ES-Lint
-  - Prettier
-  - Editorconfig
-
-- Modernizr
-- Отдельная директория `/favicons/` для фавиконок
-
-## Инструкция по установке
-
-### Шаг 0 (Важно!)
-
-**Проект требует Node.js версии 22.x или выше**
-
-Если вы используете nvm (Node Version Manager):
-
-```bash
-# Автоматически переключиться на нужную версию Node
-nvm use
-
-# Если версия 22 не установлена, установите её
-nvm install 22
-nvm use 22
-```
-
-Проверьте версию Node:
-
-```bash
-node -v  # Должно быть v22.x.x
-```
-
-**Подробная информация:** см. `NODE_VERSION.md`
-
-### Шаг 1
-
-Установить зависимости.
+## Быстрый старт
 
 ```bash
 npm install
-```
-
-### Шаг 2
-
-Сгенерировать favicons через [RealFaviconGenerator](https://realfavicongenerator.net/).
-
-1. Откройте https://realfavicongenerator.net/
-2. Загрузите ваш логотип (SVG или PNG, минимум 512x512)
-3. Настройте параметры для разных платформ
-4. Скачайте архив с favicons
-5. Скопируйте файлы в `./src/assets/favicons/`
-
-**Подробная инструкция:** см. `FAVICONS_GUIDE.md`
-
-### Шаг 3
-
-Теперь вы готовы приступить к верстке своего проекта.
-
-Запуск проекта в режиме разработки.
-
-```bash
 npm run dev
 ```
 
-Сборка проекта.
+## Скрипты
 
-```bash
-npm run build
-```
+- `npm run dev` — запуск dev-сервера с hot-reload
+- `npm run build` — продакшен-сборка
+- `npm run proxy` — browser-sync с прокси
+- `npm run format` — форматирование Prettier
 
-Только запуск виртуального сервера для просмотра проекта в браузере.
-
-```bash
-npm run proxy
-```
-
-## Примеры верстки с Pug
-
-### Json данные в Pug
-
-Хранятся в каталоге **./src/pug/data**. Например файл **mainNav.json**.
-
-Чтобы получить доступ к его значениям, нужно обратиться к глобальной переменной **jsonData**, которая отвечает за вывод данных из **json** файлов, хранящихся в каталоге **data**.
+## Структура
 
 ```
-jsonData.имя_файла
+src/
+├── assets/          # Шрифты, иконки, картинки, видео
+├── markup/          # Pug-шаблоны
+│   ├── data/        # JSON-данные для шаблонов
+│   ├── layouts/     # Базовые layouts
+│   ├── mixins/      # Переиспользуемые миксины
+│   ├── pages/       # Страницы
+│   └── parts/       # Шапка, подвал, head
+├── scripts/         # TypeScript
+│   └── components/  # Компоненты
+└── styles/          # SCSS
+    ├── base/        # Helpers, миксины, сброс
+    └── blocks/      # Блоки проекта
 ```
 
-Получение содержимого из файла **mainNav.json** будет выглядеть следующим образом:
+## Стек
 
-```
-jsonData.mainNav
-```
+- **Шаблонизатор:** Pug с `gulp-pug` (оптимизированная версия)
+- **Стили:** SCSS + PostCSS (autoprefixer, cssnano, sort-media-queries)
+- **Скрипты:** TypeScript через Webpack + SWC (в 5–10× быстрее Babel)
+- **Dev-сервер:** Browser-sync
+- **Изображения:** Оптимизация (imagemin), генерация WebP/AVIF, SVG-спрайты
+- **Критический CSS:** Инлайнинг в `<head>` для production
 
-### Вывода навигации
+## Архитектура
 
-Рассмотрим пример вывода навигации на основе **json** данных из файла **mainNav.json**.
+### Pug
+- JSON-данные из `markup/data/` доступны в шаблонах как `jsonData.имяФайла`
+- Миксины: `+icon('icon-name')`, `+picture('img/photo.jpg')`
+- Layouts с блоками `block content`, `block header`, `block footer`
 
-Ознакомиться с содержимым файла **mainNav.json** можно по пути **./src/pug/data/mainNav.json**.
+### SCSS
+- `@use` вместо устаревшего `@import`
+- Система хелперов: `rem()`, media-миксины, `z()`
+- BEM: `.block`, `.block__element`, `.block__parent-child`
 
-```pug
-ul
-  each item, index in jsonData.mainNav.items
-    li #{ index }
-    li #{ item.title }
+### TypeScript
+- Все компоненты наследуются от `Base`
+- Селекторы через `data-js-*` атрибуты
+- Alias `@/` → `src/scripts/`
 
-    if item.links
-      ul
-      each link in item.links
-        li #{ link.title }
-        li #{ link.link }
-```
+## Требования
 
-### Вывод code
-
-Рассмотрим пример вывода разметки в теге code.
-
-**Внимание**: символ **\\** здесь исключительно для экранирования, не используйте его в коде.
-
-````pug
-pre
-  code
-    :special-chars
-      <div>
-        Тут разметка которая экранируется
-      </div>
-
-// Короткая версия конструкции выше
-:markdown-it
-  \```html
-  <div>
-    Тут разметка которая экранируется
-  </div>
-  \```
-````
-
-### Markdown разметка
-
-Рассмотрим пример вывода Markdown разметки.
-
-**Внимание**: символ **\\** здесь исключительно для экранирования, не используйте его в коде.
-
-````pug
-:markdown-it(inline) **текст**
-
-:markdown-it
-  Многострочный **текст**
-
-include:markdown-it ../markdown/docs.md
-
-:markdown-it
-  \```js
-  var codeBlocks;
-  \```
-````
+- Node.js ≥ 22
+- npm ≥ 10

@@ -13,13 +13,8 @@ html.no-js(lang="ru")
   head
     include ../parts/_head.pug
     include ../parts/_head-seo.pug
-  
-  //- (class=[pageLink === '/lk-orders' ? 'lk-page' : ''])
-  body
-    div.svg-sprites.sr-only(hidden)
-      include ../../assets/icons/sprite-mono.svg
-      include ../../assets/icons/sprite-multi.svg
 
+  body
     .wrapper
       block header
         include ../parts/default/_header.pug
@@ -30,30 +25,5 @@ html.no-js(lang="ru")
       block footer
         include ../parts/default/_footer.pug
 
-    include ../parts/_cookie-consent.pug
-    include ../parts/_toast.pug
-
     block scripts
-      script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous")
-      script(src="https://code.jquery.com/ui/1.14.2/jquery-ui.min.js" integrity="sha256-mblSWfbYzaq/f+4akyMhE6XELCou4jbkgPv+JQPER2M=" crossorigin="anonymous")
-      script(src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js")
-      script(src="libs/moment.min.js")
-      script(src="libs/jquery.comiseo.daterangepicker.min.js")
       script(src="js/main.js?v=" + version, type="module")
-      script.
-        Fancybox.bind('[data-fancybox="gallery"]', {
-          Carousel: {
-
-            Toolbar: {
-              display: {
-                left: [],
-                middle: [],
-                right: ['close']
-              }
-            },
-            Thumbs: false,
-            Image: {
-              zoom: false
-            }
-          }
-        });

@@ -3,16 +3,16 @@
 @use 'helpers' as *;
 
 :root {
-    --container-width: #{rem(1558)};
+    --container-width: #{rem(1280)};
     --container-padding-x: #{rem(16)};
     --scroll-bar: #{rem(15)};
     --100vw: calc(100vw - var(--scroll-bar));
 
-    --font-family-base: 'Inter', sans-serif;
+    --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
     --color-light: #f7f8fa;
-    --color-dark: #2c3138;
-    --color-accent: #2354ce;
+    --color-dark: #1f1f1f;
+    --color-accent: #2563eb;
     --color-gray: #88919e;
 
     --border: #{rem(1)} solid rgb(var(--color-accent));
@@ -20,7 +20,7 @@
     --transition-duration: 0.2s;
 
     @include tablet {
-        --container-width: #{rem(1280)};
+        --container-width: #{rem(1024)};
     }
 }
 
@@ -42,11 +42,7 @@ body {
 }
 
 main {
-    margin-top: clamp(0.75rem, -0.3438rem + 3.125vw, 2rem);
     flex-grow: 1;
-    &.map-block-open {
-        z-index: 1004;
-    }
 }
 
 h1,

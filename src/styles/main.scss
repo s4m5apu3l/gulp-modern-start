@@ -1,36 +1,6 @@
-// Base styles (fonts, utils, variables)
+// Base styles
 @use 'base/fonts';
 @use 'base/utils-extended';
 
-// UI components (reusable across pages)
-@use 'blocks/ui/extended';
-@use 'blocks/swiper';
-@use 'blocks/datepicker';
-
-// Layout components
-@use 'blocks/header-base';
-@use 'blocks/base';
-@use 'blocks/footer';
-
-// Page-specific blocks
-@use 'blocks/page-header';
-@use 'blocks/main-page';
-@use 'blocks/main-afisha';
-@use 'blocks/services';
-@use 'blocks/news';
-@use 'blocks/pagination';
-@use 'blocks/vacancies';
-@use 'blocks/vacancies-detail';
-@use 'blocks/company';
-@use 'blocks/search-page';
-@use 'blocks/text-page';
-@use 'blocks/admin';
-@use 'blocks/afisha';
-@use 'blocks/weather';
-@use 'blocks/mayor';
-@use 'blocks/map';
-
-// Modals and overlays
-@use 'blocks/schedule-modal';
-@use 'blocks/cookie-consent';
-@use 'blocks/toast';
+// Demo block
+@use 'blocks/demo';

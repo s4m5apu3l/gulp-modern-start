@@ -1,5 +1,6 @@
 .idea/
 .vscode/
+!.vscode/pug.code-snippets
 node_modules/
 bin/
 build
@@ -83,8 +84,8 @@ sitemap*.xml
 /web.config
 
 # Custom
-.kiro
 .webpack-cache
+modernizr.js
 
 # Front build artifacts
 /local/templates/main/front/front-dev/build/

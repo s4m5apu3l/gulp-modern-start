@@ -1,0 +1,10 @@
+@use '../base/helpers' as *;
+
+.demo {
+  padding: rem(40) 0;
+
+  &__title {
+    font-size: rem(32);
+    font-weight: 600;
+  }
+}

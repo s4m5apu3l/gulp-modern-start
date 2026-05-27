@@ -12,55 +12,21 @@ script document.documentElement.classList.remove('no-js')
 
 base(href=baseUrl)
 
-//- DNS
-//- link(rel="preconnect", href="http://assets.localhost/", crossorigin)
-//- link(rel="dns-prefetch", href="http://assets.localhost/")
-
 //- Критические стили
-//- ОПТИМИЗАЦИЯ: В dev режиме подключаем как файл (быстрее), в prod инлайним
 if env === 'prod'
-  //- Production: инлайним для быстрой загрузки
   style
     :critical-css(path="@import 'src/styles/critical'")
 else
-  //- Dev: подключаем как файл (компилируется 1 раз вместо 51)
   link(rel="stylesheet", href="css/critical.css")
 
 //- Стили
-link(rel="preload", as="style", href="css/main.css?v=" + version, onload="this.rel='stylesheet'")
-noscript
-  link(rel="stylesheet", href="css/main.css?v=" + version)
-link(rel="stylesheet", as="style", href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css")
-link(rel="stylesheet", href="libs/jquery.comiseo.daterangepicker.css")
-link(rel="stylesheet", href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css")
-
-//- Шрифты
-link(rel="preload", as="font", href="fonts/Inter-Regular.woff2", type="font/woff2", crossorigin="anonymous")
-link(rel="preload", as="font", href="fonts/Inter-Light.woff2", type="font/woff2", crossorigin="anonymous")
-link(rel="preload", as="font", href="fonts/Inter-Medium.woff2", type="font/woff2", crossorigin="anonymous")
-link(rel="preload", as="font", href="fonts/Inter-SemiBold.woff2", type="font/woff2", crossorigin="anonymous")
-link(rel="preload", as="font", href="fonts/Inter-Bold.woff2", type="font/woff2", crossorigin="anonymous")
-link(rel="preload", as="font", href="fonts/Inter-ExtraBold.woff2", type="font/woff2", crossorigin="anonymous")
-
+link(rel="stylesheet", href="css/main.css?v=" + version)
 
 //- Стилизация интерфейса устройства пользователя
 meta(name="theme-color", content=themeColor)
 meta(name="msapplication-navbutton-color", content=themeColor)
 meta(name="apple-mobile-web-app-status-bar-style", content=themeColor)
 
-//- Favicons (современный стандарт)
-//- ICO для старых браузеров
-link(rel="icon" href="/favicons/favicon.ico" sizes="32x32")
-//- SVG для современных браузеров (масштабируется)
-link(rel="icon" href="/favicons/favicon.svg" type="image/svg+xml")
-//- PNG для браузеров без поддержки SVG
-link(rel="icon" href="/favicons/favicon-96x96.png" type="image/png" sizes="96x96")
-//- Apple Touch Icon для iOS (180x180)
-link(rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180")
-//- Web App Manifest для PWA
-link(rel="manifest" href="/favicons/site.webmanifest")
-//- Название приложения для iOS
-meta(name="apple-mobile-web-app-title" content="Набережные Челны")
-
-script(src="https://lidrekon.ru/slep/js/jquery.js" defer)
-script(src="https://lidrekon.ru/slep/js/uhpv-full.min.js" defer)
+//- Favicons
+link(rel="icon", href="/favicons/favicon.ico", sizes="32x32")
+link(rel="icon", href="/favicons/favicon.svg", type="image/svg+xml")
