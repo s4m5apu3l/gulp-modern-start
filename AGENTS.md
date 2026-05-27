@@ -9,7 +9,7 @@ Technology stack: Pug, SCSS, TypeScript, Webpack, Browser-sync.
 - NEVER use `@import` in SCSS — only `@use`
 - NEVER use relative imports like `../../../` in TS — always use `@/` alias
 - NEVER inline styles in JS — use CSS classes
-- NEVER create new components if reusable ones exist (Accordion, Tabs, Dropdowns patterns exist in git history)
+- If adding a common UI pattern (accordion, tabs, dropdown), check `docs/api.md` and `docs/workflow.md` for the established architecture pattern before reinventing
 - NEVER use `var` — only `const`/`let`
 - NEVER commit `build/` or `node_modules/`
 - NEVER use ID selectors (`#header`) in CSS — use classes

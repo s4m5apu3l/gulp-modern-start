@@ -7,4 +7,18 @@ block variables
 block content
   .container
     h1.h1 Стартовый шаблон
-    p Добро пожаловать в gulp-starter.
+    p Gulp 5 + Pug + SCSS + TypeScript + Webpack + Browser-sync
+
+    section.demo(data-js-example)
+      h2.demo__title Демо-секция
+      p.demo__text
+        | Кликни по этому блоку — компонент переключит класс 
+        code .is-active
+        | . Это living example паттерна 
+        code Base.ts
+        | .
+      ul.demo__list
+        li Контейнер: 1280px max-width
+        li Акцентный цвет: #2563eb
+        li Шрифт: system-ui stack
+        li Breakpoints: laptop (1440), tablet (1024), mobile (768)

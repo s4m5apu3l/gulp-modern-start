@@ -1,10 +1,51 @@
 @use '../base/helpers' as *;
 
 .demo {
-  padding: rem(40) 0;
+    padding: rem(40) 0;
+    border-radius: rem(12);
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
 
-  &__title {
-    font-size: rem(32);
-    font-weight: 600;
-  }
+    &__title {
+        font-size: rem(24);
+        font-weight: 600;
+        color: rgb(var(--color-accent));
+    }
+
+    &__text {
+        margin-top: rem(12);
+        font-size: rem(16);
+        line-height: 1.5;
+        color: rgb(var(--color-gray));
+    }
+
+    &__list {
+        margin-top: rem(16);
+        padding-left: rem(20);
+        list-style: disc;
+
+        li {
+            margin-top: rem(4);
+            font-size: rem(14);
+        }
+    }
+
+    code {
+        padding: rem(2) rem(6);
+        font-size: rem(13);
+        background-color: var(--color-light);
+        border-radius: rem(4);
+    }
+
+    &.is-active {
+        background-color: var(--color-light);
+    }
+
+    @include tablet {
+        padding: rem(24) 0;
+    }
+
+    @include mobile {
+        padding: rem(16) 0;
+    }
 }

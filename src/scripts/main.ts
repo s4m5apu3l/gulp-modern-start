@@ -1,1 +1,3 @@
-console.log('Hello from starter template')
+import Example from '@/components/Example'
+
+new Example()
