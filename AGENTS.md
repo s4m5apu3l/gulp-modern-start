@@ -1,4 +1,4 @@
-# Gulp Starter — AI Rules
+# Gulp Starter — AI Agent Context
 
 ## Project Identity
 This is a **Gulp 5 starter template** for HTML/CSS/JS development.
