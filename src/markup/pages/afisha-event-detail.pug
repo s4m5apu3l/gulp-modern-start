@@ -1,0 +1,173 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Афиша'
+    - const description = ''
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Афиша', link: '/afisha-main.html' },
+            {title: 'Театральные премьеры', link: '/afisha-events.html'},
+            {title: 'Шла Коза по лесу'}
+        ])
+        .afisha__inner
+            .afisha__detail-body
+                .afisha__detail-inner
+                    .afisha__detail-block.afisha__detail-block--top
+                        .content
+                            div
+                                .badge-block
+                                    span.text-green Спектакль
+                                    span  &nbsp;·&nbsp;
+                                    span 6+
+                                h1.swiper-section__title Шла Коза по лесу
+                            ul.contacts-block__list
+                                li
+                                    .link
+                                        +icon('icon-date')(width="14" height="14" style="fill: transparent")
+                                        .badge-block
+                                            span 08 сентября — 09 марта, 14:00
+                                            span &nbsp;·&nbsp;
+                                            span 15:00
+                                            span &nbsp;·&nbsp;
+                                            span 17:00
+                                li
+                                    a(href="#").link
+                                        +icon('icon-time')(width="14" height="14" style="fill: transparent")
+                                        span 45 минут
+                                li
+                                    a(href="#").link
+                                        +icon('icon-tel')(width="14" height="14" style="fill: transparent")
+                                        span 8 (8552) 30-55-42
+                                li
+                                    a(href="#").link
+                                        +icon('icon-sumka')(width="14" height="14" style="fill: transparent")
+                                        span Центральная городская библиотека
+
+                                li
+                                    a(href="#").link
+                                        +icon('icon-point-green')(width="14" height="14" style="fill: transparent")
+                                        span г. Набережные Челны, посёлок ГЭС, 4-й комплекс, 14А
+
+                            div(style="display:flex;align-items:center;gap:8px").footer-block
+                                button.button Купить от 1200 ₽
+                                .afisha__share.news__filter(data-dropdown)
+                                    button.button.button--white(style="width:52px;padding:0;height:52px" data-dropdown-btn)
+                                        +icon('icon-share-net')(width="20" height="20" style="fill: transparent")
+                                    .news__filter-menu
+                                        span.text-22-18.text-semi Поделиться
+                                        .afisha__share-socials
+                                            a(href="#")
+                                                +icon('icon-vk-big')(width="52" height="52" style="fill: transparent")
+                                            a(href="#")
+                                                +icon('icon-tg-big')(width="52" height="52" style="fill: transparent")
+                                            a(href="#")
+                                                +icon('icon-ok-big')(width="52" height="52" style="fill: transparent")
+                                            a(href="#")
+                                                +icon('icon-max-big')(width="52" height="52" style="fill: transparent")
+                                        hr.hr
+                                        button.afisha__share-copy.clipboard(data-url="fake-urk")
+                                            +icon('icon-link')(width="24" height="24" style="fill: transparent")
+                                            span Скопировать ссылку
+
+                        img(src="https://picsum.photos/800/600" alt="Шла Коза по лесу").afisha__detail-image
+
+
+                    .afisha__detail-block
+                        .content
+                            h3.swiper-section__title О событии
+                            div
+                                div.expand__text.afisha__detail-text
+                                    p Спектакль в новом современном прочтении рассказывает зрителям о силе настоящей любви, о непростом выборе и иллюзиях, о доброте и искренности, отзывчивости и бескорыстии, которые способны творить настоящие чудеса.
+                                    p История разворачивается на большой рыночной площади, где у Золушки и её отца месье Эрика своя торговая палатка с куклами и игрушками ручной работы. Куклы и игрушки были настолько красивы и изящны, что привлекали внимание и восторженные взгляды всех прохожих без исключения.
+                                    p Автор — Шарль Перро, инсц. Я. Дрейлих
+                                        |
+                                        br
+                                        | Режиссёр-постановщик — Янина Дрейлих
+                                        br
+                                        | Художник-постановщик — Денис Токарев
+                                        br
+                                        |Композитор — Эдуард Тишин
+                                        br
+                                        | Хореограф — Виктория Сердюкова
+                                button.expand__btn(data-text-expand)
+                                    span.text-green Развернуть
+                                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+
+                    .afisha__detail-block
+                        .content
+                            h3.swiper-section__title Информация о площадке
+                            div(style="display:flex;flex-direction:column;gap:6px")
+                                span.text-gray.text-14  Организатор
+                                a(href="#" style="text-decoration: underline dotted").text-medium.text-green.text-18 Набережночелнинский государственный театр кукол
+                                a(href="tel:88552398264").badge-block
+                                    +icon('icon-tel')(width="18" height="18" style="fill: transparent")
+                                    span  8 (8552) 39–82–64
+                                    span &nbsp;·&nbsp;
+                                    span.text-gray касса
+                            div(style="display:flex;flex-direction:column;gap:6px")
+                                span.text-gray.text-14  Место проведения
+                                p.text-18 Набережночелнинский государственный театр кукол,
+                                    |
+                                    br
+                                    | г.Набережные Челны, пр-т Хасана Туфана, д. 15
+
+                aside.news__aside.afisha__detail-aside
+                    .news__popular
+                        .news__popular-header
+                            h3.news__popular-title Популярное
+                            +icon('icon-star')(width="20" height="20" style="fill: transparent")
+
+                        .news__popular-list
+                            each item, index in jsonData.popularNews
+                                a(href=item.link).news__popular-item
+                                    .news__popular-number= index + 1
+                                    .news__popular-content
+                                        .badge-block
+                                            span.text-green Спектакль
+                                            span  &nbsp;·&nbsp;
+                                            span 6+
+                                        h4.news__popular-item-title= item.title
+                                        .news__popular-meta
+                                            span.news__popular-date= item.date
+                                            span.news__popular-category= item.category
+                    .services__ad
+                        h5.title Портал государственной гражданской службы
+                        p.descr Единая база вакансий гражданской и муниципальной службы
+                        a(href="#").btn Смотреть вакансии →
+                        img(src="/img/service-ad.svg", alt="").img
+
+            section.main__section
+                .swiper-section__header
+                    h4.swiper-section__title
+                        span Подборка событий
+                .main__afisha-inner
+                    .afisha__events-grid.afisha__events-grid--4
+                        +afisha-card()
+                        +afisha-card()
+                        a(href="#").main__urls-card
+                            div(style="display:flex;flex-direction:column;gap:8px;")
+                                div(style="display:flex;align-items:center;gap:6px").text-12.text-gray
+                                    span.text-green Спектальк
+                                    span ·
+                                    span 12+
+                                span(style="line-height:1.25").text-22-18.text-semi Я буду жить в своём народе
+                                div.text-gray.text-12
+                                    div(style="display:flex;align-items:center;gap:6px")
+                                        span 08 сентября — 09 марта
+                                        span ·
+                                        span 10:00
+                                    span Центральная городская библиотека
+                            .main__urls-card-icon
+                                span.text-14.text-medium бесплатно
+                        +afisha-card()
+                    .show-more-block
+                        a(href="#").show-more
+                            span.left
+                                span.dot
+                                span.text Все событии
+                            .icon  →
+
+

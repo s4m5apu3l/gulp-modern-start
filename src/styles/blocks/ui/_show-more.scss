@@ -1,0 +1,55 @@
+.show-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  gap: 8px;
+  padding: 14px 24px;
+  background: white;
+  border: 2px solid #f7f7f7;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #444444;
+  transition: color 0.2s ease;
+  max-width: 364px;
+  width: 100%;
+  border-radius: 34px;
+  margin: 0 auto;
+
+  &:hover {
+    color: #00a651;
+  }
+  &-block {
+    margin-top: 32px;
+    @media screen and (max-width:768px) {
+      margin-top: 20px;
+    }
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='7' cy='7' r='7' fill='%2310C262'/%3E%3Ccircle cx='7' cy='7' r='7' fill='url(%23paint0_radial_4276_1413)'/%3E%3Cdefs%3E%3CradialGradient id='paint0_radial_4276_1413' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(2.1875 12.25) rotate(3.50353) scale(21.4776 12.932)'%3E%3Cstop offset='0.127042' stop-color='%23FFF500'/%3E%3Cstop offset='1' stop-color='%2310C262'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E%0A")
+      no-repeat center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &--green {
+    max-width: 632px;
+    width: 100%;
+    background-color: #00b955;
+    color: white;
+    &:hover {
+      background-color: #f7f7f7;
+      color: #00a651;
+    }
+  }
+}

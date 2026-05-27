@@ -1,0 +1,354 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const title = 'UI Kit'
+    - const description = 'UI элементы проекта'
+
+block content
+    .container
+        h1.h1 UI page
+
+        //- Типографика
+        section(style="margin: 60px 0")
+            h2.text-28 Типографика
+
+            div(style="margin: 40px 0")
+                h1.h1 h1 - Заголовок первого уровня
+                h2.text-28 text-28 - Заголовок второго уровня
+                h3.text-26 text-26 - Заголовок третьего уровня
+                h4.text-22 text-22 - Заголовок четвертого уровня
+                p.text-22-18 text-22-18 - Адаптивный текст 22-18
+                p.text-18 text-18 - Обычный текст
+                p.text-18-14 text-18-14 - Адаптивный текст 18-14
+                p.text-16-14 text-16-14 - Адаптивный текст 16-14
+                p.text-14 text-14 - Мелкий текст
+                p.text-14-12 text-14-12 - Адаптивный текст 14-12
+                p.text-12 text-12 - Очень мелкий текст
+                p.text-10 text-10 - Минимальный текст
+
+            div(style="margin: 40px 0")
+                p.text-semi Полужирный (text-semi)
+                p.text-medium Средний (text-medium)
+
+            div(style="margin: 40px 0")
+                p.text-gray Серый текст (text-gray)
+                p.text-gray-light Светло-серый (text-gray-light)
+                p.text-base Базовый цвет (text-base)
+                p.text-main Основной цвет (text-main)
+                p.text-green Зелёный (text-green)
+                p.text-red Красный (text-red)
+                p.text-gradient Градиентный текст
+                p.text-underline Подчёркнутый текст
+        hr.hr
+        //- Кнопки
+        section(style="margin: 60px 0")
+            h2.text-28 Кнопки
+
+            div(style="margin: 40px 0; display: flex; gap: 16px; flex-wrap: wrap")
+                button.button Основная
+                button.button.button--gray Серая
+                button.button.button--white Белая
+                button.button.button--dark Тёмная
+                button.button.button--light Светлая
+
+            div(style="margin: 40px 0; display: flex; gap: 16px; flex-wrap: wrap")
+                button.button.button--small Маленькая
+                button.button Обычная
+                button.button.button--large Большая
+
+            div(style="margin: 40px 0; display: flex; gap: 16px; flex-wrap: wrap")
+                button.button
+                    +icon('icon-search')(width="20" height="20" style="fill: transparent")
+                    span Поиск
+                button.button
+                    span Далее
+                    +icon('icon-arrow-right')(width="16" height="16" style="fill: transparent")
+        hr.hr
+        //- Инпуты 
+        section(style="margin: 60px 0") 
+            h2.text-28 Поля ввода
+
+            div(style="margin: 40px 0; max-width: 500px")
+                h3.text-18(style="margin-bottom: 16px") С заголовком и вспомогательным текстом
+                .input(style="margin-bottom: 24px")
+                    label.input__label Заголовок
+                    .input__wrapper
+                        input(type="text" placeholder="E-mail")
+                    span.input__helper Вспомогательный текст
+
+                .input(style="margin-bottom: 24px")
+                    label.input__label Заголовок
+                    .input__wrapper.white
+                        input(type="text" placeholder="E-mail")
+                    span.input__helper Вспомогательный текст
+
+                .input(style="margin-bottom: 24px")
+                    label.input__label Заголовок
+                    .input__wrapper.with-icon.white
+                        +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                        input(type="text" placeholder="Введите ваш вопрос")
+                    span.input__helper У поля может быть заголовок или текст снизу
+
+                h3.text-18(style="margin-bottom: 16px") С иконкой слева и кнопкой очистки (белый)
+                .input(style="margin-bottom: 16px")
+                    .input__wrapper.with-icon.white
+                        +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                        input(type="text" placeholder="Введите ваш вопрос" oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                        button.input__clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                            +icon('icon-close-small')(width="16" height="16" style="fill: transparent")
+                            
+                h3.text-18(style="margin-bottom: 16px") Белый с кнопкой очистки
+                .input(style="margin-bottom: 16px")
+                    .input__wrapper.white
+                        input(type="text" placeholder="Введите ваш вопрос" oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                        button.input__clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                            +icon('icon-close-small')(width="16" height="16" style="fill: transparent")
+
+                h3.text-18(style="margin-bottom: 16px") Базовый с кнопкой очистки
+                .input(style="margin-bottom: 16px")
+                    .input__wrapper
+                        input(type="text" placeholder="Введите ваш вопрос" oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                        button.input__clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                            +icon('icon-close-small')(width="16" height="16" style="fill: transparent")
+
+                h3.text-18(style="margin-bottom: 16px; margin-top: 24px") Простые инпуты без кнопки очистки dsa
+
+                .input(style="margin-bottom: 16px")
+                    .input__wrapper
+                        input(type="text" placeholder="Базовое поле")
+
+                .input(style="margin-bottom: 16px")
+                    .input__wrapper.white
+                        input(type="text" placeholder="Белое поле")
+
+                .input(style="margin-bottom: 16px")
+                    .input__wrapper.with-icon
+                        +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                        input(type="text" placeholder="С иконкой")
+        hr.hr
+        //- Textarea
+        section(style="margin: 60px 0")
+            h2.text-28 Текстовые области
+            
+            div(style="margin: 40px 0; max-width: 500px")
+                h3.text-18(style="margin-bottom: 16px") Базовая textarea (белая)
+                .textarea(style="margin-bottom: 24px")
+                    label.textarea__label Комментарий
+                    textarea.textarea__field(placeholder="Введите ваш комментарий")
+                    span.textarea__helper Максимум 500 символов
+                
+                h3.text-18(style="margin-bottom: 16px") Серая textarea
+                .textarea(style="margin-bottom: 24px")
+                    label.textarea__label Описание
+                    textarea.textarea__field.textarea__field--gray(placeholder="Введите описание")
+                    span.textarea__helper Опишите подробно
+                
+                h3.text-18(style="margin-bottom: 16px") Без заголовка и текста
+                .textarea(style="margin-bottom: 16px")
+                    textarea.textarea__field(placeholder="Простая textarea")
+                
+                .textarea(style="margin-bottom: 16px")
+                    textarea.textarea__field.textarea__field--gray(placeholder="Серая textarea")
+        hr.hr
+        //- Чекбоксы
+        section(style="margin: 60px 0")
+            h2.text-28 Чекбоксы
+
+            div(style="margin: 40px 0")
+                h3.text-18(style="margin-bottom: 16px") Базовые чекбоксы
+                label.checkbox(style="margin-bottom: 16px")
+                    input.checkbox__input(type="checkbox" checked)
+                    span.checkbox__label Выбранный чекбокс
+
+                label.checkbox(style="margin-bottom: 16px")
+                    input.checkbox__input(type="checkbox")
+                    span.checkbox__label Невыбранный чекбокс
+
+                label.checkbox(style="margin-bottom: 24px")
+                    input.checkbox__input(type="checkbox")
+                    span.checkbox__label Чекбокс с длинным текстом, который может занимать несколько строк
+
+                h3.text-18(style="margin-bottom: 16px") Большой вариант
+                label.checkbox.checkbox--large(style="margin-bottom: 16px")
+                    input.checkbox__input(type="checkbox" checked)
+                    span.checkbox__label Большой чекбокс
+        hr.hr
+        //- Радиокнопки
+        section(style="margin: 60px 0")
+            h2.text-28 Радиокнопки
+
+            div(style="margin: 40px 0")
+                h3.text-18(style="margin-bottom: 16px") Базовые радиокнопки
+                label.radio(style="margin-bottom: 16px")
+                    input.radio__input(type="radio" name="radio1" checked)
+                    span.radio__label Выбранная опция
+
+                label.radio(style="margin-bottom: 16px")
+                    input.radio__input(type="radio" name="radio1")
+                    span.radio__label Невыбранная опция
+
+                label.radio(style="margin-bottom: 24px")
+                    input.radio__input(type="radio" name="radio1")
+                    span.radio__label Ещё одна опция
+
+                h3.text-18(style="margin-bottom: 16px") Большой вариант
+                label.radio.radio--large(style="margin-bottom: 16px")
+                    input.radio__input(type="radio" name="radio3" checked)
+                    span.radio__label Большая радиокнопка
+        hr.hr
+        //- Тогглы
+        section(style="margin: 60px 0")
+            h2.text-28 Тогглы (Toggle/Switch)
+
+            div(style="margin: 40px 0")
+                h3.text-18(style="margin-bottom: 16px") Базовый тогл
+                label.toggle(style="margin-bottom: 16px")
+                    input.toggle__input(type="checkbox" checked)
+                    span.toggle__switch
+                    span.toggle__label Включено
+
+                label.toggle(style="margin-bottom: 24px")
+                    input.toggle__input(type="checkbox")
+                    span.toggle__switch
+                    span.toggle__label Выключено
+
+                h3.text-18(style="margin-bottom: 16px") Маленький вариант
+                label.toggle.toggle--small(style="margin-bottom: 16px")
+                    input.toggle__input(type="checkbox" checked)
+                    span.toggle__switch
+                    span.toggle__label Маленький тогл
+
+                h3.text-18(style="margin-bottom: 16px; margin-top: 32px") Специальные варианты
+                p.text-14.text-gray(style="margin-bottom: 16px") Для фильтров вакансий используются кастомные стили с счетчиками
+
+                .vacancies__filter-list(style="max-width: 400px")
+                    label.vacancies__filter-checkbox
+                        input(type="checkbox" checked)
+                        span Продавец-консультант
+                        span.vacancies__filter-count 386
+
+                    label.vacancies__filter-checkbox
+                        input(type="checkbox")
+                        span Менеджер по продажам
+                        span.vacancies__filter-count 45
+
+                    label.vacancies__filter-radio
+                        input(type="radio" name="example" checked)
+                        span Не требуется
+                        span.vacancies__filter-count 386
+
+                    label.vacancies__filter-radio
+                        input(type="radio" name="example")
+                        span Высшее образование
+                        span.vacancies__filter-count 45
+
+                h3.text-18(style="margin-bottom: 16px; margin-top: 32px") Обычные чекбоксы и радио (дефолтные)
+                p.text-14.text-gray(style="margin-bottom: 16px") Базовые компоненты без счетчиков для использования в формах
+
+                div(style="max-width: 400px")
+                    label.checkbox(style="margin-bottom: 12px")
+                        input.checkbox__input(type="checkbox" checked)
+                        span.checkbox__label Согласен с условиями
+
+                    label.checkbox(style="margin-bottom: 12px")
+                        input.checkbox__input(type="checkbox")
+                        span.checkbox__label Подписаться на рассылку
+
+                    label.checkbox(style="margin-bottom: 24px")
+                        input.checkbox__input(type="checkbox")
+                        span.checkbox__label Получать уведомления
+
+                    label.radio(style="margin-bottom: 12px")
+                        input.radio__input(type="radio" name="payment" checked)
+                        span.radio__label Оплата картой
+
+                    label.radio(style="margin-bottom: 12px")
+                        input.radio__input(type="radio" name="payment")
+                        span.radio__label Оплата наличными
+
+                    label.radio(style="margin-bottom: 12px")
+                        input.radio__input(type="radio" name="payment")
+                        span.radio__label Оплата по счету
+        hr.hr
+        //- Дропдауны
+        section(style="margin: 60px 0")
+            h2.text-28 Дропдауны
+
+            div(style="margin: 40px 0; max-width: 500px")
+                .mayor__form-select(data-dropdown style="margin-bottom: 16px")
+                    button.mayor__form-select-btn(type="button" data-dropdown-btn)
+                        span(data-dropdown-current) Выберите тему
+                        +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                    .mayor__form-select-menu
+                        button.mayor__form-select-item(type="button" data-dropdown-item data-value="1") Благоустройство
+                        button.mayor__form-select-item(type="button" data-dropdown-item data-value="2") ЖКХ
+                        button.mayor__form-select-item(type="button" data-dropdown-item data-value="3") Транспорт
+        hr.hr
+        //- Аккордеоны
+        section(style="margin: 60px 0")
+            h2.text-28 Аккордеоны
+
+            div(style="margin: 40px 0; max-width: 700px")
+                //- Базовый аккордеон
+                .accordion
+                    .accordion__item
+                        button.accordion__button
+                            span Базовый аккордеон с иконкой chevron
+                            .accordion__icon
+                                +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                        .accordion__content
+                            .accordion__content-inner
+                                p Содержимое базового аккордеона. Используется для простых случаев с минимальным контентом.
+
+                    .accordion__item
+                        button.accordion__button
+                            span Аккордеон с иконкой plus
+                            .accordion__icon-plus
+                                +icon('icon-plus')(width="20" height="20" style="fill: transparent")
+                        .accordion__content
+                            .accordion__content-inner
+                                h4 Заголовок внутри
+                                p Содержимое с заголовком и списком.
+                                ul
+                                    li Первый пункт списка
+                                    li Второй пункт списка
+                                    li Третий пункт списка
+
+                    .accordion__item
+                        button.accordion__button
+                            span Аккордеон с богатым контентом
+                            .accordion__icon-plus
+                                +icon('icon-plus')(width="20" height="20" style="fill: transparent")
+                        .accordion__content
+                            .accordion__content-inner
+                                h4 Обязательные документы
+                                p Запрос заполняется посредством внесения сведений, указанных в приложении 1 к административному регламенту.
+
+                                h4 Необязательные документы
+                                p Дополнительная информация о документах.
+                                a(href="#") Образец документа
+
+                                ol
+                                    li Документ, удостоверяющий личность
+                                    li Документ, подтверждающий полномочия
+                                    li Заявление на предоставление услуги
+
+        hr.hr
+        //- Табы
+        section(style="margin: 60px 0 120px")
+            h2.text-28 Табы
+
+            div(style="margin: 40px 0; max-width: 700px")
+                div(style="display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #f4f5f7")
+                    button.js-tab-btn.active(data-tab="tab1" style="padding: 12px 24px; color: #2354ce; background: transparent; border-bottom: 2px solid #2354ce") Первый таб
+                    button.js-tab-btn(data-tab="tab2" style="padding: 12px 24px; color: #88919e; background: transparent; border-bottom: 2px solid transparent") Второй таб
+                    button.js-tab-btn(data-tab="tab3" style="padding: 12px 24px; color: #88919e; background: transparent; border-bottom: 2px solid transparent") Третий таб
+
+                .js-tab-content.active(data-tab-content="tab1")
+                    p Содержимое первого таба
+
+                .js-tab-content(data-tab-content="tab2" style="display: none")
+                    p Содержимое второго таба
+
+                .js-tab-content(data-tab-content="tab3" style="display: none")
+                    p Содержимое третьего таба

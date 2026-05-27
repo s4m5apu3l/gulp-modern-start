@@ -1,0 +1,133 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "Вакансии detail";
+    - const pageDescription = "";
+    - const pageLink = "/vacancies-detail";
+
+block content
+    .container
+        // надо добавить класс .vacancies__inner-detail
+        .vacancies__inner.vacancies__inner-detail
+            aside.vacancies__aside
+                .services__ad
+                    h5.title Портал государственной гражданской службы
+                    p.descr Единая база вакансий гражданской и муниципальной службы
+                    a(href="#").btn Смотреть вакансии →
+                    img(src="/img/service-ad.svg", alt="").img
+                .news__subscribe
+                    h3.news__subscribe-title Не пропускайте важные новости города
+                    p.news__subscribe-text Подпишитесь на рассылку и получайте подборку новостей портала на эл. почту
+
+                    form.news__subscribe-form
+                        input.news__subscribe-input(type="email" placeholder="Ваша электронная почта" required)
+
+                        label.news__subscribe-checkbox
+                            input(type="checkbox" required)
+                            .news__subscribe-toggle
+                            span Согласен на получение новостной рассылки и обработку персональных данных
+
+                        button.news__subscribe-btn(type="submit") Подписаться
+            // добавлякм класс .vacancies__detail
+            .vacancies__body.vacancies__detail
+                .vacancies__header
+                    +breadcrumbs([
+                        { title: 'Главная', link: '/' },
+                        { title: 'Вакансии', link: '/vacancies.html' },
+                        {title: 'Водитель частной компании категории B'}
+                    ])
+                .vacancies__main 
+                    .vacancies__detail-header
+                        h1.page-header__title Водитель частной компании категории B
+                        p.text-18 108 000–150 000 ₽ за месяц, на руки
+                        ul.characteristic
+                            li 
+                                span Опыт работы: 
+                                span Без опыта
+                            li 
+                                span Рабочие часы: 
+                                span Вечерние или ночные смены
+                            li 
+                                span Оформление: 
+                                span Договор ГПХ с самозанятым, с ИП, с физлицом
+                        .footer 
+                            a(href="#").button Откликнуться
+                            button.like
+                                +icon('icon-favorites')(width="24" height="24") 
+                        .gray-block 
+                            div
+                                h5.title.text-22.text-semi Промышленный парк "РАЗВИТИЕ"
+                                    +icon('icon-verify')(width="30" height="30") 
+                                p.text-14.text-gray(style="margin-top:8px") Набережные Челны, проспект Сююмбике, 53
+                            .gray-block__footer 
+                                a(href="#").link 
+                                    span 66 активных вакансии
+                                    span →     
+                    hr.hr
+                    .vacancies__detail-info.news__article
+                        p Срочная вакансия водителя в компанию. Подработка со свободным графиком и ежедневной оплатой! Опыт не нужен. Возможность работы на любом автомобиле и в любом районе города и области.
+                        section 
+                            h3 Обязанности
+                            ul 
+                                li Доставка оплаченных заказов до клиентов 
+                        section 
+                            h3 Требования:
+                            ul 
+                                li Права категории B
+                        section 
+                            h3 Условия:
+                            ul 
+                                li Ежедневная оплата плюс чаевые
+                                li Доход до 1 500 ₽ в час
+                                li Работа в комфортном для вас ритме и графике
+                        p Будет преимуществом опыт работы на таких позиция как: водитель, водитель-курьер, водитель категории B, водитель служебного автомобиля, водитель на своём автомобиле, водитель экспедитор, доставщик,, водитель выходного дня, подработка водителем от 4х часов, подработка курьером на выходных, подработка с ежедневной оплатой.
+                            | 
+                            br
+                            | Жмите «Откликнуться» прямо сейчас и начинайте зарабатывать.
+                            br
+                            | ОБРАЩАЕМ ВНИМАНИЕ, после отклика на данную вакансию потребуется предоставление информации или выполнение иных действий на сторонних информационных ресурсах.
+                        section.invalid 
+                            +icon('icon-invalid')(width="24" height="24" style="fill: transparent") 
+                            span Доступно соискателям с инвалидностью
+                        section 
+                            h3 Ключевые навыки
+                            .flex
+                                .badge Курьерская доставка
+                        section 
+                            h3 Опыт вождения
+                            ul 
+                                li Права категории B
+                        span.text-12.text-gray Вакансия опубликована 19 января 2026 в Набережных Челнах
+                        section.footer 
+                            a(href="#" style="width:100%;color:white;text-decoration: unset").button Откликнуться
+                            button.like
+                                +icon('icon-favorites')(width="24" height="24") 
+            aside.vacancies__aside.vacancies__aside-info
+                .gray-block 
+                    div
+                        h5.title.text-22.text-semi Промышленный парк "РАЗВИТИЕ"
+                            +icon('icon-verify')(width="30" height="30") 
+                        p.text-14.text-gray(style="margin-top:8px") Набережные Челны, проспект Сююмбике, 53
+                    .gray-block__footer 
+                        a(href="#").link 
+                            span 66 активных вакансии
+                            span →     
+                .vacancies__aside-similar
+                    span.text-14.text-gray Вам могут подойти эти вакансии
+                    .list 
+                        a(href="#").similar-block
+                            .similar-block__inner 
+                                span.text-14(style='line-height:120%') Водитель-курьер на автомобиле к партнёру Яндекс.Еда
+                                p.text-medium.text-18(style="margin: 12px 0 24px 0") от 108 000 до 150 000 ₽
+                                div(style="display:flex;align-items:center;gap:6px")
+                                    span.text-gray.text-14 Промышленный парк «РАЗВИТИЕ»
+                                    +icon('icon-verify')(width="18" height="18") 
+                        a(href="#").similar-block
+                            .similar-block__inner 
+                                span.text-14(style='line-height:120%') Водитель-курьер на автомобиле к партнёру Яндекс.Еда
+                                p.text-medium.text-18(style="margin: 12px 0 24px 0") от 108 000 до 150 000 ₽
+                                div(style="display:flex;align-items:center;gap:6px")
+                                    span.text-gray.text-14 Промышленный парк «РАЗВИТИЕ»
+                                    +icon('icon-verify')(width="18" height="18") 
+                        a(href="#").text-green.text-14 Ещё 345 подходящих вакансий 
+

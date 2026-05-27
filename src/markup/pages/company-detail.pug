@@ -1,0 +1,138 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "карточка компании";
+    - const pageDescription = "";
+    - const pageLink = "/company-detail";
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Предприятие', link: '/' },
+            {title: 'Промышленный парк “РАЗВИТИЕ”'}
+        ])
+        .company__detail
+            .company__detail-main
+                section.page-header
+                    h1.page-header__title Услуги
+                    .tab
+                        a(href="#").tab__item.is-active
+                            span О компании
+                        a(href="/company-vacancies.html").tab__item
+                            span Вакансии 14
+                .company__gallery
+                    .company__gallery-main.swiper
+                        .swiper-wrapper
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+                            .swiper-slide
+                                video(controls)
+                                    source(src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4")
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+                    
+                    .company__gallery-thumbs.swiper
+                        .swiper-wrapper
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                            .swiper-slide
+                                .company__gallery-video-thumb
+                                    img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                                    .company__gallery-play
+                                        +icon('icon-play')(width="24" height="24" style="fill: transparent")
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк") 
+                hr.hr
+                .news__article
+                    section 
+                        h3 Цель Парка:
+                        p Развитие территории города Набережные Челны, Республики Татарстан,  обрабатывающих отраслей экономики, производства новых видов продукции,  внедрения наиболее прогрессивных технологий и производств.
+
+                    section 
+                        h3 Задачи Парка:
+                        ul 
+                            li Создание развитой инфраструктуры для развития и создания производств;
+                            li Привлечения внутренних и иностранных инвестиций;
+                            li Внедрения современных и инновационных технологий;
+                    section.buttons 
+                        a(href="#" style="color:white").button Смотреть Презентацию
+                        a(href="#").button--gray.button Скачать Презентацию  
+                .company__department 
+                    span.title Отделения
+                    .list 
+                        .contacts-block 
+                            .contacts-block__title.text-14 
+                                span.text-medium Семёнов Александр Богданович
+                                span.text-gray Менеджер
+                            ul.contacts-block__list
+                                li
+                                    a(href="#").link
+                                        +icon('icon-tel')(width="16" height="16" style="fill: transparent")
+                                        span 8 (8552) 30-55-42
+                                li 
+                                    a(href="#").link 
+                                        +icon('icon-mail')(width="16" height="16" style="fill: transparent")
+                                        span mail@mail.ru
+                                li 
+                                    a(href="#").link 
+                                        +icon('icon-time')(width="16" height="16" style="fill: transparent")
+                                        span 08:00 - 17:00
+                        .contacts-block 
+                            .contacts-block__title.text-14 
+                                span.text-medium Семёнов Александр Богданович
+                                span.text-gray Менеджер
+                            ul.contacts-block__list
+                                li
+                                    a(href="#").link
+                                        +icon('icon-tel')(width="16" height="16" style="fill: transparent")
+                                        span 8 (8552) 30-55-42
+                                li 
+                                    a(href="#").link 
+                                        +icon('icon-mail')(width="16" height="16" style="fill: transparent")
+                                        span mail@mail.ru
+                                li 
+                                    a(href="#").link 
+                                        +icon('icon-time')(width="16" height="16" style="fill: transparent")
+                                        span 08:00 - 17:00
+                    
+                    button.show-more
+                        span.left
+                            span.dot
+                            span.text Все вакансии компании 
+                                span(style="color: #FFFFFF66")  14
+                        span →
+            aside.company__aside
+                .contacts-block 
+                    span.text-22.text-semi Контакты
+                    ul.contacts-block__list
+                        li
+                            a(href="#").link
+                                +icon('icon-tel')(width="16" height="16" style="fill: transparent")
+                                span 8 (8552) 30-55-42
+                        li 
+                            a(href="#").link 
+                                +icon('icon-mail')(width="16" height="16" style="fill: transparent")
+                                span mail@mail.ru
+                        li 
+                            a(href="#").link
+                                +icon('icon-point')(width="16" height="16" style="fill: transparent")
+                                span 423805, г. Набережные Челны, пр. Хасана Туфана д.23
+                        li 
+                            a(href="#").link 
+                                +icon('icon-time')(width="16" height="16" style="fill: transparent")
+                                span 08:00 - 17:00
+                .services__ad
+                    h5.title Портал государственной гражданской службы
+                    p.descr Единая база вакансий гражданской и муниципальной службы
+                    a(href="#").btn Смотреть вакансии →
+                    img(src="/img/service-ad.svg", alt="").img
+                

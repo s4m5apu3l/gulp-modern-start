@@ -1,0 +1,134 @@
+// Дополнительные утилиты (не критичны для первого экрана)
+@use 'helpers' as *;
+
+hr.hr {
+    margin: 40px 0;
+    border: unset;
+    border-top: 1px solid #1f1f1f0d;
+    background: unset;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    border-radius: 72px;
+    padding: 4px;
+    width: fit-content;
+    &__item {
+        border-radius: 64px;
+        padding: 12px 32px;
+        height: 52px;
+        color: #00000066;
+        cursor: pointer;
+        &.is-active {
+            background-color: white;
+            box-shadow: 0px 3px 12px 0px #6b6b6b14;
+            color: #1f1f1f;
+        }
+    }
+}
+
+.js-dropdown {
+    position: relative;
+    &-btn {
+        cursor: pointer;
+    }
+    &-content {
+        position: absolute;
+        top: 120%;
+        left: 0;
+        z-index: 21;
+
+        overflow-y: auto;
+
+        transform: translateY(-20px);
+        visibility: hidden;
+
+        opacity: 0;
+
+        transition: all 0.3s ease;
+    }
+    &.active {
+        .js-dropdown-content {
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+[data-count] {
+    position: relative;
+}
+
+[data-count]::after {
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 2px;
+
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+
+    background-color: #2354ce;
+    border: 2px solid white;
+    border-radius: 50%;
+
+    content: attr(data-count);
+    pointer-events: none;
+}
+
+.badge {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    width: fit-content;
+    padding: 6px 10px;
+
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #00000066;
+    .icon {
+        fill: transparent;
+    }
+    &--white {
+        background-color: white;
+        color: #1F1F1F66;
+    }
+    &--green {
+        background-color: #00B955;
+        color: white;
+    }
+}
+
+.js-tab {
+    &-content {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.mt-12 {
+    margin-top: 12px;
+}

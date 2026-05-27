@@ -1,0 +1,90 @@
+.idea/
+.vscode/
+node_modules/
+bin/
+build
+
+# src/assets/fonts/*
+!src/assets/fonts/.gitkeep
+# IDE
+## Phpstorm project files
+.idea
+## Netbeans project files
+nbproject
+
+# Windows thumbnail cache
+Thumbs.db
+
+## Visual Studio Code project files
+.vscode
+
+# Mac DS_Store Files
+.DS_Store
+
+# Node.js modules
+node_modules
+
+# SASS
+.sass-cache
+
+# Bower
+bower_components
+
+#Tests
+/local/test/
+
+# Bitrix
+.section.php
+/upload
+/bitrix
+/www
+/deva.php
+# Log, backup, archive
+/log
+*.log
+*_log
+*.txt
+*.backup
+*.back*
+*.bak*
+*_backup
+*.dt
+*.tar*
+*.gz
+*.gz*
+*.tgz
+*.zip
+*.rar
+*.dat
+
+# sitemap
+yandex*.html
+google*.html
+sitemap*.xml
+
+# Db
+#*.sql
+#*.xml
+
+# Office docs
+*.doc
+*.docx
+# *.xls
+# *.xlsx
+*.pdf
+
+# Server
+/.htpasswd*
+/cgi-bin
+/webstat
+/xhprof
+/sftp-config*
+/webhook*
+/web.config
+
+# Custom
+.kiro
+.webpack-cache
+
+# Front build artifacts
+/local/templates/main/front/front-dev/build/

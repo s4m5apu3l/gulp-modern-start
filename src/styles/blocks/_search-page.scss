@@ -1,0 +1,47 @@
+@use '../base/helpers' as *;
+
+.search-page {
+  @include to(1200) {
+    &.news__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__aside {
+    @include to(1180) {
+      display: none;
+    }
+  }
+  &__main {
+    min-width: 0;
+  }
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__inner {
+    margin-top: clamp(1rem, -0.75rem + 5vw, 3rem);
+    &-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      .news__filter-btn {
+        background-color: #f7f7f7;
+      }
+      .vacancies__filter-toggle {
+        background-color: #f7f7f7;
+      }
+      @include to(1180) {
+        .news__filter-group {
+          display: none;
+        }
+      }
+    }
+    .news__filter-group {
+      @include to(1180) {
+        width: auto;
+      }
+    }
+  }
+}

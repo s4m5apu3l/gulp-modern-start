@@ -1,0 +1,140 @@
+@use 'swiper/swiper-bundle.css';
+@use '../base/helpers' as *;
+
+.swiper {
+  &-section {
+    margin-bottom: 32px;
+    .swiper {
+      padding: 2px;
+      @include tablet {
+        overflow: visible;
+      }
+    }
+    .swiper-pagination {
+      position: relative;
+      bottom: auto;
+      margin-top: 12px;
+
+      &-bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        &-active {
+          background: #06bb57;
+        }
+      }
+    }
+    &__swiper {
+      margin-top: 20px;
+    }
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 20px;
+      @include tablet {
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      &--with-filter {
+        @include tablet {
+          flex-direction: column;
+          align-items: baseline;
+          justify-content: unset;
+          .news__filter {
+            width: 100%;
+          }
+        }
+      }
+    }
+    &__title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(1.5rem, 0.8438rem + 1.875vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--color-text-primary);
+    }
+    &__nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      &--hide {
+        @include tablet {
+          display: none !important;
+        }
+      }
+      &-btn {
+        height: 52px;
+        width: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        border: 4px solid #f2f2f2;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: #e6e8eb;
+        }
+        &.swiper-button-disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+        &:first-child {
+          .icon {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+    &__tabs {
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      background: #f7f7f7;
+      border-radius: 72px;
+      @include mobile-s {
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+
+    &__tab {
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #00000066;
+      background: transparent;
+      border: none;
+      border-radius: 64px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #1f1f1f;
+      }
+
+      &.active {
+        background: white;
+        color: #1f1f1f;
+        box-shadow: 0px 3px 12px 0px #6b6b6b14;
+      }
+    }
+  }
+}
+
+.swiper-pagination-progressbar.swiper-pagination {
+  top: unset;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+
+  max-width: 288px;
+  margin: 0 auto;
+
+  background: #e6e8eb;
+  --swiper-theme-color: #475569;
+}

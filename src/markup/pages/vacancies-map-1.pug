@@ -1,0 +1,171 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "Вакансии карта";
+    - const pageDescription = "";
+
+block content
+    .container
+        .services__mobile-back(style="margin:0;gap:4px")
+            a(href="/vacancies.html")
+                +icon('icon-chevron-thin')(width="24" height="24" style="fill: transparent")
+            span.h1 Вакансии на карте
+
+        .vacancies__map
+            .map__bg
+                img(src="https://placehold.co/600x400", alt="" style="width:100%;height:100%;object-fit:cover")
+                // КОСТЫЛЬ: Клик на точку показывает блок снизу (is-active)
+                .map__dot(style="position:absolute;right:20%;top:20%" onclick="const block = document.querySelector('[data-js-map-block]'); if(block) { document.querySelectorAll('[data-js-map-block]').forEach(b => b.classList.remove('is-active', 'is-open')); block.classList.add('is-active'); }") 1
+                // КОСТЫЛЬ: Активная точка (с зеленой точкой снизу)
+                .map__dot.active(style="position:absolute;left:70%;right:20%;top:30%") 10
+                .map__dot(style="position:absolute;left:80%;right:50%;top:50%") 5
+
+            .vacancies__map-inner
+                .top.d-flex(style="justify-content: space-between;align-items:start")
+                    .top__left
+                        .news__filters(style="margin:0;padding:4px;gap:4px;flex-direction:row")
+                            .input__wrapper.with-icon.white
+                                +icon('icon-search')(width="20" height="20" style="fill: transparent")
+                                input(type="text" placeholder="Искать вакансию" oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                                button.input__clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                                    +icon('icon-close-small')(width="16" height="16" style="fill: transparent")
+
+                            button.map__filter-toggle(type="button" style="display:flex" data-js-map-filter-toggle)
+                                +icon('icon-filter')(width="24" height="24" style="fill: transparent")
+                        .map__overlay(data-js-map-overlay)
+                        .map__flex
+                            +map-filter()
+                            .map__block(data-js-map-block)
+                                .map__block-header
+                                    .map__handle(data-js-map-handle)
+                                    .d-flex(style="gap:4px;align-items:start")
+                                        // КОСТЫЛЬ: Стрелка назад закрывает  блок
+                                        a(href="javascript:void(0)" onclick="this.closest('.map__block').classList.remove('is-active')")
+                                            +icon('icon-chevron-thin')(width="24" height="24" style="fill: transparent;margin-top:3px")
+                                        span.text-22-18.text-semi Промышленный парк «РАЗВИТИЕ»
+                                    button.map__block-close(type="button" aria-label="Закрыть" data-js-map-close)
+                                        +icon('icon-close')(width="16" height="16" style="fill: transparent")
+                                
+                                .map__block-content
+                                    .vacancies__list
+                                        // КОСТЫЛЬ: Клик на вакансию показывает wide блок
+                                        article.company__vacancy(style="padding:20px;cursor:pointer" onclick="document.querySelector('.map__block--wide')?.classList.add('is-active') ")
+                                            .company__vacancy-content
+                                                h4.text-18.text-semi Водитель частной компании категории B
+                                                span.text-14 108 000 – 150 000 ₽ за месяц, на руки
+                                                .flex(style="margin-top:8px")
+                                                    span.badge Без опыта
+                                                    span.badge Полный график
+                                                    span.badge Выплаты: два раза в месяц
+                                                .d-flex(style="gap:4px;margin-top:12px")
+                                                    a(href="#").button.button--full Откликнуться
+                                                    button.like
+                                                        +icon('icon-favorites')(width="24" height="24")
+                                        // КОСТЫЛЬ: Клик на вакансию показывает wide блок в АДАПТИВЕ
+                                        article.company__vacancy(style="padding:20px;cursor:pointer" onclick="const wide = document.querySelector('.map__block--wide'); const list = document.querySelector('[data-js-map-block]'); if(wide && list) { list.classList.remove('is-active', 'is-open'); wide.classList.add('is-active'); }")
+                                            .company__vacancy-content
+                                                h4.text-18.text-semi Водитель частной компании категории B
+                                                span.text-14 108 000 – 150 000 ₽ за месяц, на руки
+                                                .flex(style="margin-top:8px")
+                                                    span.badge Без опыта
+                                                    span.badge Полный график
+                                                    span.badge Выплаты: два раза в месяц
+                                                .d-flex(style="gap:4px;margin-top:12px")
+                                                    a(href="#").button.button--full Откликнуться
+                                                    button.like
+                                                        +icon('icon-favorites')(width="24" height="24")
+                            .map__block.map__block--wide(data-js-map-block)
+                                .map__block-header
+                                    .map__handle(data-js-map-handle)
+                                    .d-flex(style="gap:4px;align-items:start")
+                                        // КОСТЫЛЬ: Стрелка назад закрывает wide блок
+                                        a(href="javascript:void(0)").back-icon(onclick="const wide = this.closest('.map__block--wide'); const list = document.querySelector('[data-js-map-block]:not(.map__block--wide)'); if(wide && list) { wide.classList.remove('is-active', 'is-open'); list.classList.add('is-active'); }")
+                                            +icon('icon-chevron-thin')(width="24" height="24" style="fill: transparent;margin-top:3px")
+                                        span.text-22-18.text-semi Водитель частной компании категории B
+                                    button.map__block-close(type="button" aria-label="Закрыть" data-js-map-close)
+                                        +icon('icon-close')(width="16" height="16" style="fill: transparent")
+
+                                .map__block-content
+                                    .vacancies__body.vacancies__detail
+                                        .vacancies__main
+                                            .vacancies__detail-header
+                                                p.text-18 108 000–150 000 ₽ за месяц, на руки
+                                                ul.characteristic
+                                                    li
+                                                        span Опыт работы:
+                                                        span Без опыта
+                                                    li
+                                                        span Рабочие часы:
+                                                        span Вечерние или ночные смены
+                                                    li
+                                                        span Оформление:
+                                                        span Договор ГПХ с самозанятым, с ИП, с физлицом
+                                                .footer
+                                                    a(href="#").button.button--full Откликнуться
+                                                    button.like
+                                                        +icon('icon-favorites')(width="24" height="24")
+                                                .gray-block
+                                                    div
+                                                        h5.title.text-22.text-semi Промышленный парк "РАЗВИТИЕ"
+                                                            +icon('icon-verify')(width="30" height="30")
+                                                        p.text-14.text-gray(style="margin-top:8px") Набережные Челны, проспект Сююмбике, 53
+                                                    .gray-block__footer
+                                                        a(href="#").link
+                                                            span 66 активных вакансии
+                                                            span →
+                                            hr.hr
+                                            .vacancies__detail-info.news__article
+                                                p Срочная вакансия водителя в компанию. Подработка со свободным графиком и ежедневной оплатой! Опыт не нужен. Возможность работы на любом автомобиле и в любом районе города и области.
+                                                section
+                                                    h3 Обязанности
+                                                    ul
+                                                        li Доставка оплаченных заказов до клиентов
+                                                section
+                                                    h3 Требования:
+                                                    ul
+                                                        li Права категории B
+                                                section
+                                                    h3 Условия:
+                                                    ul
+                                                        li Ежедневная оплата плюс чаевые
+                                                        li Доход до 1 500 ₽ в час
+                                                        li Работа в комфортном для вас ритме и графике
+                                                p Будет преимуществом опыт работы на таких позиция как: водитель, водитель-курьер, водитель категории B, водитель служебного автомобиля, водитель на своём автомобиле, водитель экспедитор, доставщик,, водитель выходного дня, подработка водителем от 4х часов, подработка курьером на выходных, подработка с ежедневной оплатой.
+                                                    |
+                                                    br
+                                                    | Жмите «Откликнуться» прямо сейчас и начинайте зарабатывать.
+                                                    br
+                                                    | ОБРАЩАЕМ ВНИМАНИЕ, после отклика на данную вакансию потребуется предоставление информации или выполнение иных действий на сторонних информационных ресурсах.
+                                                section.invalid
+                                                    +icon('icon-invalid')(width="24" height="24" style="fill: transparent")
+                                                    span Доступно соискателям с инвалидностью
+                                                section
+                                                    h3 Ключевые навыки
+                                                    .flex
+                                                        .badge Курьерская доставка
+                                                section
+                                                    h3 Опыт вождения
+                                                    ul
+                                                        li Права категории B
+                                                aside.vacancies__aside.vacancies__aside-info
+                                                    .gray-block
+                                                        div
+                                                            h5.title.text-22.text-semi Промышленный парк "РАЗВИТИЕ"
+                                                                +icon('icon-verify')(width="30" height="30")
+                                                            p.text-14.text-gray(style="margin-top:8px") Набережные Челны, проспект Сююмбике, 53
+                                                        .gray-block__footer
+                                                            a(href="#" style="color:unset;text-decoration:unset").link
+                                                                span 66 активных вакансии
+                                                                span →
+                                                span.text-12.text-gray Вакансия опубликована 19 января 2026 в Набережных Челнах
+
+                    .vacancies__tabs.admin__user-tabs
+                        a(href="/vacancies.html").vacancies__tabs-item
+                            +icon('icon-notes')(width="24" height="24")
+                            span Список
+                        a(href="/vacancies-map-1.html").vacancies__tabs-item.is-active
+                            +icon('icon-map')(width="24" height="24")
+                            span На карте
+                        a(href="/vacancies-favorites.html").vacancies__tabs-item
+                            +icon('icon-favorites')(width="24" height="24")
+                            span Избранное

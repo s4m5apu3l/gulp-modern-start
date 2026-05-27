@@ -1,0 +1,45 @@
+@use '../base/helpers' as *;
+
+.toast {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    transform: translateY(150%);
+    z-index: 9999;
+    color: white;
+    background: #1f1f1fcc;
+    border-radius: 24px;
+    padding: 24px 28px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    @include tablet {
+        left: 50%;
+        right: auto;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(150%);
+        max-width: calc(100% - 32px);
+    }
+
+    @include mobile {
+        bottom: 16px;
+        padding: 20px;
+    }
+
+    &.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+
+        @include tablet {
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+
+    &__container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+}

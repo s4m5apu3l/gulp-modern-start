@@ -1,0 +1,14 @@
+/* https://github.com/aleksanderlamkov/future-tech/blob/main/styles/helpers/_functions.scss */
+
+@use 'sass:math';
+@use 'sass:color';
+@use 'variables' as *;
+
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+  } @else {
+    @error 'Не используйте единицы измерения при работе с функцией rem()! Передавайте аргументом только числа.';
+  }
+}
+

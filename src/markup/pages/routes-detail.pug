@@ -1,0 +1,164 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "вопросы ответы";
+    - const pageDescription = "";
+    - const pageLink = "/faq";
+
+block content
+    .container
+        .base__page-grid.base__page-grid--2
+            .left
+                +breadcrumbs([
+                    { title: 'Главная', link: '/' },
+                    {title: 'Направления', link: '/routes.html'},
+                    { title: 'Туризм' }
+                ])
+
+                section.page-header
+                    h1.page-header__title Туризм
+                aside.services-sidebar.services-sidebar--mobile-hide
+                    span.text-gray.text-12.services-sidebar__label Выберите раздел
+                    // для того чтобы ссылка была активной надо добавить вам класс .is-active
+                    nav.services-nav
+                        .services-nav__item
+                            a(href="#").services-nav__link.is-active
+                                img(src="/img/uslugi/star.svg", alt="").icon
+                                span Туризм
+
+                        .services-nav__item
+                            a(href="#").services-nav__link
+                                img(src="/img/uslugi/star.svg", alt="").icon
+                                span Безопасность
+
+                        .services-nav__item
+                            a(href="#").services-nav__link
+                                img(src="/img/uslugi/star.svg", alt="").icon
+                                span Культура
+            .inner
+                .services__mobile-back(style="margin:0 0 16px 0")
+                    a(href="#").back-btn  ←
+                    span.text Туризм
+                .company__gallery
+                    .company__gallery-main.swiper
+                        .company__gallery-nav
+                            button.company__gallery-nav-btn.company__gallery-nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                                +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                            button.company__gallery-nav-btn.company__gallery-nav-btn--next(type="button" aria-label="Следующий слайд")
+                                +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                        
+                        .swiper-wrapper
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+                            .swiper-slide
+                                video(controls)
+                                    source(src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4")
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/1200x800" alt="Промышленный парк")
+
+                    .company__gallery-thumbs.swiper
+                        .swiper-wrapper
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                            .swiper-slide
+                                .company__gallery-video-thumb
+                                    img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                                    .company__gallery-play
+                                        +icon('icon-play')(width="24" height="24" style="fill: transparent")
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                            .swiper-slide
+                                img(src="https://placehold.co/300x200" alt="Промышленный парк")
+                hr.hr
+                
+                .news__article
+                    section
+                        p Природа — особая гордость Челнов. Летом открыты новые благоустроенные пляжи: «Су Анасы» с деревянными лежаками на 450 мест, «Urman» с подогреваемыми бассейнами и вейк-парк «Добрый ветер» для любителей активного отдыха. В городе несколько крупных парков: «Прибрежный» (самый большой, с экотропами и конным клубом), «Гренада» (современное пространство для молодёжи и спортсменов) и «Комсомольский» (старейший лесопарк с аттракционами).
+                
+                section.main__section 
+                    .swiper-section__header
+                        h4.swiper-section__title
+                            span Цифры и факты
+                    .main__routes-grid.main__routes-grid--4
+                        a(href='javascript:void(0)').main__routes-card.main__routes-card--gray
+                            span.text-gradient  1 млн
+                            span.text-medium туристов в год посещают город
+                        a(href='javascript:void(0)').main__routes-card.main__routes-card--gray
+                            span.text-gradient  +95 тыс
+                            span.text-medium рост турпотока в 2025 году
+                        a(href='javascript:void(0)').main__routes-card.main__routes-card--gray
+                            span.text-gradient  50+
+                            span.text-medium организовано выездных экскурсий
+                        a(href='javascript:void(0)').main__routes-card.main__routes-card--gray
+                            span.text-gradient  40
+                            span.text-medium катков для гостей
+                
+                section.main__section
+                    .swiper-section__header
+                        h4.swiper-section__title
+                            span Новости туризма
+                        .swiper-section__nav.swiper-section__nav--hide
+                            button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                                +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                            button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                                +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                    
+                    .js-swiper-section.swiper(data-swipes="3")
+                        .swiper-wrapper
+                            each item in jsonData.regionNews.items
+                                .swiper-slide
+                                    a(href=item.link).base__card-link
+                                        article.base__card
+                                            img(src="https://placehold.co/600x400" alt=item.title loading="lazy").base__card-img
+                                            .base__card-content
+                                                h5.base__card-title= item.title
+                                                p.base__card-description= item.description
+                                                time.base__card-date(datetime=item.dateISO)= item.date
+                        
+                    .swiper-section__footer
+                        .show-more-block
+                            button.show-more
+                                span.left
+                                    span.dot
+                                    span.text Все новости
+                                .icon  →
+
+                section.main__section
+                    .swiper-section__header
+                        h4.swiper-section__title
+                            span Подразделения
+                    .main__routes-grid.main__routes-grid--4
+                        // убрал свайпер потому что опять в мобилке не свайпер по кайфу делают
+                        each i in [1,2,3,4]
+                            .contacts-block 
+                                .contacts-block__title.text-14 
+                                    span.text-medium Информационно-образовательный портал
+                                ul.contacts-block__list.text-14
+                                    li 
+                                        a(href="#").link
+                                            +icon('icon-point')(width="16" height="16" style="fill: transparent")
+                                            span г.Набережные Челны, пр-т Хасана Туфана, д. 15
+                                    li
+                                        a(href="#").link
+                                            +icon('icon-tel')(width="16" height="16" style="fill: transparent")
+                                            span 8 (8552) 30-55-42
+
+                section.main__section
+                    .swiper-section__header
+                        h4.swiper-section__title
+                            span Полезные ссылки
+
+                    .main__urls-inner
+                        .main__urls-tab
+                            .main__urls-grid
+                                each index in [1,2,3,4,5,6,7,8]
+                                    a(href="#").main__urls-card
+                                        span.text-18 Прокурор разъясняет
+                                        .main__urls-card-icon
+                                            +icon('icon-arrow-green')(width="14" height="14" style="fill: transparent")

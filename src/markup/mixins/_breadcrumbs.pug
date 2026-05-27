@@ -1,0 +1,17 @@
+//- Миксин для хлебных крошек
+//- Пример использования:
+//- +breadcrumbs([
+//-   { title: 'Главная', link: '/' },
+//-   { title: 'Услуги', link: '/uslugi.html' },
+//-   { title: 'Текущая страница' }
+//- ])
+
+mixin breadcrumbs(items)
+    nav.breadcrumbs(aria-label="Хлебные крошки")
+        ul.breadcrumbs__list
+            each item, index in items
+                li.breadcrumbs__item
+                    if item.link
+                        a.breadcrumbs__link(href=item.link)= item.title
+                    else
+                        span.breadcrumbs__current= item.title

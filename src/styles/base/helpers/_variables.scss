@@ -1,0 +1,18 @@
+$maxViewportWidth: 1440;
+$minViewportWidth: 375;
+
+$laptop: 1440.98;
+$tablet: 1023.98;
+$mobile: 767.98;
+$mobile-s: 480.98;
+$screen-sizes: (
+  lg: $laptop,
+  md: $tablet,
+  sm: $mobile,
+  xs: $mobile-s,
+);
+
+$gap: 15;
+$gray: #475569;
+$primary: #2354ce;
+$green: #00b955;

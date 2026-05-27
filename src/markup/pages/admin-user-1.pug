@@ -1,0 +1,177 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Страница личности'
+    - const description = ''
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Структура администарции' },
+            {ttile:'Страница личности'}
+        ])
+
+        .admin__user
+            .admin__user-top
+                img(src="https://picsum.photos/800/600", alt="").afisha__detail-image
+                .content
+                    .swiper-section__header
+                        .block
+                            span.page-header__title Магдеев Наиль Гамбарович
+                            p.text-14.text-gray Мэр города
+                        .block.block--flex
+                            span.text-gray.text-14 Официальные аккаунты
+                            div(style="display:flex;align-items: center; gap:8px")
+                                a(href="#" style="color: #00B955")
+                                    +icon('icon-vk')(width="52" height="52" style="fill: transparent")
+                                a(href="#" style="color: #00B955")
+                                    +icon('icon-telegram')(width="52" height="52" style="fill: transparent")
+                                a(href="#" style="color: white")
+                                    +icon('icon-max')(width="52" height="52" style="fill: transparent")
+                    // сделал через ссылку если решите сделать через табы, то пишите мне славе.
+                    .admin__user-tabs
+                        a(href="/admin-user-1.html").vacancies__tabs-item.is-active
+                            span Деятельность мэра
+                        a(href="/admin-user-2.html").vacancies__tabs-item
+                            span Биография
+                        a(href="/admin-user-3.html").vacancies__tabs-item
+                            span Новости
+                        a(href="#").vacancies__tabs-item
+                            span Медиа
+                        a(href="#").vacancies__tabs-item
+                            span Документы
+                        a(href="#").vacancies__tabs-item
+                            span Контакты
+            .admin__user-bottom
+                div(style="display:flex;align-items: center; gap:8px")
+                    a(href="#" style="color: white")
+                        +icon('icon-vk-small')(width="105" height="52" style="fill: transparent")
+                    a(href="#" style="color: white")
+                        +icon('icon-tg-small')(width="105" height="52" style="fill: transparent")
+                    a(href="#" style="color: white")
+                        +icon('icon-max-small')(width="105" height="52" style="fill: transparent")
+                .admin__aside-dropdown(data-dropdown)
+                    button.admin__aside-dropdown-btn(data-dropdown-btn)
+                        span(data-dropdown-current) Деятельность мэра
+                        +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+
+                    nav.admin__aside-dropdown-menu
+                        a(href="/admin-user-1.html").link
+                            span Деятельность мэра
+                        a(href="/admin-user-2.html").link
+                            span Биография
+                        a(href="/admin-user-3.html").link
+                            span Новости
+                        a(href="#").link
+                            span Медиа
+                        a(href="#").link
+                            span Документы
+                        a(href="#").link
+                            span Контакты
+
+
+        section.main__section
+            .swiper-section__header
+                h4.swiper-section__title
+                    span Новости
+                .swiper-section__nav.swiper-section__nav--hide
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+            .js-swiper-section.swiper(data-swipes="4")
+                .swiper-wrapper
+                    each item in jsonData.regionNews.items
+                        .swiper-slide
+                            a(href=item.link).base__card-link
+                                article.base__card
+                                    img(src="https://placehold.co/600x400" alt=item.title loading="lazy").base__card-img
+                                    .base__card-content
+                                        h5.base__card-title= item.title
+                                        p.base__card-description= item.description
+                                        time.base__card-date(datetime=item.dateISO)= item.date
+
+            .swiper-section__footer
+                .show-more-block
+                    button.show-more
+                        span.left
+                            span.dot
+                            span.text Все новости
+                        .icon  →
+
+        section.main__section
+            .swiper-section__header
+                h4.swiper-section__title
+                    span Медиа
+                .swiper-section__nav.swiper-section__nav--hide
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+            .admin__user-gallery.js-swiper-section.swiper(data-swipes="3")
+                .swiper-wrapper
+                    .swiper-slide
+                        a.news__article-gallery-item(href="https://placehold.co/800x600" data-fancybox="gallery")
+                            img(src="https://placehold.co/800x600" alt="Новость")
+                    .swiper-slide
+                        a.news__article-gallery-item(href="https://www.youtube.com/watch?v=PUdyuKaGQd4" data-fancybox="gallery")
+                            img(src="https://placehold.co/800x600?text=poster-video" alt="Новость")
+                    .swiper-slide
+                        a.news__article-gallery-item(href="https://placehold.co/1200x200" data-fancybox="gallery")
+                            img(src="https://placehold.co/1200x200" alt="Новость")
+                    .swiper-slide
+                        a.news__article-gallery-item(href="https://placehold.co/800x600" data-fancybox="gallery")
+                            img(src="https://placehold.co/800x600" alt="Новость")
+
+        section.main__section
+            .swiper-section__header
+                h4.swiper-section__title
+                    span Документы
+                .swiper-section__nav.swiper-section__nav--hide
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+            .main__afisha-inner
+                .main__afisha-swiper.swiper.js-swiper-section(data-swipes="3")
+                    .swiper-wrapper
+                        each i in [1,2,3,4]
+                            .swiper-slide
+                                a(href="#").main__services-card.main__services-card--large
+                                    .badge
+                                        +icon('icon-doc')(width="16" height="16" style="fill: transparent")
+                                        span Документ
+                                    div(style="display:grid;gap:4px")
+                                        span.text-18-14.text-medium Об утверждении административного регламента предоставления муниципальной услуги по постановке на учет и перерегистрации нуждающихся в улучшении жилищных условий в системе социальной ипотеки в Республике Татарстан
+                                        span.text-gray.text-14 Пятница, 27 февраля 2026, 12:32
+
+                .show-more-block
+                    a(href="#").show-more
+                        span.left
+                            span.dot
+                            span.text Все документы
+                        .icon  →
+
+        section.main__section
+            .swiper-section__header
+                h4.swiper-section__title
+                    span Контакты
+            .main__urls-inner
+                .main__urls-grid
+                    .main__urls-card
+                        span.text-14 Информационно-образовательный портал
+                        a(href="#" style="text-decoration: underline dotted").text-green.text-22 8 800 00 00
+                    .main__urls-card
+                        span.text-14 Электронная почта
+                        a(href="#" style="text-decoration: underline dotted").text-green.text-22 mail@mail.ru
+                    .main__urls-card
+                        span.text-14 Адрес
+                        a(href="#" style="line-height: 125%;").text-22.text-medium 423805, г. Набережные Челны, пр. Хасана Туфана д. 23
+                    .main__urls-card
+                        span.text-14 Информационно-образовательный портал
+                        a(href="#" style="text-decoration: underline dotted").text-green.text-22 8 800 00 00
+

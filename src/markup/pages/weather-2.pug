@@ -1,0 +1,49 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Погода'
+    - const description = ''
+
+block content
+    .container
+        .swiper-section__header.swiper-section__header--with-filter
+            .block
+                +breadcrumbs([
+                    { title: 'Главная', link: '/' },
+                    { title: 'Погода' },
+                ])
+                h1.page-header__title
+                    span Погода в Набережных Челлнах
+
+            .admin__user-tabs
+                a(href="/weather-1.html").vacancies__tabs-item
+                    span Сегодня
+                a(href="/weather-1.html").vacancies__tabs-item.weather__tab--hide-mobile
+                    span Завтра
+                a(href="/weather-2.html").vacancies__tabs-item.is-active.weather__tab--hide-mobile
+                    span На 10 дней
+                a(href="/weather-3.html").vacancies__tabs-item
+                    span На месяц
+        .base__page
+            .weather__days
+                h2.weather__days-title.text-26.text-semi.text-gray На 10 дней
+                .weather__days-grid
+                    each day in jsonData.weather.days
+                        a(href="/weather-4.html").weather__day-card
+                            .top
+                                span.h1.text-semi(class=day.isWeekend ? 'text-red' : '')= day.dayShort
+                                .text-22-18.text-gray.text-semi(class=day.isWeekend ? 'text-red' : '')
+                                    if day.dayLabel
+                                        .text-green= day.dayLabel
+                                    else
+                                        span=  day.date
+                                        if day.month
+                                            span  #{day.month}
+                            .weather__day-weather
+                                .weather__day-period
+                                    img(src=`/img/weather/${day.iconDay}`, alt="").weather__day-icon
+                                    span.text-18.text-medium= day.tempDay
+                                hr.hr
+                                .weather__day-period
+                                    img(src=`/img/weather/${day.iconNight}`, alt="").weather__day-icon
+                                    span.text-18.text-medium= day.tempNight 

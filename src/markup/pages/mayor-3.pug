@@ -1,0 +1,160 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Обращение к мэру'
+    - const description = ''
+
+block content
+    .container
+        .admin__page-relative
+            .admin__page-body
+                +breadcrumbs([
+                    { title: 'Главная', link: '/' },
+                    { title: 'Электронная приёмная', }
+                ])
+                section.page-header
+                    h1.page-header__title Мои обращения
+                aside.admin__aside
+                    nav.admin__aside-nav.admin__aside-nav--desktop
+                        // активный класс просто text-green
+                        a(href="#").link Электронная приёмная
+                        a(href="#").link.text-green Поиск обращений
+                        a(href="#").link Приём граждан
+                        a(href="#").link Личный приём мэра
+                        a(href="#").link Информация об обращениях
+                        a(href="#").link Нормативно-правовая база
+                        a(href="#").link Вопросы и ответы
+
+                    .admin__aside-dropdown(data-dropdown)
+                        button.admin__aside-dropdown-btn(data-dropdown-btn)
+                            span(data-dropdown-current) Электронная приёмная
+                            +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+
+                        nav.admin__aside-dropdown-menu
+                            a(href="#").link Электронная приёмная
+                            a(href="#").link Поиск обращений
+                            a(href="#").link Приём граждан
+                            a(href="#").link Личный приём мэра
+                            a(href="#").link Информация об обращениях
+                            a(href="#").link Нормативно-правовая база
+                            a(href="#").link Вопросы и ответы
+
+                .mayor__inner
+                    .vacancies__search
+                        .news__filters
+                            .input(style="width:100%")
+                                .input__wrapper.with-icon.white
+                                    +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                                    input(type="text" placeholder="Номер обращения")
+
+                            button.vacancies__filter-toggle(type="button")
+                                +icon('icon-filter')(width="24" height="24" style="fill: transparent")
+
+                            .news__filter-group
+                                .news__filter(data-dropdown)
+                                    button.news__filter-btn(data-dropdown-btn)
+                                        span(data-dropdown-current) Период
+                                        +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                    .news__filter-menu
+                                        button.news__filter-item.is-active(data-dropdown-item data-value="new")
+                                            span Сначала новые
+                                        button.news__filter-item(data-dropdown-item data-value="old")
+                                            span Сначала старые
+
+                                .news__filter(data-dropdown)
+                                    button.news__filter-btn(data-dropdown-btn)
+                                        span(data-dropdown-current) Статус
+                                        +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                    .news__filter-menu
+                                        button.news__filter-item.is-active(data-dropdown-item data-value="all")
+                                            span За все время
+                                        button.news__filter-item(data-dropdown-item data-value="today")
+                                            span За сегодня
+                                        button.news__filter-item(data-dropdown-item data-value="week")
+                                            span За неделю
+                                        button.news__filter-item(data-dropdown-item data-value="month")
+                                            span За месяц
+
+                                .news__filter(data-dropdown)
+                                    button.news__filter-btn(data-dropdown-btn)
+                                        span(data-dropdown-current) Тема
+                                        +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                    .news__filter-menu
+                                        button.news__filter-item.is-active(data-dropdown-item data-value="all")
+                                            span Все типы
+                                        button.news__filter-item(data-dropdown-item data-value="important")
+                                            span Важные
+                                        button.news__filter-item(data-dropdown-item data-value="events")
+                                            span События
+                                        button.news__filter-item(data-dropdown-item data-value="announcements")
+                                            span Объявления
+                        .vacancies__list-wrapper
+                            .vacancies__list
+                                a.services__list-item(href="/mayor-4.html")
+                                    h5.text-18.text-medium Нужно ли самозанятым сниматься с налогового учёта в случае призыва по мобилизации?
+                                    .d-flex(style="margin-top:16px;flex-wrap:wrap;gap:8px")
+                                        span.badge.badge--green 4569-87
+                                        span.badge.badge--white 12.08.2024
+                                        span.badge.badge--white В работе
+                                        span.badge.badge--white Другая тема
+                                a.services__list-item(href="/mayor-4.html")
+                                    h5.text-18.text-medium Нужно ли самозанятым сниматься с налогового учёта в случае призыва по мобилизации?    Нужно ли самозанятым сниматься с налогового учёта в случае призыва по мобилизации? 
+                                    .d-flex(style="margin-top:16px;flex-wrap:wrap;gap:8px")
+                                        span.badge.badge--green 4569-87
+                                        span.badge.badge--white 12.08.2024
+                                        span.badge.badge--white В работе
+                                        span.badge.badge--white Другая тема
+            // в мобилке фильтр боковой
+            aside.vacancies__aside.company__aside-filter
+                .vacancies__filter
+                    .vacancies__filter-head 
+                        button.vacancies__filter-close(type="button")
+                            +icon('icon-arrow-left')(width="24" height="24" style="fill: transparent")
+                        h3.vacancies__filter-title Фильтры
+                        button.vacancies__filter-reset-all(type="button") Сбросить 
+                    .vacancies__filter-section.vacancies__filter-mobile-time
+                        label.vacancies__filter-label Время публикации
+                        
+                        .vacancies__filter-list
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time" checked)
+                                span Сначала новые
+                                span.vacancies__filter-count 34
+                            
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time")
+                                span Сначала ранние
+                                span.vacancies__filter-count 879
+                            
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time")
+                                span За всё время
+                                span.vacancies__filter-count 785
+                    
+                    .vacancies__filter-section
+                        label.vacancies__filter-label Формат работы
+                        
+                        .vacancies__filter-list
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span На месте работодателя
+                                span.vacancies__filter-count 386
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Разъездной
+                                span.vacancies__filter-count 45
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Удалённо
+                                span.vacancies__filter-count 12
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Гибрид
+                                span.vacancies__filter-count 149
+                    // надо добавить ключ футер на последний
+                    .vacancies__filter-section.vacancies__filter-section--footer
+                        button.button(type="button") Показать 456 вакансий
+                                

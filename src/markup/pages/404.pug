@@ -1,0 +1,22 @@
+extends ../layouts/_default
+
+block variables
+    - const title = '404'
+    - const description = 'Страница не найдена'
+
+block content
+    .container
+        .base__page-grid
+            .not-found__inner
+                .not-found__number
+                    span 4
+                    +icon('icon-logo')( style="fill: transparent")
+                    span 4
+
+                h1.not-found__title Страница не найдена
+                p.text-18
+                    | Похоже, её не существует или она была удалена.
+                    br
+                    | Попробуйте вернуться на главную и начать сначала
+
+                a.button(href="/") Вернуться на главную

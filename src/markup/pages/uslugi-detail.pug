@@ -1,0 +1,66 @@
+extends ../layouts/_default.pug
+
+block variables
+	- const pageTitle = "Услуги";
+	- const pageDescription = "Полный перечень услуг";
+	- const pageLink = "/uslugi-detail";
+
+block content
+	// надо добавить такой класс иначе никак
+	.services__detail
+		.container
+			+breadcrumbs([
+				{ title: 'Главная', link: '/' },
+				{ title: 'Услуги' }
+			])
+
+			section.page-header
+				h1.page-header__title Услуги
+				p.page-header__descr Сегодня во Дворце торжеств Набережных Челнов состоялось вручение сертификатов на материнский (семейный) капитал 25 челнинским семьям. В торжественной обстановке сертификаты вручил мэр города Наиль Магдеев.
+				a(href="#").button  Получить услугу
+
+			.services__detail-inner
+				ul.services__info-list 
+					li.services__info-item
+						span.text-12.text-gray Срок предоставления
+						span.title от 3-х рабочих дней
+					li.services__info-item
+						span.text-12.text-gray Стоимость
+						span.title Бесплатно
+					li.services__info-item
+						span.text-12.text-gray Ответственное ведомство
+						a(href="#").title Департамент труда и социальной защиты населения города Москвы
+
+				.services__accordions
+					.services__accordion-item
+						button.accordion__button.services__accordion-btn
+							span Результат предоставления
+							.plus
+								+icon('icon-plus')(width="20" height="20" style="fill: transparent")
+						.accordion__content.services__accordion-content
+							.services__accordion-content-inner
+								h4 Обязательные
+								p Запрос заполняется посредством внесения сведений, указанных в приложении 1 к административному регламенту, в интерактивную форму на Портале.
+								
+								h4 Необязательные
+								p Запрос заполняется посредством внесения сведений, указанных в приложении 1 к административному регламенту, в интерактивную форму на Портале.
+								a(href="#") Образец документа 
+								ol
+									li Пример маркированного списка
+									li Тут еще
+									li И будет больше
+								
+								h4 Документ, подтверждающий полномочия представителя заявителя
+								ul
+									li Запрос (заявление) на предоставление государственной услуги
+									li Документы, удостоверяющие личность заявителя и членов его семьи
+									li Документ, удостоверяющий личность представителя заявителя в соответствии с Едиными требованиями, в случае обращения представителя заявителя
+							
+					.services__accordion-item
+						button.accordion__button.services__accordion-btn
+							span Как получить услугу
+							.plus
+								+icon('icon-plus')(width="20" height="20" style="fill: transparent")
+						.accordion__content.services__accordion-content
+							.services__accordion-content-inner
+								p Подробная инструкция по получению услуги будет здесь.

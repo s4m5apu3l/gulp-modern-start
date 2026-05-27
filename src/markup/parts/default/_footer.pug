@@ -1,0 +1,115 @@
+footer.footer
+    .footer__main 
+        .container 
+            .footer__main-inner 
+                .footer__logo
+                    a(href="/").logo
+                          +icon('icon-logo')(width="104" height="104" style="fill: transparent") 
+                    img(src="img/logo-footer.png", alt="").img
+                    .mobile
+                        a(href="#") 
+                            +icon('icon-vk-big')(width="52" height="52" style="fill: transparent") 
+                        a(href="#")
+                            +icon('icon-tg-big')(width="52" height="52" style="fill: transparent") 
+                        a(href="#")
+                            +icon('icon-ok-big')(width="52" height="52" style="fill: transparent") 
+                        a(href="#")
+                            +icon('icon-max-big')(width="52" height="52" style="fill: transparent") 
+                    .text-14.text-gray
+                        span © 2012 – 2026
+                        br
+                        span При использовании материалов с сайта ссылка на источник обязательна
+                nav.footer__nav
+                    .block
+                        h5.block__title Гражданам
+                        .footer__nav-list.text-gray.text-14
+                            each item in jsonData.footerNavs.grajdanam
+                                a(href=item.link)= item.text
+                    .block
+                        h5.block__title Услуги
+                        .footer__nav-list.text-gray.text-14
+                            each item in jsonData.footerNavs.uslugi
+                                a(href=item.link)= item.text
+                    .block
+                        h5.block__title Новости
+                        .footer__nav-list.text-gray.text-14
+                            each item in jsonData.footerNavs.novosti
+                                a(href=item.link)= item.text
+                nav.footer__nav-mobile
+                    .block
+                        button.accordion__button
+                            span Гражданам
+                            .plus
+                                +icon('icon-plus')(width="14" height="14" style="fill: transparent")
+                        .accordion__content
+                            .footer__nav-list.text-gray.text-14
+                                each item in jsonData.footerNavs.grajdanam
+                                    a(href=item.link)= item.text
+                    .block
+                        button.accordion__button
+                            span Услуги
+                            .plus
+                                +icon('icon-plus')(width="14" height="14" style="fill: transparent")
+                        .accordion__content
+                            .footer__nav-list.text-gray.text-14
+                                each item in jsonData.footerNavs.uslugi
+                                    a(href=item.link)= item.text
+                    .block
+                        button.accordion__button
+                            span Новости
+                            .plus
+                                +icon('icon-plus')(width="14" height="14" style="fill: transparent")
+                        .accordion__content
+                            .footer__nav-list.text-gray.text-14
+                                each item in jsonData.footerNavs.novosti
+                                    a(href=item.link)= item.text
+                    .block
+                        button.accordion__button
+                            span Контакты
+                            .plus
+                                +icon('icon-plus')(width="14" height="14" style="fill: transparent")
+                        .accordion__content.flex-col
+                            a(href="#").flex
+                                +icon('icon-point')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 423805, г. Набережные Челны, пр. Хасана Туфана д.23
+                            a(href="tel:88552305542").flex
+                                +icon('icon-call')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 8 (8552) 30-55-42
+                            a(href="#").flex
+                                +icon('icon-print')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 8 (8552) 58-38-41
+                            a(href="mailto:kancel.chelny@tatar.ru").flex
+                                +icon('icon-mail')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 kancel.chelny@tatar.ru
+                .footer__socials
+                    .block 
+                        h5.block__title Соц. сети
+                        .content.flex
+                            a(href="#") 
+                                +icon('icon-vk-big')(width="52" height="52" style="fill: transparent") 
+                            a(href="#")
+                                +icon('icon-tg-big')(width="52" height="52" style="fill: transparent") 
+                            a(href="#")
+                                +icon('icon-ok-big')(width="52" height="52" style="fill: transparent") 
+                            a(href="#")
+                                +icon('icon-max-big')(width="52" height="52" style="fill: transparent") 
+                    .block 
+                        h5.block__title Контакты
+                        .content.flex-col
+                            a(href="#").flex
+                                +icon('icon-point')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 423805, г. Набережные Челны, пр. Хасана Туфана д.23
+                            a(href="tel:88552305542").flex
+                                +icon('icon-call')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 8 (8552) 30-55-42
+                            a(href="#").flex
+                                +icon('icon-print')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 8 (8552) 58-38-41
+                            a(href="mailto:kancel.chelny@tatar.ru").flex
+                                +icon('icon-mail')(width="16" height="16" style="fill: transparent") 
+                                span.text-gray.text-14 kancel.chelny@tatar.ru
+                    .flex-col.policy
+                        a(href="#").text-gray.text-14 Политика конфиденциальности 
+                        a(href="#").text-gray.text-14 Политика обработки персональных данных 
+
+

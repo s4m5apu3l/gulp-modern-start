@@ -1,0 +1,125 @@
+extends ../layouts/_default.pug
+
+block variables
+	- const pageTitle = "Новости";
+	- const pageDescription = "";
+	- const pageLink = "/news";
+
+block content
+	.container
+		+breadcrumbs([
+			{ title: 'Главная', link: '/' },
+			{ title: 'Новости' }
+		])
+
+		section.page-header
+			h1.page-header__title Новости
+		.news__inner 
+			.news__main
+				.news__tabs-wrapper
+					button.news__tabs-nav.news__tabs-nav--prev(type="button" aria-label="Предыдущий")
+						span  ←
+					.news__tabs.swiper.js-swiper-tabs 
+						.swiper-wrapper 
+							each item, i in jsonData.newsTabs
+								if(i === 0) 
+									.swiper-slide 
+										a(href="javascript:void(0)").tab-item.news__tabs-item.is-active Все новости
+								else 
+									.swiper-slide 
+										a(href="javascript:void(0)").tab-item.news__tabs-item= item.text
+					button.news__tabs-nav.news__tabs-nav--next(type="button" aria-label="Следующий")
+						span → 
+				
+				.news__filters
+					.news__search
+						+icon('icon-search')(width="20" height="20" style="fill: transparent")
+						input(type="text" placeholder="Искать новость")
+					
+					.news__filter-group
+						.news__filter(data-dropdown)
+							button.news__filter-btn(data-dropdown-btn)
+								span(data-dropdown-current) Сначала новые
+								+icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+							.news__filter-menu
+								button.news__filter-item.is-active(data-dropdown-item data-value="new")
+									span Сначала новые
+								button.news__filter-item(data-dropdown-item data-value="old")
+									span Сначала старые
+						
+						.news__filter(data-dropdown)
+							button.news__filter-btn(data-dropdown-btn)
+								span(data-dropdown-current) За все время
+								+icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+							.news__filter-menu
+								button.news__filter-item.is-active(data-dropdown-item data-value="all")
+									span За все время
+								button.news__filter-item(data-dropdown-item data-value="today")
+									span За сегодня
+								button.news__filter-item(data-dropdown-item data-value="week")
+									span За неделю
+								button.news__filter-item(data-dropdown-item data-value="month")
+									span За месяц
+						
+						.news__filter(data-dropdown)
+							button.news__filter-btn(data-dropdown-btn)
+								span(data-dropdown-current) Тип новости
+								+icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+							.news__filter-menu
+								button.news__filter-item.is-active(data-dropdown-item data-value="all")
+									span Все типы
+								button.news__filter-item(data-dropdown-item data-value="important")
+									span Важные
+								button.news__filter-item(data-dropdown-item data-value="events")
+									span События
+								button.news__filter-item(data-dropdown-item data-value="announcements")
+									span Объявления 
+				.news__list-wrapper
+					ul.news__list
+						each i in [1,2,3,4,5]
+							li.news__list-item 
+								a(href="#").news__list-link
+									+news-card() 
+					.news__pagination.pagination__wrapper
+						ul.pagination__list
+							li.pagination__list-item.is-active
+								a(href="#").pagination__list-link 1 
+							li.pagination__list-item 
+								a(href="#").pagination__list-link 1 
+							li.pagination__list-item 
+								a(href="#").pagination__list-link 1 
+							li.pagination__list-item 
+								a(href="#").pagination__list-link ...
+							li.pagination__list-item 
+								a(href="#").pagination__list-link 250
+							li.pagination__list-item 
+								a(href="#").button Следующая
+			aside.news__aside
+				.news__popular
+					.news__popular-header
+						h3.news__popular-title Популярное
+						+icon('icon-star')(width="20" height="20" style="fill: transparent")
+					
+					.news__popular-list
+						each item, index in jsonData.popularNews
+							a(href=item.link).news__popular-item
+								.news__popular-number= index + 1
+								.news__popular-content
+									h4.news__popular-item-title= item.title
+									.news__popular-meta
+										span.news__popular-date= item.date
+										span.news__popular-category= item.category
+				
+				.news__subscribe
+					h3.news__subscribe-title Не пропускайте важные новости города
+					p.news__subscribe-text Подпишитесь на рассылку и получайте подборку новостей портала на эл. почту
+					
+					form.news__subscribe-form
+						input.news__subscribe-input(type="email" placeholder="Ваша электронная почта" required)
+						
+						label.news__subscribe-checkbox
+							input(type="checkbox" required)
+							.news__subscribe-toggle
+							span Согласен на получение новостной рассылки и обработку персональных данных
+						
+						button.news__subscribe-btn(type="submit") Подписаться 

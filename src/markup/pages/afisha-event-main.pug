@@ -1,0 +1,334 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Афиша'
+    - const description = ''
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Афиша' }
+        ])
+        .afisha__inner
+            .afisha__banner-top
+                .afisha__header
+                    h1.page-header__title Городская афиша
+                    nav.afisha__links-list.swiper.js-swiper-section(data-swipes="auto")
+                        .swiper-wrapper
+                            .swiper-slide
+                                a(href="#").link.is-active Все
+                            .swiper-slide
+                                a(href="#").link Театр
+                            .swiper-slide
+                                a(href="#").link Концерты
+                            .swiper-slide
+                                a(href="#").link Детям
+                            .swiper-slide
+                                a(href="#").link Мастер-классы
+                            .swiper-slide
+                                a(href="#").link Выставки
+                            .swiper-slide
+                                a(href="#").link Кино
+                            .swiper-slide
+                                .news__filter(data-dropdown data-dropdown-multiple)
+                                    button.news__filter-btn.link(data-dropdown-btn)
+                                        span(data-dropdown-current data-default-text="Еще") Еще
+                                        +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                    .news__filter-menu
+                                        a(href="/").news__filter-item
+                                            span Акция
+                                        a(href="/").news__filter-item
+                                            span Виртуальный концертный зал
+                                        a(href="/").news__filter-item
+                                            span Выездные мероприятия
+
+                .js-swiper-afisha-banner.swiper.afisha__banner-swiper
+                    .company__gallery-nav
+                        button.company__gallery-nav-btn.company__gallery-nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                        button.company__gallery-nav-btn.company__gallery-nav-btn--next(type="button" aria-label="Следующий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                    .swiper-wrapper
+                        .swiper-slide
+                            +afisha-banner( 'Комната культуры', 'В это воскресенье в Казани состоится спортивная и музыкальная премия «Манзара», где будут организованы командные схватки «стенка на стенку» между командами Казани «Зилант» и Набережных Челнов.')
+                        .swiper-slide
+                            +afisha-banner( 'Комната культуры преаны командные схватки «стенка преаны командные схватки «стенка', 'В этя преаны командные схватки «стенка на стенку» между командами Казани «Зилант» и Набережных Челнов.')
+                    .swiper-pagination
+
+                .afisha__banner-filter
+                    .afisha__calendar(data-js-afisha-calendar)
+                        button.afisha__calendar-nav-btn(type="button" aria-label="Назад" data-js-calendar-prev)
+                            +icon('icon-arrow-right')(width="16" height="16" style="fill: transparent")
+                        .swiper
+                            .swiper-wrapper
+                                // слайды генерируются через AfishaCalendar.ts
+                        button.afisha__calendar-nav-btn.afisha__calendar-nav-btn--next(type="button" aria-label="Вперёд" data-js-calendar-next)
+                            +icon('icon-arrow-right')(width="16" height="16" style="fill: transparent")
+
+                    // Мобильная версия - поиск + дропдаун + toggle
+                    .afisha__filter-mobile-top
+                        // в дизе нет состояния не знаю что надо делать, просто так оставил похуй
+                        .search
+                            +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                        .news__filter(data-dropdown data-dropdown-multiple)
+                            button.news__filter-btn(data-dropdown-btn)
+                                span(data-dropdown-current data-default-text="Все события") Все события
+                                +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                            .news__filter-menu
+                                label.news__filter-item(data-dropdown-item data-value="1")
+                                    input(type="checkbox")
+                                    span Для детей
+                                label.news__filter-item(data-dropdown-item data-value="2")
+                                    input(type="checkbox")
+                                    span На открытом воздухе
+                                label.news__filter-item(data-dropdown-item data-value="1")
+                                    input(type="checkbox")
+                                    span Для детей
+                                label.news__filter-item(data-dropdown-item data-value="2")
+                                    input(type="checkbox")
+                                    span На открытом воздухе
+
+                        button.vacancies__filter-toggle(type="button")
+                            +icon('icon-filter')(width="24" height="24" style="fill: transparent")
+
+                    .afisha__filter(data-filter-container)
+                        .header__search-input-wrapper.with-icon
+                            +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                            input.header__search-input(type="text" placeholder="Ведите название мероприятия" oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                            button.header__search-clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                                +icon('icon-close-small')(width="16" height="16" style="fill: transparent")
+
+                        .news__filter(data-dropdown data-dropdown-multiple)
+                            button.news__filter-btn(data-dropdown-btn)
+                                span(data-dropdown-current data-default-text="Все события") Все события
+                                +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                            .news__filter-menu
+                                label.news__filter-item(data-dropdown-item data-value="1")
+                                    input(type="checkbox")
+                                    span Для детей
+                                label.news__filter-item(data-dropdown-item data-value="2")
+                                    input(type="checkbox")
+                                    span На открытом воздухе
+                                label.news__filter-item(data-dropdown-item data-value="1")
+                                    input(type="checkbox")
+                                    span Для детей
+                                label.news__filter-item(data-dropdown-item data-value="2")
+                                    input(type="checkbox")
+                                    span На открытом воздухе
+
+                        .news__filter(data-dropdown data-dropdown-price)
+                            button.news__filter-btn(data-dropdown-btn)
+                                span(data-dropdown-current data-default-text="Цена") Цена
+                                +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                            .news__filter-menu.news__filter-menu--price
+                                .news__filter-price
+                                    .news__filter-price-inputs
+                                        input.news__filter-price-input(type="number" placeholder="от 1000" data-price-from)
+                                        span.news__filter-price-separator —
+                                        input.news__filter-price-input(type="number" placeholder="до" data-price-to)
+                                    .news__filter-price-buttons
+                                        button.button.button--primary(data-price-apply) Показать
+                                        button.button.button--secondary(data-price-reset) Сбросить
+
+                        .main__afisha-period
+                            .main__afisha-period-inputs
+                                .main__afisha-period-input(data-range="true")
+                                    input(type="text" placeholder="23.01.25").datepicker-range
+
+                        .afisha__filter-checkbox
+                            label.news__filter-btn
+                                input(type="checkbox")
+                                span.text-14 Детям
+                        .afisha__filter-checkbox
+                            label.news__filter-btn
+                                input(type="checkbox")
+                                span.text-14 Пушкинская карта
+                        .afisha__filter-checkbox
+                            label.news__filter-btn
+                                input(type="checkbox")
+                                span.text-14 Бесплатные
+
+
+                        button.button(type="submit")
+                            span Подобрать
+
+                        button.button.button--reset(type="button" data-filter-reset style="display:none")
+                            span Сбросить фильтры
+
+                    // Мобильная боковая панель с фильтрами
+                    aside.vacancies__aside.company__aside-filter(data-filter-container)
+                        .vacancies__filter-head
+                            button.vacancies__filter-close(type="button")
+                                +icon('icon-arrow-left')(width="24" height="24" style="fill: transparent")
+                            span.vacancies__filter-title Фильтры
+                            button.button--reset(type="button" data-filter-reset style="display:none")
+                                span.text-gray.text-14 Сбросить
+
+                        .vacancies__filter-section
+                            .news__filter(data-dropdown data-dropdown-price)
+                                button.news__filter-btn(data-dropdown-btn)
+                                    span(data-dropdown-current data-default-text="Цена") Цена
+                                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                .news__filter-menu.news__filter-menu--price
+                                    .news__filter-price
+                                        .news__filter-price-inputs
+                                            input.news__filter-price-input(type="number" placeholder="от 1000" data-price-from)
+                                            span.news__filter-price-separator —
+                                            input.news__filter-price-input(type="number" placeholder="до" data-price-to)
+                                        .news__filter-price-buttons
+                                            button.button.button--primary(data-price-apply) Показать
+                                            button.button.button--secondary(data-price-reset) Сбросить
+
+                            .main__afisha-period
+                                .main__afisha-period-inputs
+                                    .main__afisha-period-input(data-range="true")
+                                        input(type="text" placeholder="23.01.25").datepicker-range
+
+                            .afisha__filter-checkbox
+                                label.news__filter-btn
+                                    input(type="checkbox")
+                                    span.text-14 Детям
+                            .afisha__filter-checkbox
+                                label.news__filter-btn
+                                    input(type="checkbox")
+                                    span.text-14 Пушкинская карта
+                            .afisha__filter-checkbox
+                                label.news__filter-btn
+                                    input(type="checkbox")
+                                    span.text-14 Бесплатные
+
+                        .vacancies__filter-section.vacancies__filter-section--footer
+                            button.button(type="submit")
+                                span Показать событий
+
+
+
+
+            section.main__section
+                .swiper-section__header
+                    h4.swiper-section__title
+                        span Театральные премьеры
+                    .swiper-section__nav.swiper-section__nav--hide
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+                .main__afisha-inner
+                    .main__afisha-swiper.swiper.js-swiper-section(data-swipes="3")
+                        .swiper-wrapper
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                    .show-more-block
+                        a(href="#").show-more
+                            span.left
+                                span.dot
+                                span.text Все премьеры
+                            .icon  →
+
+            section.main__section.afisha__section--gray
+                .swiper-section__header
+                    h4.swiper-section__title
+                        span Бесплатные спекталки
+                    .swiper-section__nav.swiper-section__nav--hide
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                .main__afisha-inner
+                    .main__afisha-swiper.swiper.js-swiper-section(data-swipes="3")
+                        .swiper-wrapper
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                    .show-more-block
+                        a(href="#").show-more
+                            span.left
+                                span.dot
+                                span.text Все бесплатные спекталки
+                            .icon  →
+
+            section.main__section
+                .swiper-section__header
+                    h4.swiper-section__title
+                        span Театр для детей
+                    .swiper-section__nav.swiper-section__nav--hide
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+                .main__afisha-inner
+                    .main__afisha-swiper.swiper.js-swiper-section(data-swipes="3")
+                        .swiper-wrapper
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                    .show-more-block
+                        a(href="#").show-more
+                            span.left
+                                span.dot
+                                span.text Все спектакли
+                            .icon  →
+
+            section.main__section.afisha__section--gray
+                .swiper-section__header
+                    h4.swiper-section__title
+                        span В театр по Пушкинской карте
+                    .swiper-section__nav.swiper-section__nav--hide
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                        button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                            +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                .main__afisha-inner
+                    .main__afisha-swiper.swiper.js-swiper-section(data-swipes="3")
+                        .swiper-wrapper
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                            .swiper-slide
+                                +afisha-card()
+                    .show-more-block
+                        a(href="#").show-more
+                            span.left
+                                span.dot
+                                span.text Все спекталки
+                            .icon  →
+
+            section.main__section
+                .swiper-section__header
+                    h4.swiper-section__title
+                        span Афиша спектаклей в Набережные Челны
+                .main__afisha-inner
+                    .afisha__events-grid.afisha__events-grid--4
+                        +afisha-card()
+                        +afisha-card()
+                        +afisha-card()
+                    .show-more-block
+                        a(href="#").show-more
+                            span.left
+                                span.dot
+                                span.text Все спектакли
+                            .icon  →
+
+

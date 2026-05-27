@@ -1,0 +1,169 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "карточка компании";
+    - const pageDescription = "";
+    - const pageLink = "/company-vacancies";
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Предприятие', link: '/' },
+            {title: 'Промышленный парк “РАЗВИТИЕ”'}
+        ])
+        .company__detail
+            .company__detail-main
+                section.page-header
+                    h1.page-header__title Услуги
+                    .tab
+                        a(href="/company-detail.html").tab__item
+                            span О компании
+                        a(href="/company-vacancies.html").tab__item.is-active
+                            span Вакансии 14
+                .vacancies__search
+                    .news__filters
+                        .news__search
+                            +icon('icon-search')(width="20" height="20" style="fill: transparent")
+                            input(type="text" placeholder="Искать вакансию")
+                        
+                        button.vacancies__filter-toggle(type="button")
+                            +icon('icon-filter')(width="24" height="24" style="fill: transparent")
+                        
+                        .news__filter-group
+                            .news__filter(data-dropdown)
+                                button.news__filter-btn(data-dropdown-btn)
+                                    span(data-dropdown-current) Сначала новые
+                                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                .news__filter-menu
+                                    button.news__filter-item.is-active(data-dropdown-item data-value="new")
+                                        span Сначала новые
+                                    button.news__filter-item(data-dropdown-item data-value="old")
+                                        span Сначала старые
+                            
+                            .news__filter(data-dropdown)
+                                button.news__filter-btn(data-dropdown-btn)
+                                    span(data-dropdown-current) За все время
+                                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                .news__filter-menu
+                                    button.news__filter-item.is-active(data-dropdown-item data-value="all")
+                                        span За все время
+                                    button.news__filter-item(data-dropdown-item data-value="today")
+                                        span За сегодня
+                                    button.news__filter-item(data-dropdown-item data-value="week")
+                                        span За неделю
+                                    button.news__filter-item(data-dropdown-item data-value="month")
+                                        span За месяц
+                            
+                            .news__filter(data-dropdown)
+                                button.news__filter-btn(data-dropdown-btn)
+                                    span(data-dropdown-current) Тип новости
+                                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                .news__filter-menu
+                                    button.news__filter-item.is-active(data-dropdown-item data-value="all")
+                                        span Все типы
+                                    button.news__filter-item(data-dropdown-item data-value="important")
+                                        span Важные
+                                    button.news__filter-item(data-dropdown-item data-value="events")
+                                        span События
+                                    button.news__filter-item(data-dropdown-item data-value="announcements")
+                                        span Объявления 
+                .vacancies__list-wrapper
+                    .vacancies__list 
+                        +company-vacancy()
+                        +company-vacancy()
+                        +company-vacancy()
+                    .pagination__wrapper
+                        ul.pagination__list
+                            li.pagination__list-item.is-active
+                                a(href="#").pagination__list-link 1 
+                            li.pagination__list-item 
+                                a(href="#").pagination__list-link 1 
+                            li.pagination__list-item 
+                                a(href="#").pagination__list-link 1 
+                            li.pagination__list-item 
+                                a(href="#").pagination__list-link ...
+                            li.pagination__list-item 
+                                a(href="#").pagination__list-link 250
+                            li.pagination__list-item 
+                                a(href="#").button Следующая
+            // в дизе почему то в мобилке много фильтра а в пк пусто...
+            // берем фильтр из вакансий и добавляем класс .company__aside-filter тобы скрыть на пк
+            aside.vacancies__aside.company__aside-filter
+                .vacancies__filter
+                    .vacancies__filter-head 
+                        button.vacancies__filter-close(type="button")
+                            +icon('icon-arrow-left')(width="24" height="24" style="fill: transparent")
+                        h3.vacancies__filter-title Фильтры
+                        button.vacancies__filter-reset-all(type="button") Сбросить 
+                    .vacancies__filter-section.vacancies__filter-mobile-time
+                        label.vacancies__filter-label Время публикации
+                        
+                        .vacancies__filter-list
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time" checked)
+                                span Сначала новые
+                                span.vacancies__filter-count 34
+                            
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time")
+                                span Сначала ранние
+                                span.vacancies__filter-count 879
+                            
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time")
+                                span За всё время
+                                span.vacancies__filter-count 785
+                    
+                    .vacancies__filter-section
+                        label.vacancies__filter-label Формат работы
+                        
+                        .vacancies__filter-list
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span На месте работодателя
+                                span.vacancies__filter-count 386
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Разъездной
+                                span.vacancies__filter-count 45
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Удалённо
+                                span.vacancies__filter-count 12
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Гибрид
+                                span.vacancies__filter-count 149
+                    // надо добавить ключ футер на последний
+                    .vacancies__filter-section.vacancies__filter-section--footer
+                        button.button(type="button") Показать 456 вакансий
+            aside.company__aside
+                .contacts-block 
+                    span.text-22.text-semi Контакты
+                    ul.contacts-block__list
+                        li
+                            a(href="#").link
+                                +icon('icon-tel')(width="16" height="16" style="fill: transparent")
+                                span 8 (8552) 30-55-42
+                        li 
+                            a(href="#").link 
+                                +icon('icon-mail')(width="16" height="16" style="fill: transparent")
+                                span mail@mail.ru
+                        li 
+                            a(href="#").link
+                                +icon('icon-point')(width="16" height="16" style="fill: transparent")
+                                span 423805, г. Набережные Челны, пр. Хасана Туфана д.23
+                        li 
+                            a(href="#").link 
+                                +icon('icon-time')(width="16" height="16" style="fill: transparent")
+                                span 08:00 - 17:00
+                .services__ad
+                    h5.title Портал государственной гражданской службы
+                    p.descr Единая база вакансий гражданской и муниципальной службы
+                    a(href="#").btn Смотреть вакансии →
+                    img(src="/img/service-ad.svg", alt="").img
+                

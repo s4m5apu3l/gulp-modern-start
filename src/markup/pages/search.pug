@@ -1,0 +1,140 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "Поиск";
+    - const pageDescription = "";
+    - const pageLink = "/search";
+
+block content
+    .container
+        .news__inner.search-page
+            .search-page__main
+                +breadcrumbs([
+                    { title: 'Главная', link: '/' },
+                    { title: 'Поиск' }
+                ])
+                .search-page__header
+                    h1.page-header__title Поиск
+                    .header__search-top
+                        .header__search-input-wrapper
+                            input.header__search-input(type="text" placeholder="Поиск по сайту..." oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                            button.header__search-clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                                +icon('icon-close')(width="20" height="20" style="fill: transparent")
+                        button.button(type="submit")
+                            span Найти
+                    .news__tabs-wrapper
+                        button.news__tabs-nav.news__tabs-nav--prev(type="button" aria-label="Предыдущий")
+                            span  ←
+                        .news__tabs.swiper.js-swiper-tabs
+                            .swiper-wrapper
+                                each item, i in jsonData.searchTabs
+                                    if(i === 0)
+                                        .swiper-slide
+                                            a(href="javascript:void(0)").tab-item.news__tabs-item.is-active Везде
+                                    else
+                                        .swiper-slide
+                                            a(href="javascript:void(0)").tab-item.news__tabs-item= item.text
+                        button.news__tabs-nav.news__tabs-nav--next(type="button" aria-label="Следующий")
+                            span →
+                .search-page__inner
+                    .search-page__inner-top
+                        span.text-gray.text-14 Найдено 3 результата
+                        button.vacancies__filter-toggle(type="button")
+                            +icon('icon-filter')(width="24" height="24" style="fill: transparent")
+                        .news__filter-group
+                            .news__filter(data-dropdown)
+                                button.news__filter-btn(data-dropdown-btn)
+                                    span(data-dropdown-current) Сначала новые
+                                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                .news__filter-menu
+                                    button.news__filter-item.is-active(data-dropdown-item data-value="new")
+                                        span Сначала новые
+                                    button.news__filter-item(data-dropdown-item data-value="old")
+                                        span Сначала старые
+                            
+                            .news__filter(data-dropdown)
+                                button.news__filter-btn(data-dropdown-btn)
+                                    span(data-dropdown-current) За все время
+                                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                .news__filter-menu
+                                    button.news__filter-item.is-active(data-dropdown-item data-value="all")
+                                        span За все время
+                                    button.news__filter-item(data-dropdown-item data-value="today")
+                                        span За сегодня
+                                    button.news__filter-item(data-dropdown-item data-value="week")
+                                        span За неделю
+                                    button.news__filter-item(data-dropdown-item data-value="month")
+                                        span За месяц
+                    .news__list-wrapper
+                        ul.news__list
+                            each i in [1,2]
+                                li.news__list-item 
+                                    a(href="#").news__list-link
+                                        +news-card() 
+                            li 
+                                a(href="#").news__list-link
+                                    article.news__card
+                                        .news__card-inner
+                                            .news__card-content
+                                                .title
+                                                    span.news__card-badge Политика 
+                                                    h5.text-18.text-medium Челнинцев приглашают стать участниками премии «Манзара»
+            
+            aside.vacancies__aside.company__aside-filter
+                .vacancies__filter
+                    .vacancies__filter-head 
+                        button.vacancies__filter-close(type="button")
+                            +icon('icon-arrow-left')(width="24" height="24" style="fill: transparent")
+                        h3.vacancies__filter-title Фильтры
+                        button.vacancies__filter-reset-all(type="button") Сбросить 
+                    .vacancies__filter-section.vacancies__filter-mobile-time
+                        label.vacancies__filter-label Время публикации
+                        
+                        .vacancies__filter-list
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time" checked)
+                                span Сначала новые
+                                span.vacancies__filter-count 34
+                            
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time")
+                                span Сначала ранние
+                                span.vacancies__filter-count 879
+                            
+                            label.vacancies__filter-radio
+                                input(type="radio" name="time")
+                                span За всё время
+                                span.vacancies__filter-count 785
+                    
+                    .vacancies__filter-section
+                        label.vacancies__filter-label Формат работы
+                        
+                        .vacancies__filter-list
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span На месте работодателя
+                                span.vacancies__filter-count 386
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Разъездной
+                                span.vacancies__filter-count 45
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Удалённо
+                                span.vacancies__filter-count 12
+                            
+                            label.vacancies__filter-checkbox
+                                input(type="checkbox")
+                                span Гибрид
+                                span.vacancies__filter-count 149
+                    // надо добавить ключ футер на последний
+                    .vacancies__filter-section.vacancies__filter-section--footer
+                        button.button(type="button") Применить
+            aside.search-page__aside
+                .services__ad
+                    h5.title Портал государственной гражданской службы
+                    p.descr Единая база вакансий гражданской и муниципальной службы
+                    a(href="#").btn Смотреть вакансии →
+                    img(src="/img/service-ad.svg", alt="").img

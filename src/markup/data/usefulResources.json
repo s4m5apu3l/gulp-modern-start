@@ -1,0 +1,49 @@
+{
+  "title": "Полезные ресурсы",
+  "top": [
+    {
+      "title": "Не убран мусор, яма на дороге, не горит фонарь?",
+      "description": "Столкнулись с проблемой — сообщите о ней!",
+      "buttonText": "Сообщить о проблеме",
+      "image": "https://placehold.co/600x400",
+      "theme": ""
+    },
+    {
+      "title": "",
+      "description": "",
+      "buttonText": "Голосовать →",
+      "image": "https://placehold.co/600x400",
+      "theme": "light"
+    },
+    {
+      "title": "Портал государственной гражданской службы",
+      "description": "Единая база вакансий гражданской и муниципальной службы",
+      "buttonText": "Смотреть вакансии →",
+      "image": "https://placehold.co/600x400",
+      "theme": ""
+    }
+  ],
+  "bottom": [
+    {
+      "title": "",
+      "description": "",
+      "buttonText": "Голосовать →",
+      "image": "https://placehold.co/600x400",
+      "theme": "light"
+    },
+    {
+      "title": "Портал государственной гражданской службы",
+      "description": "Единая база вакансий гражданской и муниципальной службы",
+      "buttonText": "Смотреть вакансии →",
+      "image": "https://placehold.co/600x400",
+      "theme": ""
+    },
+    {
+      "title": "Какие общественные пространства благоустроить в 2026 году?",
+      "description": "Выберите в ежегодном голосовании с 21 апреля по 12 июня 2025 года",
+      "buttonText": "Голосовать →",
+      "image": "https://placehold.co/600x400",
+      "theme": "light"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+header.header(data-js-header)
+    .header__top
+        .container
+            .header__top-left.text-12
+                .header__date
+                    span.text-gray Вторник, 13 января 2026
+                .header__weather
+                    +icon('icon-snow')(width="16" height="16" style="fill: transparent")
+                    span.text-gray Сейчас 17:01, -12.8 °C
+                .header__socials
+                    span.text-gray Мы в соцсетях:
+                    .header__socials-list
+                        a.header__social(href="#" aria-label="VK")
+                            +icon('icon-vk')
+                        a.header__social(href="#" aria-label="Telegram")
+                            +icon('icon-telegram')
+                        a.header__social(href="#" aria-label="YouTube")
+                            +icon('icon-youtube')
+                        a.header__social(href="#" aria-label="OK")
+                            +icon('icon-ok')
+            .header__top-right
+                button( id="specialButton").header__accessibility
+                    +icon('icon-eye')(width="16" height="16" style="fill: transparent")
+                    span.text-12 Версия для слабовидящих
+                .header__lang-dropdown.language-dropdown(data-dropdown)
+                    button.header__lang(data-dropdown-btn)
+                        .header__lang-flag.header__lang-flag--tat
+                        span(data-dropdown-current) ТАТ
+                    .header__lang-menu
+                        button.header__lang-item.is-active(data-dropdown-item data-value="tat")
+                            .header__lang-flag.header__lang-flag--tat
+                            span ТАТ
+                        button.header__lang-item(data-dropdown-item data-value="rus")
+                            .header__lang-flag.header__lang-flag--rus
+                            span РУС
+                        button.header__lang-item(data-dropdown-item data-value="eng")
+                            .header__lang-flag.header__lang-flag--eng
+                            span ENG
+
+    .header__main
+        .container
+            .header__main-left
+                button.header__menu-btn(data-js-menu-toggle)
+                    span.header__menu-btn-icon
+                    span.header__menu-text Меню
+                
+                nav.header__nav
+                    a.header__nav-link(href="#") Структура администрации
+                    a.header__nav-link(href="#") Новости
+                    a.header__nav-link(href="#") Услуги
+                    a.header__nav-link(href="#") Обратиться к Мэру
+            
+            .header__actions
+                .header__search(data-js-search-toggle)
+                    +icon('icon-search')(width="20" height="20" style="fill: transparent")
+                    input.header__search-input(type="text" placeholder="Сам набирающийся текст")
+                button.header__account
+                    +icon('icon-user')(width="20" height="20" style="fill: transparent")
+                    span.header__account-text Личный кабинет
+    
+    .header__mobile
+        .container
+            .header__mobile-top
+                span.text-gray.text-10 Официальный сайт города
+                .header__weather
+                    +icon('icon-snow')(width="10" height="10" style="fill: transparent")
+                    span.text-gray.text-10  Сейчас 17:01, -12.8 °C
+            .header__mobile-main 
+                .header__mobile-logo 
+                    a(href="/").logo
+                        +icon('icon-logo')(width="36" height="36" style="fill: transparent")
+                        span.logo__text Набережные
+                            |
+                            br
+                            | Челны
+                    .header__lang-dropdown.language-dropdown(data-dropdown)
+                        button.header__lang(data-dropdown-btn)
+                            .header__lang-flag.header__lang-flag--tat
+                            span(data-dropdown-current) ТАТ
+                        .header__lang-menu
+                            button.header__lang-item.is-active(data-dropdown-item data-value="tat")
+                                .header__lang-flag.header__lang-flag--tat
+                                span ТАТ
+                            button.header__lang-item(data-dropdown-item data-value="rus")
+                                .header__lang-flag.header__lang-flag--rus
+                                span РУС
+                            button.header__lang-item(data-dropdown-item data-value="eng")
+                                .header__lang-flag.header__lang-flag--eng
+                                span ENG
+                .header__mobile-actions 
+                    button.header__menu-btn(data-js-menu-toggle)
+                        span.header__menu-btn-icon
+                        span.header__menu-text Меню
+                    button.header__search-mobile-btn.block(data-js-search-toggle)
+                        +icon('icon-search')(width="16" height="16" style="fill: transparent")
+                    a(href="#").block
+                        +icon('icon-user')(width="16" height="16" style="fill: transparent")
+
+    .header__mega-menu(data-js-mega-menu)
+        .header__mega-menu-dropdown
+            .container
+                .header__mega-menu-columns
+                    .header__mega-menu-column
+                        button.accordion__button
+                            span.title Новости
+                            +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                        .accordion__content
+                            ul.header__mega-menu-list
+                                li: a(href="#") Политика
+                                li: a(href="#") Новости
+                                li: a(href="#") Экономика
+                                li: a(href="#") Общество
+                                li: a(href="#") Спорт
+                                li: a(href="#") Культура
+                    
+                    .header__mega-menu-column
+                        button.accordion__button
+                            span.title Услуги
+                            +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                        .accordion__content
+                            ul.header__mega-menu-list
+                                li: a(href="#") Образование
+                                li: a(href="#") Здоровье
+                                li: a(href="#") Жилье, недвижимость, земля
+                                li: a(href="#") Транспорт
+                                li: a(href="#") Бизнес, деньги
+                                li: a(href="#") Социальная поддержка
+                                li: a(href="#") Культура, отдых
+                    
+                    .header__mega-menu-column
+                        button.accordion__button
+                            span.title Структура администрации
+                            +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                        .accordion__content
+                            ul.header__mega-menu-list
+                                li: a(href="#") Исполнительный комитет
+                                li: a(href="#") Контрольно-счетная палата
+                                li: a(href="#") Управление культуры
+                                li: a(href="#") Управление здравоохранения
+                                li: a(href="#") Управление образования
+                    
+                    .header__mega-menu-column
+                        h5.title Направления
+                        div(style="display:flex;flex-direction:column; gap:12px")
+                            a(href="#" style="margin:0").title Обратиться к Мэру
+                            a(href="#" style="margin:0").title Вакансии
+                            a(href="#" style="margin:0").title Афиша
+                            a(href="#" style="margin:0").title Погода
+                            a(href="#" style="margin:0").title Вопрос — ответ
+                            a(href="#" style="margin:0").title Телефонный справочник
+                            div(style="margin-top:24px")
+                                button.version-accessible
+                                    +icon('icon-accessible')(width="32" height="32" style="fill: transparent") 
+                                    span.text-medium Версия для слабовидящих
+                                p.text-medium.text-gray(style="margin-bottom:12px") Мы в соцсетях:
+                                div(style="display:flex;align-items: center; gap:8px")
+                                    a(href="#") 
+                                        +icon('icon-vk-big')(width="52" height="52" style="fill: transparent") 
+                                    a(href="#")
+                                        +icon('icon-tg-big')(width="52" height="52" style="fill: transparent") 
+                                    a(href="#")
+                                        +icon('icon-ok-big')(width="52" height="52" style="fill: transparent") 
+                                    a(href="#")
+                                        +icon('icon-max-big')(width="52" height="52" style="fill: transparent") 
+                    
+                    .header__mega-menu-column.header__mega-menu-column--last
+                        .swiper-section.js-swiper-section.swiper(data-swipes='1' data-swipes-mobile="1")
+                            .swiper-wrapper 
+                                .swiper-slide 
+                                    .services__ad
+                                        h5.title Портал государственной гражданской службы
+                                        p.descr Единая база вакансий гражданской и муниципальной службы
+                                        a(href="#").btn Смотреть вакансии →
+                                        img(src="/img/service-ad.svg", alt="").img
+                                .swiper-slide 
+                                    .services__ad
+                                        h5.title Портал государственной гражданской службы
+                                        p.descr Единая база вакансий гражданской и муниципальной службы
+                                        a(href="#").btn Смотреть вакансии →
+                                        img(src="/img/service-ad.svg", alt="").img
+                                .swiper-slide 
+                                    .services__ad
+                                        h5.title Портал государственной гражданской службы
+                                        p.descr Единая база вакансий гражданской и муниципальной службы
+                                        a(href="#").btn Смотреть вакансии →
+                                        img(src="/img/service-ad.svg", alt="").img
+                            .swiper-pagination
+
+    .header__search-menu(data-js-search-menu)
+        .header__search-menu-dropdown
+            .container
+                .header__search-form
+                    .header__search-top
+                        .header__search-input-wrapper
+                            input.header__search-input(type="text" placeholder="Поиск по сайту..." oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                            button.header__search-clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                                +icon('icon-close')(width="20" height="20" style="fill: transparent")
+                        button.button(type="submit")
+                            span Найти
+                    .header__search-content
+                        ul 
+                            li
+                                a(href="#").item 
+                                    +icon('icon-search')(width="20" height="20" style="fill: transparent") 
+                                    .block
+                                        span.text-14.text-medium Власти города приняли решение обновить дизайн городского транспорта
+                                        p.text-12.text-gray Новости
+                            li 
+                                a(href="#").item 
+                                    +icon('icon-search')(width="20" height="20" style="fill: transparent") 
+                                    .block
+                                        span.text-14.text-medium Власти города приняли решение обновить дизайн городского транспорта
+                                        p.text-12.text-gray Новости
+                            li 
+                                a(href="#").item
+                                    // если нет иконки то надо обязтально добавить пустой блок
+                                    div 
+                                    .block
+                                        span.text-14.text-medium Власти города приняли решение обновить дизайн городского транспорта
+                                        p.text-12.text-gray Новости
+                        a(href="#" style="display:flex;padding:20px 32px;margin-top:16px;").text-green.text-14  Перейти к результатам поиска →
+
+    .header__overlay(data-js-overlay-close)

@@ -1,0 +1,77 @@
+.h1 {
+  font-size: clamp(1.75rem, 1.3125rem + 1.25vw, 2.25rem);
+}
+.text-28 {
+  font-size: clamp(1.375rem, 1.0469rem + 0.9375vw, 1.75rem);
+}
+.text-26 {
+  font-size: clamp(1.5rem, 1.3906rem + 0.3125vw, 1.625rem);
+}
+.text-22 {
+  font-size: 22px;
+}
+.text-22-18 {
+  font-size: clamp(1.125rem, 0.9063rem + 0.625vw, 1.375rem);
+}
+.text-18 {
+  font-size: clamp(1rem, 0.8906rem + 0.3125vw, 1.125rem);
+}
+.text-18-14 {
+  font-size: clamp(0.875rem, 0.6563rem + 0.625vw, 1.125rem);
+}
+.text-16-14 {
+  font-size: clamp(0.875rem, 0.7656rem + 0.3125vw, 1rem);
+}
+.text-12 {
+  font-weight: 500;
+  font-size: 12px;
+}
+.text-14 {
+  font-size: 14px;
+}
+.text-14-12 {
+  font-size: clamp(0.75rem, 0.6406rem + 0.3125vw, 0.875rem);
+}
+.text-10 {
+  font-size: 10px;
+}
+.text-semi {
+  font-weight: 600;
+}
+.text-medium {
+  font-weight: 500;
+}
+.text-gray {
+  color: #1f1f1f66;
+}
+.text-gray-light {
+  color: #a9afb8;
+}
+.text-base {
+  color: #88919e;
+}
+.text-main {
+  color: #2354ce;
+}
+.text-green {
+  color: #00b955;
+}
+.text-red {
+  color: #f83a42;
+}
+.text-gradient {
+  background:
+    radial-gradient(43.66% 63.91% at 46.71% 47.01%, rgba(255, 245, 0, 0.7) 0%, rgba(16, 194, 98, 0.7) 100%), #00b955;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(2.25rem, 1.375rem + 2.5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 120%;
+}
+.text-underline {
+  text-decoration: underline dotted;
+}

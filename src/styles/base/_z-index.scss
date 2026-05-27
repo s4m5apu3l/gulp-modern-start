@@ -1,0 +1,79 @@
+@use 'sass:map';
+
+// Z-INDEX HIERARCHY
+// Документация по иерархии z-index в проекте
+//
+// ВАЖНО: При добавлении новых элементов с z-index,
+// обновляйте этот файл и следуйте установленной иерархии
+
+// ===== ОСНОВНАЯ ИЕРАРХИЯ =====
+
+// 1. КОНТЕНТ (0-99)
+// - Обычные элементы: z-index: 0 (по умолчанию)
+// - Декоративные элементы: z-index: -1
+// - Элементы поверх контента: z-index: 1-10
+
+// 2. НАВИГАЦИЯ И UI (100-299)
+// - Дропдауны: z-index: 10-50
+// - Тултипы: z-index: 100-150
+// - Оверлеи: z-index: 250
+
+// 3. HEADER И МЕНЮ (300-399)
+// - Header: z-index: 300
+// - Мега-меню: z-index: 280
+// - Поиск: z-index: 350
+
+// 4. МОДАЛЬНЫЕ ОКНА (400-999)
+// - Модальные окна: z-index: 500-800
+// - Критичные уведомления: z-index: 900-999
+
+// 5. МОБИЛЬНЫЕ ЭЛЕМЕНТЫ (1000+)
+// - Мобильный header: z-index: 1001
+// - Мобильные фильтры: z-index: 1000
+
+// ===== КОНКРЕТНЫЕ ЗНАЧЕНИЯ =====
+
+$z-index: (
+  // Контент
+  'behind': -1,
+  'default': 0,
+  'content-overlay': 1,
+  'content-elevated': 10,
+
+  // UI элементы
+  'dropdown': 21,
+  'tooltip': 100,
+  'overlay': 250,
+
+  // Header и навигация
+  'header': 300,
+  'mega-menu': 280,
+  'search-menu': 350,
+
+  // Модальные окна
+  'modal': 500,
+  'modal-overlay': 450,
+  'notification': 900,
+
+  // Мобильные элементы
+  'mobile-filter': 1000,
+  'mobile-header': 1003,
+  'map-overlay': 999,
+  'map-block': 1001,
+  'map-block-wide': 1002,
+  'main-elevated': 1004
+);
+
+// Функция для получения z-index
+@function z($layer) {
+  @if map.has-key($z-index, $layer) {
+    @return map.get($z-index, $layer);
+  }
+  @warn "Unknown z-index layer: #{$layer}";
+  @return 0;
+}
+
+// Примеры использования:
+// .header { z-index: z('header'); }
+// .modal { z-index: z('modal'); }
+// .overlay { z-index: z('overlay'); }

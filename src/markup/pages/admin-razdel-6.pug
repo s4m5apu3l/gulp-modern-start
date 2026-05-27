@@ -1,0 +1,208 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Структура администарции'
+    - const description = ''
+
+block content
+    .container
+        .admin__page-relative
+            .admin__page-body
+                +breadcrumbs([
+                    { title: 'Главная', link: '/' },
+                    { title: 'Структура администарции', link:'/admin-main.html' },
+                    {
+                        title: 'Учреждения здравоохранения'
+                    }
+                ])
+                section.page-header
+                    h1.page-header__title Учреждения здравоохранения
+                aside.admin__aside
+                    nav.admin__aside-nav.admin__aside-nav--desktop
+                        // активный класс просто text-green
+                        a(href="#").link.text-green Главная
+                        a(href="#").link Документы
+                        a(href="#").link Доклад Руководителя Исполнительного комитета
+                        a(href="#").link Порядок организации санаторно-курортного лечения работников государственных учреждений Республики Татарстан, работников муниципальных
+                        a(href="#").link Документы
+                        a(href="#").link Контакты
+                        hr.hr
+                        a(href="#").link.text-gray Электронная приёмная
+                        a(href="#").link.text-gray Противодействие коррупции
+
+                    .admin__aside-dropdown(data-dropdown)
+                        button.admin__aside-dropdown-btn(data-dropdown-btn)
+                            span(data-dropdown-current) Главная
+                            +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+
+                        nav.admin__aside-dropdown-menu
+                            a(href="#").link Главная
+                            a(href="#").link Документы
+                            a(href="#").link Доклад Руководителя Исполнительного комитета
+                            a(href="#").link Документы
+                            a(href="#").link Контакты
+                            hr.hr
+                            a(href="#").link.text-gray Электронная приёмная
+                            a(href="#").link.text-gray Противодействие коррупции
+
+                .admin__page-inner
+                    section.main__section(style="padding-top:0")
+                        .main__section(style="padding-top:0")
+                            .header__search-input-wrapper.with-icon.white
+                                +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                                input.header__search-input(type="text" placeholder="Введите ваш вопрос" oninput="this.nextElementSibling.style.display = this.value ? 'flex' : 'none'")
+                                button.header__search-clear(type="button" onclick="this.previousElementSibling.value=''; this.style.display='none'; this.previousElementSibling.focus();" style="display:none")
+                                    +icon('icon-close-small')(width="16" height="16" style="fill: transparent")
+
+                        .main__urls-grid
+                            each i in [1,2,3,4,5,6,7]
+                                a(href="#").main__urls-card
+                                    span.text-18.text-medium Отделение Республиканского центра материальной помощи в г.о. Набережные Челны
+                                    .main__urls-card-icon
+                                        +icon('icon-arrow-green')(width="14" height="14" style="fill: transparent")
+
+                    section.main__section
+                        .swiper-section__header
+                            h4.swiper-section__title
+                                span Документы
+                            .swiper-section__nav.swiper-section__nav--hide
+                                button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                                    +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                                button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                                    +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+                        .main__afisha-inner
+                            .main__afisha-swiper.swiper.js-swiper-section(data-swipes="3")
+                                .swiper-wrapper
+                                    each i in [1,2,3,4]
+                                        .swiper-slide
+                                            a(href="#").main__services-card
+                                                .badge
+                                                    +icon('icon-doc')(width="16" height="16" style="fill: transparent")
+                                                    span Документ
+                                                div(style="display:grid;gap:4px")
+                                                    span.text-18-14.text-medium Об утверждении административного регламента предоставления муниципальной услуги по постановке на учет и перерегистрации нуждающихся в улучшении жилищных условий в системе социальной ипотеки в Республике Татарстан
+                                                    span.text-gray.text-14 Пятница, 27 февраля 2026, 12:32
+
+                            .show-more-block
+                                a(href="#").show-more
+                                    span.left
+                                        span.dot
+                                        span.text Все документы
+                                    .icon  →
+
+
+                    section.main__section
+                        .swiper-section__header
+                            h4.swiper-section__title
+                                span Услуги
+                            .swiper-section__nav.swiper-section__nav--hide
+                                button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                                    +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                                button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                                    +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+                        .main__afisha-inner
+                            .main__afisha-swiper.swiper.js-swiper-section(data-swipes="3")
+                                .swiper-wrapper
+                                    each i in [1,2,3,4]
+                                        .swiper-slide
+                                            a(href="#").main__services-card
+                                                span.badge Онлайн
+                                                div(style="display:grid;gap:4px")
+                                                    span.text-gray.text-14 Жилье, недвижимость, земля
+                                                    span.text-18-14.text-medium Прием показаний и оплата электроэнергии
+                            .show-more-block
+                                a(href="#").show-more
+                                    span.left
+                                        span.dot
+                                        span.text Все услуги
+                                    .icon  →
+
+                    section.main__section
+                        .swiper-section__header
+                            h4.swiper-section__title
+                                span Новости
+                            .swiper-section__nav.swiper-section__nav--hide
+                                button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                                    +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                                button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                                    +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+
+                        .js-swiper-section.swiper(data-swipes="3")
+                            .swiper-wrapper
+                                each item in jsonData.regionNews.items
+                                    .swiper-slide
+                                        a(href=item.link).base__card-link
+                                            article.base__card
+                                                img(src="https://placehold.co/600x400" alt=item.title loading="lazy").base__card-img
+                                                .base__card-content
+                                                    h5.base__card-title= item.title
+                                                    p.base__card-description= item.description
+                                                    time.base__card-date(datetime=item.dateISO)= item.date
+
+                        .swiper-section__footer
+                            .show-more-block
+                                button.show-more
+                                    span.left
+                                        span.dot
+                                        span.text Все новости
+                                    .icon  →
+
+                    section.main__section
+                        .swiper-section__header
+                            h4.swiper-section__title
+                                span Контакты
+                        .main__urls-inner
+                            .main__urls-grid
+                                .main__urls-card
+                                    span.text-14 Информационно-образовательный портал
+                                    a(href="#" style="text-decoration: underline dotted").text-green.text-22 8 800 00 00
+                                .main__urls-card
+                                    span.text-14 Электронная почта
+                                    a(href="#" style="text-decoration: underline dotted").text-green.text-22 mail@mail.ru
+                                .main__urls-card
+                                    span.text-14 Адрес
+                                    a(href="#" style="line-height: 125%;").text-22.text-medium 423805, г. Набережные Челны, пр. Хасана Туфана д. 23
+                                .main__urls-card
+                                    span.text-14 Информационно-образовательный портал
+                                    a(href="#" style="text-decoration: underline dotted").text-green.text-22 8 800 00 00
+
+
+
+
+    // Модалка графика приёма
+    .schedule-modal(data-js-schedule-modal)
+        .schedule-modal__overlay
+        .schedule-modal__content
+            button.schedule-modal__close(type="button" aria-label="Закрыть")
+                +icon('icon-close')(width="24" height="24" style="fill: transparent")
+
+            .schedule-modal__body
+                div.content
+                    h3.text-22.text-semi График приёма
+                    .schedule-modal__info
+                        .schedule-modal__info-item
+                            +icon('icon-call')(width="14" height="14" style="fill: transparent")
+                            a(data-schedule-phone href="tel:")
+
+                        .schedule-modal__info-item
+                            +icon('icon-mail')(width="14" height="14" style="fill: transparent")
+                            a(data-schedule-email href="mailto:")
+
+                        .schedule-modal__info-item
+                            +icon('icon-point')(width="14" height="14" style="fill: transparent")
+                            span(data-schedule-address)
+
+                        .schedule-modal__info-item
+                            +icon('icon-time')(width="14" height="14" style="fill: transparent")
+                            span(data-schedule-time)
+                .schedule-modal__map
+                    iframe(
+                        data-schedule-map-iframe
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        allowfullscreen
+                        style="position:relative;"
+                    )

@@ -1,0 +1,133 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Обращение к мэру'
+    - const description = ''
+
+block content
+    .container
+        .admin__page-relative
+            .admin__page-body
+                +breadcrumbs([
+                    { title: 'Главная', link: '/' },
+                    { title: 'Электронная приёмная', }
+                ])
+                section.page-header
+                    h1.page-header__title Электронная приёмная официального портала органов местного самоуправления города Набережные Челны
+                aside.admin__aside
+                    nav.admin__aside-nav.admin__aside-nav--desktop
+                        // активный класс просто text-green
+                        a(href="#").link.text-green Электронная приёмная
+                        a(href="#").link Поиск обращений
+                        a(href="#").link Приём граждан
+                        a(href="#").link Личный приём мэра
+                        a(href="#").link Информация об обращениях
+                        a(href="#").link Нормативно-правовая база
+                        a(href="#").link Вопросы и ответы
+
+                    .admin__aside-dropdown(data-dropdown)
+                        button.admin__aside-dropdown-btn(data-dropdown-btn)
+                            span(data-dropdown-current) Электронная приёмная
+                            +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+
+                        nav.admin__aside-dropdown-menu
+                            a(href="#").link.text-green Электронная приёмная
+                            a(href="#").link Поиск обращений
+                            a(href="#").link Приём граждан
+                            a(href="#").link Личный приём мэра
+                            a(href="#").link Информация об обращениях
+                            a(href="#").link Нормативно-правовая база
+                            a(href="#").link Вопросы и ответы
+
+                .mayor__inner
+                    article.news__article
+                        section
+                            p Прежде чем отправлять обращение через Интернет-приемную, рекомендуем Вам ознакомиться с разделом 
+                                |
+                                a(href="#") «Вопрос-ответ».
+                                | Возможно, Вы сразу найдете информацию на интересующую Вас тему.
+                            p Рассмотрение обращений осуществляется в соответствии с Федеральным законом от 02.05.2006 №59-ФЗ «О порядке рассмотрения обращений граждан Российской Федерации», законом Республики Татарстан от 12.05.2003 №16-ЗРТ «Об обращениях граждан в Республике Татарстан».
+                            p Если вопрос относится к компетенции органов местного самоуправления г. Казани, обращение рассматривается в течение 30 дней со дня его регистрации. Вопрос должен быть сформулирован четко, в лаконичной форме. Органы местного самоуправления г. Казани вправе оставить без ответа обращения, в которых содержатся нецензурные либо оскорбительные выражения, угрозы жизни, здоровью и имуществу должностного лица, а также членов его семьи.
+                            p Отследить статус вашего сообщения вы можете воспользовавшись функцией:
+                                |
+                                a(href="#")  «Поиск обращений».
+                    .mayor__form
+                        // для того чтобы показать тоаст о том что авторизация прошла успешна
+                        // добавить класс .is-visible в блок .toast который в конце html или передать параметр ?toast=auth_success в URL
+                        // чтобы убрать блок авторизации можно добавить класс .sr-only
+                        .mayor__notice.sr-only
+                            .icon 
+                                img(src="/img/gosulsugi.png", alt="")
+                            p.text-18
+                                a(href="#").text-green Авторизуйтесь через Госуслуги
+                                | , чтобы отправить обращение в электронную приёмную
+                        
+                        // плашка отправлено если хотите показать убрать класс .sr-only
+                        .mayor__notice.mayor__notice--sended.sr-only
+                            .d-flex(style="gap:8px")
+                                +icon('icon-verify')(width="40" height="40" style="fill: transparent")
+                                span.text-26.text-semi Отправлено!
+                            p.text-18 Ваше обращение принято и зарегистрировано. Срок рассмотрения — до 30 дней с момента регистрации. О результате вы будете уведомлены в письменной форме по указанному вами адресу.
+                        
+                        // сам блок формы есть в разметке, чтобы после авторизации его показать надо убрать класс .sr-only
+                        .mayor__form-inner
+                            h2.text-26.text-semi Ваше обращение
+                            
+                            form.mayor__form-content(action="#" method="post" enctype="multipart/form-data")
+                                .top
+                                    span.text-medium.text-gray Тематика обращения
+                                    .news__filter(data-dropdown)
+                                        button.news__filter-btn(type="button" data-dropdown-btn)
+                                            span(data-dropdown-current) Другая тема
+                                            +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                                        .news__filter-menu
+                                            button.news__filter-item(type="button" data-dropdown-item data-value="1")
+                                                span Благоустройство
+                                            button.news__filter-item(type="button" data-dropdown-item data-value="2")
+                                                span Благоустройство
+                                            button.news__filter-item(type="button" data-dropdown-item data-value="3")
+                                                span ЖКХ
+                                            button.news__filter-item(type="button" data-dropdown-item data-value="4")
+                                                span Здравоохранение
+
+                                .mayor__form-row.mayor__form-row--triple
+                                    .input
+                                        .input__wrapper.white
+                                            input(type="text" placeholder="Имя" required)
+                                    .input
+                                        .input__wrapper.white
+                                            input(type="text" placeholder="Фамилия" required)
+                                    .input
+                                        .input__wrapper.white
+                                            input(type="text" placeholder="Отчество")
+                                    .input
+                                        .input__wrapper.white
+                                            input(type="email" placeholder="Почта" required)
+                                    .input
+                                        .input__wrapper.white
+                                            input(type="tel" placeholder="Номер телефона" required)
+                                
+                                .textarea
+                                    textarea.textarea__field(placeholder="Опишите Ваш вопрос с указанием точных данных (полный адрес, наименование объекта, конкретного вопроса требующего ответа, контактные данные)" rows="6" required)
+                                
+                                .mayor__form-file(data-js-file-upload)
+                                    input.sr-only.js-file-upload-input(type="file" id="fileUpload" multiple accept=".doc,.docx,.xls,.xlsx,.pdf,.txt,.jpg,.jpeg,.png,.pptx,.rtf,.gif")
+                                    label.mayor__form-file-label(for="fileUpload")
+                                        +icon('icon-clip-x')(width="20" height="20" style="fill: #00B955")
+                                        span Прикрепить файл
+                                    .mayor__form-file-list(data-file-list)
+                                    p(style="max-width:500px").text-12.text-gray Вы можете прикрепить до 5 файлов в форматах doc, docx, rtf, pdf, gif, jpg, jpeg, png, txt, xls, xlsx. Максимальный размер файла — 5 Мб
+                                
+                                .mayor__form-checkboxes
+                                    label.toggle.toggle--small
+                                        input.toggle__input(type="checkbox" checked)
+                                        span.toggle__switch
+                                        span.text-gray.text-12 Согласен(а) на обработку, хранение и направление моих персональных данных в целях рассмотрения обращения
+                                    label.toggle.toggle--small
+                                        input.toggle__input(type="checkbox" checked)
+                                        span.toggle__switch
+                                        span.text-gray.text-12 Ваше обращение получит мэр города Набережные Челны Магдеев Наиль Гамбарович
+                                
+                                .mayor__form-row
+                                    button.button(type="submit") Отправить
+                        

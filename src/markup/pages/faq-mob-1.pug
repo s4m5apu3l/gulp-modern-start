@@ -1,0 +1,38 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "Вопрос — ответ";
+    - const pageDescription = "";
+    - const pageLink = "/faq-mob-1";
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Вопрос — ответ' }
+        ])
+
+        section.page-header
+            h1.page-header__title Вопрос — ответ
+
+        section.services
+            .services__main
+                .services__search
+                    .search-input
+                        +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                        input(type="text" placeholder="Введите ваш вопрос")
+                // надо добавить класс .mobile-sidebar--mobile
+                .services-sidebar.services-sidebar--mobile
+                    span.text-gray.text-12.services-sidebar__label Выберите раздел
+                    nav.services-nav
+                        .services-nav__item
+                            a(href="mob-2.html").services-nav__link
+                                span Популярное
+
+                        .services-nav__item
+                            a(href="mob-2.html").services-nav__link
+                                span Образование
+
+                        .services-nav__item
+                            a(href="#").services-nav__link
+                                span Здоровье

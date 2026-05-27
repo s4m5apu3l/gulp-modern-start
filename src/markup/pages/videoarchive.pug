@@ -1,0 +1,72 @@
+extends ../layouts/_default
+
+block variables
+    - const title = 'Видеоархив'
+    - const description = ''
+
+block content
+    .container
+        .swiper-section__header.swiper-section__header--with-filter
+            .block
+                +breadcrumbs([
+                    { title: 'Главная', link: '/' },
+                    { title: 'Видеоархив' },
+                ])
+                h1.page-header__title
+                    span Видеоархив
+
+            .news__filter.news__filter--gray(data-dropdown)
+                button.news__filter-btn(data-dropdown-btn)
+                    span(data-dropdown-current) За все время
+                    +icon('icon-chevron-down')(width="16" height="16" style="fill: transparent")
+                .news__filter-menu
+                    button.news__filter-item.is-active(data-dropdown-item data-value="all")
+                        span За все время
+                    button.news__filter-item(data-dropdown-item data-value="today")
+                        span За сегодня
+                    button.news__filter-item(data-dropdown-item data-value="week")
+                        span За неделю
+                    button.news__filter-item(data-dropdown-item data-value="month")
+                        span За месяц
+        .base__page
+            .afisha__events-grid.afisha__events-grid--4(style="gap:clamp(1.5rem, 1.2813rem + 0.625vw, 1.75rem);")
+                // пример с локал видео
+                a.base__card.base__card--video(href="/videos/test-local-video.mp4" data-fancybox="gallery" data-width="80%" data-height="62%")
+                    img(src="https://placehold.co/800x600?text=poster-video" alt="dsa" loading="lazy").base__card-img
+                    .base__card-content
+                        h5.base__card-title Oсмотр хода строительства заводов по производству аккумуляторных батарей
+                        time.base__card-date(datetime="20 марта") 20 марта
+                a.base__card.base__card--video(href="https://www.youtube.com/watch?v=PUdyuKaGQd4" data-fancybox="gallery")
+                    img(src="https://placehold.co/800x600?text=poster-video" alt="dsa" loading="lazy").base__card-img
+                    .base__card-content
+                        h5.base__card-title Oсмотр хода строительства заводов по производству аккумуляторных батарей
+                        time.base__card-date(datetime="20 марта") 20 марта
+                a.base__card.base__card--video(href="https://www.youtube.com/watch?v=PUdyuKaGQd4" data-fancybox="gallery")
+                    img(src="https://placehold.co/800x600?text=poster-video" alt="dsa" loading="lazy").base__card-img
+                    .base__card-content
+                        h5.base__card-title Oсмоных батарей
+                        time.base__card-date(datetime="20 марта") 20 марта
+                a.base__card.base__card--video(href="https://www.youtube.com/watch?v=PUdyuKaGQd4" data-fancybox="gallery")
+                    img(src="https://placehold.co/800x600?text=poster-video" alt="dsa" loading="lazy").base__card-img
+                    .base__card-content
+                        h5.base__card-title Oсмотр хода строительства заводов по производству аккумуляторных батарей
+                        time.base__card-date(datetime="20 марта") 20 марта
+                a.base__card.base__card--video(href="https://www.youtube.com/watch?v=PUdyuKaGQd4" data-fancybox="gallery")
+                    img(src="https://placehold.co/800x600?text=poster-video" alt="dsa" loading="lazy").base__card-img
+                    .base__card-content
+                        h5.base__card-title Oсмотр хода строительства заводов по производству аккумуляторных батарей
+                        time.base__card-date(datetime="20 марта") 20 марта
+            .news__pagination.pagination__wrapper
+                ul.pagination__list
+                    li.pagination__list-item.is-active
+                        a(href="#").pagination__list-link 1
+                    li.pagination__list-item
+                        a(href="#").pagination__list-link 1
+                    li.pagination__list-item
+                        a(href="#").pagination__list-link 1
+                    li.pagination__list-item
+                        a(href="#").pagination__list-link ...
+                    li.pagination__list-item
+                        a(href="#").pagination__list-link 250
+                    li.pagination__list-item
+                        a(href="#").button Следующая

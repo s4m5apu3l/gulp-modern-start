@@ -1,0 +1,229 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "Услуги";
+    - const pageDescription = "Полный перечень услуг";
+    - const pageLink = "/uslugi";
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Услуги' }
+        ])
+
+        section.page-header
+            h1.page-header__title Услуги
+        
+        section.services
+            .services__inner
+                aside.services-sidebar
+                    span.text-gray.text-12.services-sidebar__label Выберите раздел
+                    // для того чтобы ссылка была активной надо добавить вам класс .is-active-link
+                    // пример у первого аккордеона
+                    nav.services-nav(data-js-services-nav)
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/star.svg", alt="").icon
+                                span Популярное
+                                span.services-nav__count 13
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#").is-active-link Все популярные услуги
+                                    li
+                                        a(href="#") Получение паспорта
+                                    li
+                                        a(href="#") Регистрация автомобиля
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/2.svg", alt="").icon
+                                span Образование
+                                span.services-nav__count 122
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все услуги образования
+                                    li
+                                        a(href="#") Запись в детский сад
+                                    li
+                                        a(href="#") Запись в школу
+                                    li
+                                        a(href="#") Получение студенческого билета
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/3.svg", alt="").icon
+                                span Здоровье
+                                span.services-nav__count 15
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все услуги здравоохранения
+                                    li
+                                        a(href="#") Запись к врачу
+                                    li
+                                        a(href="#") Получение полиса ОМС
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/3.svg", alt="").icon
+                                span Жилье, недвижимость, земля
+                                span.services-nav__count 64
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все услуги
+                                    li
+                                        a(href="#") Собственность и кадастровый учет
+                                    li
+                                        a(href="#") ЖКУ, обслуживание ЖИЛЬЯ
+                                    li
+                                        a(href="#") Реновация
+                                    li
+                                        a(href="#") Перепланировка
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/3.svg", alt="").icon
+                                span Транспорт
+                                span.services-nav__count 124
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все транспортные услуги
+                                    li
+                                        a(href="#") Регистрация ТС
+                                    li
+                                        a(href="#") Получение водительских прав
+                                    li
+                                        a(href="#") Оплата штрафов
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/3.svg", alt="").icon
+                                span Семья, дети
+                                span.services-nav__count 13
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все услуги для семьи
+                                    li
+                                        a(href="#") Регистрация рождения
+                                    li
+                                        a(href="#") Получение свидетельства о браке
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/3.svg", alt="").icon
+                                span Социальная поддержка
+                                span.services-nav__count 15
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все меры поддержки
+                                    li
+                                        a(href="#") Пособия на детей
+                                    li
+                                        a(href="#") Льготы для пенсионеров
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/3.svg", alt="").icon
+                                span Культура, спорт, отдых
+                                span.services-nav__count 2
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все услуги культуры
+                                    li
+                                        a(href="#") Запись в спортивную секцию
+                        
+                        .services-nav__item
+                            button.accordion__button.services-nav__link
+                                img(src="/img/uslugi/3.svg", alt="").icon
+                                span Документы
+                                span.services-nav__count 65
+                            .accordion__content.services-nav__submenu
+                                ul
+                                    li
+                                        a(href="#") Все документы
+                                    li
+                                        a(href="#") Получение справок
+                                    li
+                                        a(href="#") Выписки из реестров
+            
+                .services__main     
+                    .services__search
+                        .search-input
+                            +icon('icon-search')(width="24" height="24" style="fill: transparent")
+                            input(type="text" placeholder="Найдите интересующую услугу")
+                    // .services__mobile-back 
+                    //     a(href="#").back-btn  ←
+                    //     span.text Тестовый заголовок
+                    .services__list
+                        a.services__list-item(href="#")
+                            span.text-gray.text-12 Онлайн
+                            h3.title Прием показаний и оплата электроэнергии
+                        
+                        a.services__list-item(href="#")
+                            span.text-gray.text-12 Онлайн
+                            h3.title Пропуска на проезд грузового автотранспорта в зонах ограниченного движения на срок до года
+                        
+                        a.services__list-item(href="#")
+                            span.text-gray.text-12 МФЦ
+                            h3.title Прием показаний и оплата электроэнергии
+                        
+                        a.services__list-item(href="#")
+                            span.text-gray.text-12 Онлайн
+                            h3.title Регистрация в реестре «Социальное такси»
+                        
+                        a.services__list-item(href="#")
+                            span.text-gray.text-12 Онлайн
+                            h3.title Постановка московских льготников на учет для получения бесплатной санаторно-курортной путевки
+                    .show-more-block
+                        button.show-more
+                            span.left
+                                span.dot
+                                span.text Загрузить еще
+                            +icon('icon-plus')(width="20" height="20" style="fill: transparent")
+                .services__ad
+                    h5.title Портал государственной гражданской службы
+                    p.descr Единая база вакансий гражданской и муниципальной службы
+                    a(href="#").btn Смотреть вакансии →
+                    img(src="/img/service-ad.svg", alt="").img
+    
+
+    section.swiper-section
+        .container
+            .swiper-section__header
+                h4.swiper-section__title
+                    +icon('icon-rss')(width="24" height="24" style="fill: transparent")
+                    span Новости региона
+                .swiper-section__nav
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--prev(type="button" aria-label="Предыдущий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+                    button.swiper-section__nav-btn.swiper-section__nav-btn--next(type="button" aria-label="Следующий слайд")
+                        +icon('icon-arrow-right')(width="24" height="24" style="fill: transparent")
+            
+            .js-swiper-section.swiper(data-swipes="4")
+                .swiper-wrapper
+                    each item in jsonData.regionNews.items
+                        .swiper-slide
+                            a(href=item.link).base__card-link
+                                article.base__card
+                                    img(src="https://placehold.co/600x400" alt=item.title loading="lazy").base__card-img
+                                    .base__card-content
+                                        h5.base__card-title= item.title
+                                        p.base__card-description= item.description
+                                        time.base__card-date(datetime=item.dateISO)= item.date
+                
+            .swiper-section__footer
+                .show-more-block
+                    button.show-more
+                        span.left
+                            span.dot
+                            span.text Все новости
+                        .icon  →
+

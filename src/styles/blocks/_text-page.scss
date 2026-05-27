@@ -1,0 +1,62 @@
+.text-page {
+  &__content {
+    line-height: 1.5;
+    color: #1f1f1f;
+
+    h2 {
+      font-size: clamp(1.125rem, 0.6875rem + 1.25vw, 1.625rem);
+      margin: 40px 0 16px 0;
+      display: inline-block;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    ul {
+        padding-left: 16px;
+    }
+
+    ol {
+      counter-reset: item;
+
+      > li {
+        display: block;
+        position: relative;
+        counter-increment: item;
+        &:first-child {
+          h2 {
+            margin-top: 0;
+          }
+        }
+
+        &::before {
+          content: counter(item) '.';
+          font-size: clamp(1.125rem, 0.6875rem + 1.25vw, 1.625rem);
+          font-weight: 600;
+        }
+
+        ol {
+          counter-reset: subitem;
+
+          > li {
+            counter-increment: subitem;
+            margin-bottom: 6px;
+
+            &::before {
+              content: counter(item) '.' counter(subitem) '.';
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    a {
+      color: #00b955;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

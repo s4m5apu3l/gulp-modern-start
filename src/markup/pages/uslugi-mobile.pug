@@ -1,0 +1,26 @@
+extends ../layouts/_default.pug
+
+block variables
+    - const pageTitle = "Услуги";
+    - const pageDescription = "";
+    - const pageLink = "/uslugi-mobile";
+
+block content
+    .container
+        +breadcrumbs([
+            { title: 'Главная', link: '/' },
+            { title: 'Услуги' }
+        ])
+
+        section.page-header
+            h1.page-header__title Услуги
+
+        section.services
+            .services__main
+                ul 
+                    li 
+                        a(href="/mob-1.html") первый экран 
+                    li 
+                        a(href="/mob-2.html") второй экран 
+                    li 
+                        a(href="/mob-3.html") третьий экран 

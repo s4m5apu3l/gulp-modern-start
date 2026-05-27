@@ -1,0 +1,201 @@
+@use '../base/helpers' as *;
+
+.footer {
+    &__main {
+        margin-top: 24px;
+        overflow: hidden;
+        &-inner {
+            display: grid;
+            grid-template-columns: 400px 1fr 340px;
+
+            padding: 40px 0 72px 0;
+            border-top: 1px solid #1f1f1f0d;
+
+            @include to(1200) {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 22px 0;
+                border-top: unset;
+            }
+        }
+    }
+    &__socials {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        position: relative;
+        @include tablet {
+            *:not(.policy):not(.policy *) {
+                display: none;
+            }
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .policy {
+            margin-top: auto;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            display: block;
+            border-left: 1px solid #1f1f1f0d;
+            height: 200%;
+            left: -40px;
+            top: -56px;
+        }
+    }
+    .block {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        &__title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+    &__nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        max-width: 540px;
+        position: relative;
+        justify-self: center;
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            display: block;
+            border-left: 1px solid #1f1f1f0d;
+            height: 200%;
+            left: -40px;
+            top: -56px;
+        }
+        @include to(640) {
+            display: none;
+        }
+
+        @include to(1200) {
+            max-width: 100%;
+            justify-self: unset;
+        }
+
+        .block:first-child {
+            grid-column: span 2;
+            .footer__nav-list {
+                max-height: 132px;
+            }
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-wrap: wrap;
+            a {
+                text-decoration: unset;
+                &:hover {
+                    color: var(--color-dark);
+                }
+            }
+        }
+    }
+
+    &__nav-mobile {
+        display: none;
+
+        @include to(640) {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .block {
+            border-bottom: 1px solid #1f1f1f0d;
+            padding-bottom: 16px;
+            gap: unset;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .accordion {
+            &__button {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--color-dark);
+                transition: color 0.3s ease;
+
+                svg {
+                    transition: transform 0.3s ease;
+                }
+                .plus {
+                    background-color: #f7f7f7;
+                    border-radius: 20px;
+                    padding: 9px 19px;
+                }
+
+                &.is-active {
+                    svg {
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+
+            &__content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                &.flex-col {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+            }
+        }
+    }
+    &__logo {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        justify-content: space-between;
+        .img {
+            max-width: 400px;
+        }
+        .mobile {
+            display: none;
+        }
+        .text-14.text-gray {
+            font-size: clamp(0.75rem, 0.6406rem + 0.3125vw, 0.875rem);
+        }
+        @include tablet {
+            .logo {
+                display: none;
+            }
+            .mobile {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .img {
+                max-width: 210px;
+            }
+        }
+    }
+}

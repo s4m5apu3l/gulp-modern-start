@@ -1,0 +1,87 @@
+// @link https://rolle.design/native-css-variables-vs-scss-variables
+
+@use 'helpers' as *;
+
+:root {
+    --container-width: #{rem(1558)};
+    --container-padding-x: #{rem(16)};
+    --scroll-bar: #{rem(15)};
+    --100vw: calc(100vw - var(--scroll-bar));
+
+    --font-family-base: 'Inter', sans-serif;
+
+    --color-light: #f7f8fa;
+    --color-dark: #2c3138;
+    --color-accent: #2354ce;
+    --color-gray: #88919e;
+
+    --border: #{rem(1)} solid rgb(var(--color-accent));
+
+    --transition-duration: 0.2s;
+
+    @include tablet {
+        --container-width: #{rem(1280)};
+    }
+}
+
+body {
+    min-width: rem($minViewportWidth);
+    overflow-x: hidden;
+
+    color: rgb(var(--color-dark));
+    font-family: var(--font-family-base);
+
+    background-color: white;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+main {
+    margin-top: clamp(0.75rem, -0.3438rem + 3.125vw, 2rem);
+    flex-grow: 1;
+    &.map-block-open {
+        z-index: 1004;
+    }
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+    font-weight: 600;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+    background-color: transparent;
+
+    transition-duration: var(--transition-duration);
+}
+
+a {
+    color: inherit;
+
+    @include hover {
+        color: rgb(var(--color-accent));
+    }
+}
+
+:focus-visible {
+    border-radius: rem(12);
+    outline: rem(2) dashed rgb(var(--color-dark));
+    outline-offset: rem(4);
+
+    transition-duration: 0s !important;
+}

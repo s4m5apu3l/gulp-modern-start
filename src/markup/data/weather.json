@@ -1,0 +1,235 @@
+{
+  "hours": [
+    {
+      "time": "15:00",
+      "icon": "sun.svg",
+      "temp": "+10°"
+    },
+    {
+      "time": "16:00",
+      "icon": "sun.svg",
+      "temp": "+10°"
+    },
+    {
+      "time": "17:00",
+      "icon": "sun.svg",
+      "temp": "+10°"
+    },
+    {
+      "time": "18:00",
+      "icon": "partly-cloudy.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "19:00",
+      "icon": "partly-cloudy.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "20:00",
+      "icon": "cloudy.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "21:00",
+      "icon": "night.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "22:00",
+      "icon": "rain.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "23:00",
+      "icon": "night.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "20:00",
+      "icon": "cloudy.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "21:00",
+      "icon": "night.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "22:00",
+      "icon": "rain.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "23:00",
+      "icon": "night.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "20:00",
+      "icon": "cloudy.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "21:00",
+      "icon": "night.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "22:00",
+      "icon": "rain.svg",
+      "temp": "-2°"
+    },
+    {
+      "time": "23:00",
+      "icon": "night.svg",
+      "temp": "-2°"
+    }
+  ],
+  "days": [
+    {
+      "dayShort": "вт",
+      "dayLabel": "сегодня",
+      "date": "25",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°",
+      "isToday": true
+    },
+    {
+      "dayShort": "ср",
+      "date": "26",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°"
+    },
+    {
+      "dayShort": "чт",
+      "date": "27",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°"
+    },
+    {
+      "dayShort": "пт",
+      "date": "28",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°"
+    },
+    {
+      "dayShort": "сб",
+      "date": "29",
+      "iconDay": "cloudy.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°",
+      "isWeekend": true
+    },
+    {
+      "dayShort": "вс",
+      "date": "30",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°",
+      "isWeekend": true
+    },
+    {
+      "dayShort": "пн",
+      "date": "31",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°"
+    },
+    {
+      "dayShort": "вт",
+      "date": "1",
+      "month": "авг",
+      "iconDay": "cloudy.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°"
+    },
+    {
+      "dayShort": "ср",
+      "date": "2",
+      "month": "авг",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°"
+    },
+    {
+      "dayShort": "чт",
+      "date": "3",
+      "month": "авг",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°",
+      "isWeekend": true
+    },
+    {
+      "dayShort": "пт",
+      "date": "4",
+      "month": "авг",
+      "iconDay": "sun.svg",
+      "tempDay": "+10°",
+      "iconNight": "night.svg",
+      "tempNight": "-1°"
+    }
+  ],
+  "months": [
+    { "name": "Март", "value": "march", "days": 31 },
+    { "name": "Апрель", "value": "april", "days": 30 },
+    { "name": "Май", "value": "may", "days": 31 },
+    { "name": "Июнь", "value": "june", "days": 30 },
+    { "name": "Июль", "value": "july", "days": 31 },
+    { "name": "Август", "value": "august", "days": 31 },
+    { "name": "Сентябрь", "value": "september", "days": 30 },
+    { "name": "Октябрь", "value": "october", "days": 31 },
+    { "name": "Ноябрь", "value": "november", "days": 30 },
+    { "name": "Декабрь", "value": "december", "days": 31 },
+    { "name": "Январь", "value": "january", "days": 31 },
+    { "name": "Февраль", "value": "february", "days": 28 }
+  ],
+  "calendarWeather": [
+    { "icon": "sun.svg", "tempDay": "+15°", "tempNight": "+5°" },
+    { "icon": "partly-cloudy.svg", "tempDay": "+12°", "tempNight": "+3°" },
+    { "icon": "cloudy.svg", "tempDay": "+10°", "tempNight": "+2°" },
+    { "icon": "partly-cloudy-rain.svg", "tempDay": "+8°", "tempNight": "+1°" },
+    { "icon": "rain.svg", "tempDay": "+7°", "tempNight": "0°" },
+    { "icon": "rain-big.svg", "tempDay": "+6°", "tempNight": "-1°" },
+    { "icon": "night.svg", "tempDay": "+5°", "tempNight": "-2°" },
+    { "icon": "sun.svg", "tempDay": "+16°", "tempNight": "+6°" },
+    { "icon": "partly-cloudy.svg", "tempDay": "+14°", "tempNight": "+4°" },
+    { "icon": "cloudy.svg", "tempDay": "+11°", "tempNight": "+3°" },
+    { "icon": "partly-cloudy-rain.svg", "tempDay": "+9°", "tempNight": "+2°" },
+    { "icon": "rain.svg", "tempDay": "+8°", "tempNight": "+1°" },
+    { "icon": "rain-big.svg", "tempDay": "+7°", "tempNight": "0°" },
+    { "icon": "night.svg", "tempDay": "+6°", "tempNight": "-1°" },
+    { "icon": "sun.svg", "tempDay": "+17°", "tempNight": "+7°" },
+    { "icon": "partly-cloudy.svg", "tempDay": "+15°", "tempNight": "+5°" },
+    { "icon": "cloudy.svg", "tempDay": "+12°", "tempNight": "+4°" },
+    { "icon": "partly-cloudy-rain.svg", "tempDay": "+10°", "tempNight": "+3°" },
+    { "icon": "rain.svg", "tempDay": "+9°", "tempNight": "+2°" },
+    { "icon": "rain-big.svg", "tempDay": "+8°", "tempNight": "+1°" },
+    { "icon": "night.svg", "tempDay": "+7°", "tempNight": "0°" },
+    { "icon": "sun.svg", "tempDay": "+18°", "tempNight": "+8°" },
+    { "icon": "partly-cloudy.svg", "tempDay": "+16°", "tempNight": "+6°" },
+    { "icon": "cloudy.svg", "tempDay": "+13°", "tempNight": "+5°" },
+    { "icon": "partly-cloudy-rain.svg", "tempDay": "+11°", "tempNight": "+4°" },
+    { "icon": "rain.svg", "tempDay": "+10°", "tempNight": "+3°" },
+    { "icon": "rain-big.svg", "tempDay": "+9°", "tempNight": "+2°" },
+    { "icon": "night.svg", "tempDay": "+8°", "tempNight": "+1°" },
+    { "icon": "sun.svg", "tempDay": "+19°", "tempNight": "+9°" },
+    { "icon": "partly-cloudy.svg", "tempDay": "+17°", "tempNight": "+7°" },
+    { "icon": "cloudy.svg", "tempDay": "+14°", "tempNight": "+6°" }
+  ]
+}
