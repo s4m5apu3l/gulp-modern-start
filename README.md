@@ -33,7 +33,7 @@ npm run dev
 - **🎨 Pug** — компактный синтаксис шаблонов, JSON-данные, layout-наследование
 - **🎯 SCSS + PostCSS** — `@use` вместо deprecated `@import`, autoprefixer, cssnano, сортировка media-запросов
 - **🔥 TypeScript + Webpack + SWC** — типобезопасность и скорость компиляции в 5–10× выше Babel
-- **🖼️ Изображения** — авто-оптимизация (imagemin), генерация WebP и AVIF, SVG-спрайты
+- **🖼️ Изображения** — авто-оптимизация (imagemin), SVG-спрайты. WebP/AVIF по запросу (для picture).
 - **📱 Browser-sync** — синхронизация скролла/кликов между устройствами
 - **🚀 Critical CSS** — в dev режиме подключается файлом, в production инлайнится в `<head>`
 - **🧹 Prettier** — единый code style из коробки
@@ -68,8 +68,26 @@ src/
 
 ### Pug
 - JSON из `markup/data/` доступен в шаблонах как `jsonData.имяФайла`
-- Готовые миксины: `+icon('icon-name')`, `+picture('img/photo.jpg')`
 - Layouts с блоками: `block content`, `block header`, `block footer`
+
+### Изображения
+
+Два подхода — выбирай по задаче:
+
+**Простая картинка (рекомендуется):**
+```pug
++img('photo.jpg', 'Описание', 800, 600)
+```
+Генерирует `<img>` с `loading="lazy"`, `decoding="async"`, `srcset` для retina. Исходник оптимизируется imagemin, дополнительных файлов не требуется.
+
+**Адаптивная картинка (art direction / форматы):**
+```pug
++picture('img/photo.jpg', isMobile=true, isTablet=true, isLaptop=true)
+```
+Требует заранее подготовить ресайзы и retina (`photo-mobile@1x.jpg`, `photo-mobile@2x.jpg`, `photo-tablet...`, `photo-desktop...`). Дополнительно сгенерирует WebP и AVIF:
+```bash
+npx gulp imagesConvert
+```
 
 ### SCSS
 - **Только `@use`** — `@import` запрещён

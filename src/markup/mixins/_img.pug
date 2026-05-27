@@ -1,0 +1,13 @@
+//- Простая картинка с lazy-loading и retina srcset
+//- Пример: +img('photo.jpg', 'Описание', 800, 600)
+mixin img(file, alt="", width, height)
+  - const [name, ext] = file.split(/\.(?=[^.]+$)/)
+  img(
+    src=`img/${file}`
+    srcset=`img/${name}@2x.${ext} 2x`
+    alt=alt
+    width=width
+    height=height
+    loading="lazy"
+    decoding="async"
+  )&attributes(attributes)

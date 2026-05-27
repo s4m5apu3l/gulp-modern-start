@@ -145,8 +145,12 @@ export const toAvif = () =>
     )
     .pipe(dest(config.build.images))
 
-// ОПТИМИЗАЦИЯ: Параллельная обработка форматов
-export const imagesBuild = series(parallel(imageOptim, faviconsCopy), parallel(toWebp, toAvif))
+// Основная сборка: только оптимизация исходников + favicons.
+// WebP/AVIF отдельно через `imagesConvert` — если нужны для picture.
+export const imagesBuild = parallel(imageOptim, faviconsCopy)
+
+// Опционально: генерация WebP и AVIF (для picture-миксина)
+export const imagesConvert = parallel(toWebp, toAvif)
 
 // Слежение за изменением файлов
 export const imagesWatch = () => {
