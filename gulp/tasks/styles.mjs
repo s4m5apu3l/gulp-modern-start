@@ -48,8 +48,8 @@ export const stylesBuild = () => {
         .pipe(sass.sync({ loadPaths: ['./node_modules'] }))
         .pipe(postcss(getPostcssPlugins()))
         .pipe(dest(config.build.style, { sourcemaps: config.isDev ? '.' : false }))
-        .on('end', () => console.log(`✓ Styles compiled in ${((Date.now() - startTime) / 1000).toFixed(2)}s`))
-        .pipe(browserSync.stream())
+    .on('end', () => console.log(`✓ Styles compiled in ${((Date.now() - startTime) / 1000).toFixed(2)}s`))
+    .pipe(global.browserSync.stream())
 }
 
 export const criticalBuild = () => {
@@ -68,8 +68,8 @@ export const criticalBuild = () => {
         )
         .pipe(sass.sync({ loadPaths: ['./node_modules'] }))
         .pipe(postcss(getPostcssPlugins()))
-        .pipe(dest(config.build.style, { sourcemaps: config.isDev ? '.' : false }))
-        .pipe(browserSync.stream())
+    .pipe(dest(config.build.style, { sourcemaps: config.isDev ? '.' : false }))
+    .pipe(global.browserSync.stream())
 }
 
 // ✅ ИСПРАВЛЕННЫЙ ВОТЧЕР

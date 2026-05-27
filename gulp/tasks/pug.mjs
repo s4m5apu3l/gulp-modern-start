@@ -267,7 +267,7 @@ const changePages = async () => {
         const options = getOptions()
         await compileAllPages(options)
         console.log(`✓ Pug pages compiled in ${((Date.now() - t) / 1000).toFixed(2)}s`)
-        browserSync.reload()
+        global.browserSync.reload()
     } catch (err) {
         console.error('✗ Pug build failed:', err.message)
     }
@@ -286,7 +286,7 @@ const changeData = async () => {
         const options = getOptions()
         await compileAllPages(options)
         console.log(`✓ Pug data updated in ${((Date.now() - t) / 1000).toFixed(2)}s`)
-        browserSync.reload()
+        global.browserSync.reload()
     } catch (err) {
         console.error('✗ Pug build failed:', err.message)
     }
@@ -305,7 +305,7 @@ const changeIncludes = async () => {
         const options = getOptions()
         await compileAllPages(options)
         console.log(`✓ Pug includes recompiled in ${((Date.now() - t) / 1000).toFixed(2)}s`)
-        browserSync.reload()
+        global.browserSync.reload()
     } catch (err) {
         console.error('✗ Pug build failed:', err.message)
     }

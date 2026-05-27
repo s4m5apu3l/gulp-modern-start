@@ -74,6 +74,11 @@ a {
     }
 }
 
+// Mono-иконки через спрайт: цвет наследуется от родителя
+.icon {
+    fill: currentColor;
+}
+
 :focus-visible {
     border-radius: rem(12);
     outline: rem(2) dashed rgb(var(--color-dark));

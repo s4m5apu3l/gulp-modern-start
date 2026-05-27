@@ -15,6 +15,11 @@ html.no-js(lang="ru")
     include ../parts/_head-seo.pug
 
   body
+    //- SVG-спрайты (обязательны для работы +icon())
+    .svg-sprites(style="display:none;visibility:hidden;position:absolute;width:0;height:0;")
+      include ../../assets/icons/sprite-mono.svg
+      include ../../assets/icons/sprite-multi.svg
+
     .wrapper
       block header
         include ../parts/default/_header.pug

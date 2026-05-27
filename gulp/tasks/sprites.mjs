@@ -17,6 +17,7 @@
 import { src, dest, watch, series, parallel } from 'gulp' // gulp плагин
 import filesExist from 'files-exist' // проверяет файл на существование
 import svgSprite from 'gulp-svg-symbol-view' // создает спрайт
+import replace from 'gulp-replace' // замена в файлах
 
 // Конфиги
 import config from '../config.mjs'
@@ -26,7 +27,7 @@ import { invalidateFilesAndRebuild } from './pug.mjs'
 
 const onSpriteChanged = () => invalidateFilesAndRebuild()
 
-// Создание черно-белого svg спрайта
+// Создание черно-белого svg спрайта (currentColor)
 const spriteMono = () =>
   // входящие файлы
   src(
@@ -43,11 +44,10 @@ const spriteMono = () =>
             { removeRasterImages: true }, // удалить растровые изображения
             { removeStyleElement: true }, // удалить <style>
             { removeUselessDefs: true }, // удалить <defs>
-            { removeViewBox: false }, // удалить ViewBox
+            { removeViewBox: false }, // сохранить ViewBox
             { removeComments: true }, // удалить комментарии
             {
               removeAttrs: {
-                // attrs: ['class', 'data-name', 'fill', 'stroke.*'], // удалить указанные атрибуты
                 attrs: ['class', 'data-name'], // удалить указанные атрибуты
               },
             },
@@ -55,6 +55,10 @@ const spriteMono = () =>
         },
       }),
     )
+    // Принудительно удаляем inline fill/stroke (кроме fill="none")
+    // и добавляем fill="currentColor" на каждый <symbol>
+    .pipe(replace(/\s+(?:fill|stroke)="(?!none")[^"]*"/g, ''))
+    .pipe(replace(/<symbol\b([^>]*)>/g, '<symbol$1 fill="currentColor">'))
     .pipe(dest(config.src.assets.icons.root)) // исходящий файл
 
 // Создание цветного svg спрайта
@@ -105,17 +109,34 @@ const removeSprites = done => {
   done()
 }
 
+const removeMonoSprite = done => {
+  clearSprite('sprite-mono')
+  done()
+}
+
+const removeMultiSprite = done => {
+  clearSprite('sprite-multi')
+  done()
+}
+
+// Копирование отдельных спрайтов
+const copyMonoSprite = () => src(`${config.src.assets.icons.root}/sprite-mono.svg`).pipe(dest(config.build.images))
+const copyMultiSprite = () => src(`${config.src.assets.icons.root}/sprite-multi.svg`).pipe(dest(config.build.images))
+
 // Создание спрайтов
 const createSprites = parallel(spriteMono, spriteMulti)
 
-// Копирование спрайтов в build
-const copySprites = () => src([`${config.src.assets.icons.root}/sprite-*.svg`]).pipe(dest(config.build.images))
-
 // Сборка всех тасков
-export const spritesBuild = series(removeSprites, createSprites, copySprites)
+export const spritesBuild = series(removeSprites, parallel(spriteMono, spriteMulti), parallel(copyMonoSprite, copyMultiSprite))
 
 // Слежение за изменением файлов
 export const spritesWatch = () => {
-  watch(`${config.src.assets.icons.mono}/**/*.svg`, series(removeSprites, spriteMono, copySprites, onSpriteChanged))
-  watch(`${config.src.assets.icons.multi}/**/*.svg`, series(removeSprites, spriteMulti, copySprites, onSpriteChanged))
+  watch(
+    `${config.src.assets.icons.mono}/**/*.svg`,
+    series(removeMonoSprite, spriteMono, copyMonoSprite, onSpriteChanged),
+  )
+  watch(
+    `${config.src.assets.icons.multi}/**/*.svg`,
+    series(removeMultiSprite, spriteMulti, copyMultiSprite, onSpriteChanged),
+  )
 }
