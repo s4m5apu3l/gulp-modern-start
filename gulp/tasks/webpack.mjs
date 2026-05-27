@@ -37,8 +37,8 @@ export const webpackBuild = () => {
     .on('end', () => {
       const duration = ((Date.now() - startTime) / 1000).toFixed(2)
       console.log(`✓ Webpack compiled in ${duration}s`)
+      global.browserSync.reload()
     })
-    .pipe(global.browserSync.stream({ once: true })) // обновление страницы в браузере
 }
 
 // Слежение за изменением файлов

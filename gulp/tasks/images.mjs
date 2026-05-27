@@ -52,7 +52,7 @@ export const imageOptim = () =>
               plugins: [
                 { name: 'cleanupIDs', active: true },
                 { name: 'removeUselessDefs', active: true },
-                { name: 'removeViewBox', active: true },
+                { name: 'removeViewBox', active: false },
                 { name: 'removeComments', active: true },
                 { name: 'mergePaths', active: true },
                 { name: 'minifyStyles', active: false },
@@ -91,7 +91,7 @@ export const faviconsCopy = () =>
               plugins: [
                 { name: 'cleanupIDs', active: true },
                 { name: 'removeUselessDefs', active: true },
-                { name: 'removeViewBox', active: true },
+                { name: 'removeViewBox', active: false },
                 { name: 'removeComments', active: true },
                 { name: 'mergePaths', active: true },
                 { name: 'minifyStyles', active: false },
@@ -145,12 +145,8 @@ export const toAvif = () =>
     )
     .pipe(dest(config.build.images))
 
-// Основная сборка: только оптимизация исходников + favicons.
-// WebP/AVIF отдельно через `imagesConvert` — если нужны для picture.
+// Основная сборка: оптимизация исходников + favicons
 export const imagesBuild = parallel(imageOptim, faviconsCopy)
-
-// Опционально: генерация WebP и AVIF (для picture-миксина)
-export const imagesConvert = parallel(toWebp, toAvif)
 
 // Слежение за изменением файлов
 export const imagesWatch = () => {

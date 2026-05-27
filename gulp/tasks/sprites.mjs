@@ -15,7 +15,6 @@
 
 // Сторонние библиотеки
 import { src, dest, watch, series, parallel } from 'gulp' // gulp плагин
-import filesExist from 'files-exist' // проверяет файл на существование
 import svgSprite from 'gulp-svg-symbol-view' // создает спрайт
 import replace from 'gulp-replace' // замена в файлах
 
@@ -30,11 +29,7 @@ const onSpriteChanged = () => invalidateFilesAndRebuild()
 // Создание черно-белого svg спрайта (currentColor)
 const spriteMono = () =>
   // входящие файлы
-  src(
-    filesExist(`${config.src.assets.icons.mono}/**/icon-*.svg`, {
-      exceptionMessage: 'Нет ни одного файла svg',
-    }),
-  )
+  src(`${config.src.assets.icons.mono}/**/icon-*.svg`, { allowEmpty: true })
     .pipe(
       svgSprite({
         name: 'sprite-mono',
@@ -55,20 +50,16 @@ const spriteMono = () =>
         },
       }),
     )
-    // Принудительно удаляем inline fill/stroke (кроме fill="none")
-    // и добавляем fill="currentColor" на каждый <symbol>
-    .pipe(replace(/\s+(?:fill|stroke)="(?!none")[^"]*"/g, ''))
-    .pipe(replace(/<symbol\b([^>]*)>/g, '<symbol$1 fill="currentColor">'))
+    // Удаляем inline fill (кроме none), но НЕ трогаем stroke — outline-иконки рисуются через stroke
+    .pipe(replace(/\s+fill="(?!none")[^"]*"/g, ''))
+    // Добавляем fill="currentColor" только если на symbol его ещё нет
+    .pipe(replace(/<symbol\b(?![^>]*fill=)([^>]*)>/g, '<symbol$1 fill="currentColor">'))
     .pipe(dest(config.src.assets.icons.root)) // исходящий файл
 
 // Создание цветного svg спрайта
 const spriteMulti = () =>
   // входящие файлы
-  src(
-    filesExist(`${config.src.assets.icons.multi}/**/icon-*.svg`, {
-      exceptionMessage: 'Нет ни одного файла svg',
-    }),
-  )
+  src(`${config.src.assets.icons.multi}/**/icon-*.svg`, { allowEmpty: true })
     .pipe(
       svgSprite({
         name: 'sprite-multi',

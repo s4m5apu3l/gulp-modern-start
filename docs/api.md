@@ -36,41 +36,7 @@
 - `alt` — описание (по умолчанию пустая строка)
 - `width` / `height` — размеры (опционально, но рекомендуются для CLS)
 
----
 
-### `+picture(file)`
-
-Адаптивное изображение с art direction и форматами (WebP/AVIF).
-
-**Файл:** `src/markup/mixins/_picture.pug`
-
-```pug
-+picture('images/photo.jpg')(width="800" height="600")
-```
-
-**Параметры:**
-- `file` — путь к изображению (jpg/png)
-- `isLaptop=true` — генерировать laptop-версию
-- `isTablet=true` — генерировать tablet-версию
-- `isMobile=true` — генерировать mobile-версию
-
-**Структура файлов (подготавливается вручную):**
-```
-images/
-├── photo.jpg              # desktop 1x
-├── photo@2x.jpg           # desktop 2x
-├── photo-laptop.jpg       # laptop 1x
-├── photo-laptop@2x.jpg    # laptop 2x
-├── photo-tablet.jpg       # tablet 1x
-├── photo-tablet@2x.jpg    # tablet 2x
-├── photo-mobile.jpg       # mobile 1x
-└── photo-mobile@2x.jpg    # mobile 2x
-```
-
-**Breakpoints:**
-- mobile: `767.98px`
-- tablet: `1023.98px`
-- laptop: `1440.98px`
 
 ---
 

@@ -34,7 +34,6 @@
     "browser-sync": "^3.0.3",
     "cssnano": "^7.0.6",
     "del": "^8.0.1",
-    "files-exist": "^1.1.0",
     "gulp": "^5.0.0",
     "gulp-avif": "^1.1.1",
     "gulp-if": "^3.0.0",

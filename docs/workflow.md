@@ -112,22 +112,10 @@ new MyComponent()
 
 1. Положить файл в `src/assets/images/my-image.jpg`
 2. Gulp автоматически оптимизирует оригинал (imagemin)
-3. Для простых случаев:
+3. Использовать в Pug:
 
 ```pug
 +img('my-image.jpg', 'Описание', 800, 600)
-```
-
-Для адаптивных изображений (art direction / WebP / AVIF):
-
-```pug
-+picture('images/my-image.jpg')(width="800" height="600")
-```
-
-При этом требуется заранее подготовить ресайзы (mobile/tablet/desktop @1x/@2x). Для генерации WebP и AVIF:
-
-```bash
-npx gulp imagesConvert
 ```
 
 ## Добавить шрифт

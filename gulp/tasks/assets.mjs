@@ -37,8 +37,8 @@ export const assetsBuild = series(rootBuild, fontsBuild, videosBuild, libsBuild)
 
 // Слежение за изменением файлов
 export const assetsWatch = () => {
-  // watch(`${config.src.assets.fonts}/**/*`, fontsBuild)
-  // watch(`${config.src.assets.videos}/**/*`, videosBuild)
-  // watch(`${config.src.assets.libs}/**/*`, libsBuild)
+  watch(`${config.src.assets.fonts}/**/*`, fontsBuild)
+  watch(`${config.src.assets.videos}/**/*`, videosBuild)
+  watch(`${config.src.assets.libs}/**/*`, libsBuild)
   watch(`${config.src.assets.root}/*`, rootBuild)
 }

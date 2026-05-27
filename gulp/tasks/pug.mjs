@@ -161,7 +161,7 @@ const getOptions = () => {
 
     _opts = {
         doctype: 'html',
-        pretty: config.isProd, // true = форматированный HTML (медленнее, но читаемо в prod)
+        pretty: config.isProd, // pretty HTML в production для передачи бэкендерам
         locals: { jsonData: getData() },
         filters: {
             // :critical-css вызывается при pug.compileFile() — не при рендере.
