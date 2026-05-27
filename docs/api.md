@@ -118,8 +118,8 @@ dropdown: 21
 tooltip: 100
 overlay: 250
 header: 300
-mega-menu: 280
-search-menu: 350
+submenu: 280
+search: 350
 modal: 500
 modal-overlay: 450
 notification: 900

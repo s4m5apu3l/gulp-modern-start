@@ -1,7 +1,6 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import TerserPlugin from 'terser-webpack-plugin'
-import webpack from 'webpack'
 
 const isProd = process.argv.includes('--production')
 
@@ -85,17 +84,4 @@ export default {
   performance: {
     hints: isProd ? 'warning' : false,
   },
-
-  externals: {
-    jquery: 'jQuery',
-    moment: 'moment',
-  },
-
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      moment: 'moment',
-    }),
-  ],
 }

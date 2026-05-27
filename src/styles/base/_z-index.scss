@@ -47,8 +47,8 @@ $z-index: (
 
   // Header и навигация
   'header': 300,
-  'mega-menu': 280,
-  'search-menu': 350,
+  'submenu': 280,
+  'search': 350,
 
   // Модальные окна
   'modal': 500,
@@ -58,10 +58,10 @@ $z-index: (
   // Мобильные элементы
   'mobile-filter': 1000,
   'mobile-header': 1003,
-  'map-overlay': 999,
-  'map-block': 1001,
-  'map-block-wide': 1002,
-  'main-elevated': 1004
+  'sticky': 999,
+  'sticky-element': 1001,
+  'sticky-element-wide': 1002,
+  'elevated': 1004
 );
 
 // Функция для получения z-index
