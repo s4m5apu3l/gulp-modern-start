@@ -1,1 +1,2 @@
-modernizr.js
+build/
+node_modules/

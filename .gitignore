@@ -85,6 +85,7 @@ sitemap*.xml
 
 # Custom
 .webpack-cache
+src/assets/icons/sprite-*.svg
 
 # Front build artifacts
 /local/templates/main/front/front-dev/build/

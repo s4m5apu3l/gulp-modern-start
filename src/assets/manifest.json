@@ -1,7 +1,7 @@
 {
-  "name": "Название проекта",
-  "short_name": "Название проекта",
-  "description": "Описание проекта",
+  "name": "Starter",
+  "short_name": "Starter",
+  "description": "Gulp starter template",
   "lang": "ru",
   "dir": "ltr",
   "id": "/",

@@ -144,7 +144,7 @@ destroy() {
 
 ### Что коммитить
 - Только исходники (`src/`, конфиги, доки)
-- НЕ коммитить `build/`, `node_modules/`, `.webpack-cache/`, `modernizr.js`
+- НЕ коммитить `build/`, `node_modules/`, `.webpack-cache/`
 
 ### Сообщения коммитов
 - Информативные: `Fix header menu dropdown on mobile`
