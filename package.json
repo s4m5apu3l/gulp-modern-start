@@ -16,7 +16,7 @@
     "typescript",
     "starter"
   ],
-  "author": "Sergio Eliofery",
+  "author": "Oroku Slav",
   "license": "MIT",
   "engines": {
     "node": ">=22.0.0",
