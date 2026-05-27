@@ -15,7 +15,7 @@
     --color-accent: #2563eb;
     --color-gray: #88919e;
 
-    --border: #{rem(1)} solid rgb(var(--color-accent));
+    --border: #{rem(1)} solid var(--color-accent);
 
     --transition-duration: 0.2s;
 
@@ -28,7 +28,7 @@ body {
     min-width: rem($minViewportWidth);
     overflow-x: hidden;
 
-    color: rgb(var(--color-dark));
+    color: var(--color-dark);
     font-family: var(--font-family-base);
 
     background-color: white;
@@ -70,7 +70,7 @@ a {
     color: inherit;
 
     @include hover {
-        color: rgb(var(--color-accent));
+        color: var(--color-accent);
     }
 }
 
@@ -81,7 +81,7 @@ a {
 
 :focus-visible {
     border-radius: rem(12);
-    outline: rem(2) dashed rgb(var(--color-dark));
+    outline: rem(2) dashed var(--color-dark);
     outline-offset: rem(4);
 
     transition-duration: 0s !important;

@@ -9,7 +9,7 @@
 import { src, dest, watch } from 'gulp'
 import plumber from 'gulp-plumber'
 import notify from 'gulp-notify'
-import dartSass from 'sass'
+import * as dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import postcss from 'gulp-postcss'
 import autoPrefixer from 'autoprefixer'

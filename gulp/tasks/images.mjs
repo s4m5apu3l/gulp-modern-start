@@ -1,25 +1,22 @@
 /**
  * Оптимизация изображений
  *
- * Уменьшает размер изображений и создает webp, avif форматы
- * 
+ * Уменьшает размер изображений через imagemin.
+ *
  * ОПТИМИЗАЦИИ:
- * - Используется gulp-newer для обработки только измененных файлов
- * - Параллельная обработка форматов
+ * - gulp-newer для обработки только измененных файлов
  * - Оптимизация только в production режиме
  * - Favicons копируются в отдельную папку /favicons/
  */
 
 // Сторонние библиотеки
-import { src, dest, watch, series, parallel } from 'gulp' // gulp плагин
-import gulpif from 'gulp-if' // вызывает функции по условию
-import newer from 'gulp-newer' // пропускает старые файлы
-import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin' // оптимизирует изображения
-import pngQuant from 'imagemin-pngquant' // оптимизирует png изображения
-import webp from 'gulp-webp' // создает webp файлы
-import avif from 'gulp-avif' // создает avif файлы
-import plumber from 'gulp-plumber' // перехватывает ошибки
-import notify from 'gulp-notify' // уведомляет об ошибках
+import { src, dest, watch, parallel } from 'gulp'
+import gulpif from 'gulp-if'
+import newer from 'gulp-newer'
+import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin'
+import pngQuant from 'imagemin-pngquant'
+import plumber from 'gulp-plumber'
+import notify from 'gulp-notify'
 
 // Конфиги
 import config from '../config.mjs'
@@ -103,47 +100,6 @@ export const faviconsCopy = () =>
       ),
     )
     .pipe(dest(config.build.favicons))
-
-// Создание Webp изображения
-export const toWebp = () =>
-  src(`${config.src.assets.images}/**/*.{jpg,png,jpeg}`, {
-    encoding: false,
-  })
-    .pipe(
-      plumber({
-        errorHandler: notify.onError(err => ({
-          title: 'Ошибка в задаче toWebp',
-          sound: false,
-          message: err.message,
-        })),
-      }),
-    )
-    .pipe(newer({ dest: config.build.images, ext: '.webp' }))
-    .pipe(webp({ quality: 80 }))
-    .pipe(dest(config.build.images))
-
-// Создание Avif изображения
-export const toAvif = () =>
-  src(`${config.src.assets.images}/**/*.{jpg,png,jpeg}`, {
-    encoding: false,
-  })
-    .pipe(
-      plumber({
-        errorHandler: notify.onError(err => ({
-          title: 'Ошибка в задаче toAvif',
-          sound: false,
-          message: err.message,
-        })),
-      }),
-    )
-    .pipe(newer({ dest: config.build.images, ext: '.avif' }))
-    .pipe(
-      avif({
-        quality: 80,
-        speed: 8,
-      }),
-    )
-    .pipe(dest(config.build.images))
 
 // Основная сборка: оптимизация исходников + favicons
 export const imagesBuild = parallel(imageOptim, faviconsCopy)

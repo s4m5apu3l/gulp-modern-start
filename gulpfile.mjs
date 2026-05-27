@@ -13,8 +13,6 @@ import config from './gulp/config.mjs'
 
 config.setEnv()
 
-export const proxy = server
-
 export const build = series(
   clear,
   spritesBuild,

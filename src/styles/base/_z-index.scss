@@ -41,27 +41,30 @@ $z-index: (
   'content-elevated': 10,
 
   // UI элементы
-  'dropdown': 21,
+  'dropdown': 20,
   'tooltip': 100,
   'overlay': 250,
 
-  // Header и навигация
+  // Header и навигация (submenu внутри header, поэтому ниже)
   'header': 300,
   'submenu': 280,
   'search': 350,
 
-  // Модальные окна
+  // Модальные окна (backdrop ниже самого окна)
+  'modal-backdrop': 400,
   'modal': 500,
-  'modal-overlay': 450,
-  'notification': 900,
 
   // Мобильные элементы
+  'sticky': 990,
   'mobile-filter': 1000,
-  'mobile-header': 1003,
-  'sticky': 999,
   'sticky-element': 1001,
   'sticky-element-wide': 1002,
-  'elevated': 1004
+  'mobile-header': 1003,
+  'elevated': 1004,
+
+  // Уведомления (toast) — поверх всего, включая мобильный header
+  'notification': 1100,
+  'toast': 1200
 );
 
 // Функция для получения z-index

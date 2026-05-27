@@ -24,7 +24,6 @@ npm run dev
 |---------|----------|
 | `npm run dev` | Dev-сервер с hot-reload и source maps |
 | `npm run build` | Production сборка: минификация, инлайн critical CSS, оптимизация assets |
-| `npm run proxy` | Browser-sync поверх существующего сервера |
 | `npm run format` | Форматирование всего проекта через Prettier |
 
 ## ✨ Возможности

@@ -16,7 +16,7 @@ html.no-js(lang="ru")
 
   body
     //- SVG-спрайты (обязательны для работы +icon())
-    .svg-sprites(style="display:none;visibility:hidden;position:absolute;width:0;height:0;")
+    div.svg-sprites(aria-hidden="true", style="position:absolute;width:0;height:0;overflow:hidden")
       include ../../assets/icons/sprite-mono.svg
       include ../../assets/icons/sprite-multi.svg
 

@@ -1,7 +1,7 @@
-//- dev или prod
-- const env = "prod";
+//- dev или prod (переопределяется из gulp/config.mjs через locals)
+- const env = (typeof locals !== 'undefined' && locals.env) ? locals.env : "dev";
 
-- const version = "1.0.0";
+- const version = (typeof locals !== 'undefined' && locals.version) ? locals.version : "1.0.0";
 
 - let baseUrl = "/";
 - const siteUrl = "http://localhost:3000";

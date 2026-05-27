@@ -38,9 +38,7 @@
 
 // ─── IMPORTS ──────────────────────────────────────────────────────────────────
 
-import { series, src, dest, watch } from 'gulp'
-import gulpif from 'gulp-if'
-import replace from 'gulp-replace'
+import { watch } from 'gulp'
 import notify from 'gulp-notify'
 
 // pug напрямую (не gulp-pug — он нам больше не нужен)
@@ -162,7 +160,11 @@ const getOptions = () => {
     _opts = {
         doctype: 'html',
         pretty: config.isProd, // pretty HTML в production для передачи бэкендерам
-        locals: { jsonData: getData() },
+        locals: {
+            jsonData: getData(),
+            env: config.isDev ? 'dev' : 'prod',
+            version: config.version,
+        },
         filters: {
             // :critical-css вызывается при pug.compileFile() — не при рендере.
             // Результат встраивается в скомпилированную функцию и кэшируется вместе с ней.
@@ -311,28 +313,9 @@ const changeIncludes = async () => {
     }
 }
 
-// ─── ENV / VERSION ────────────────────────────────────────────────────────────
-
-const envSet = () => {
-    const pattern = /(- (var|let|const) env = ")(prod|dev)(";?)/g
-
-    return src(`${config.src.markup.root}/_config.pug`)
-        .pipe(gulpif(config.isDev, replace(pattern, '$1dev$4')))
-        .pipe(gulpif(config.isProd, replace(pattern, '$1prod$4')))
-        .pipe(dest(file => file.base))
-}
-
-const versionSet = () => {
-    const pattern = /(- (var|let|const) version = ")(.*)(";?)/g
-
-    return src(`${config.src.markup.root}/_config.pug`)
-        .pipe(replace(pattern, `$1${config.version}$4`))
-        .pipe(dest(file => file.base))
-}
-
 // ─── EXPORTS ──────────────────────────────────────────────────────────────────
 
-export const pugBuild = series(envSet, versionSet, changePages)
+export const pugBuild = changePages
 
 /**
  * Инвалидирует весь fn cache и пересобирает все страницы.

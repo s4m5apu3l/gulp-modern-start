@@ -50,7 +50,6 @@ Technology stack: Pug, SCSS, TypeScript, Webpack, Browser-sync.
 ## Build Commands
 - `npm run dev` — dev server with hot-reload
 - `npm run build` — production build
-- `npm run proxy` — browser-sync proxy mode
 - `npm run format` — prettier formatting
 
 ## Important Notes
@@ -58,5 +57,5 @@ Technology stack: Pug, SCSS, TypeScript, Webpack, Browser-sync.
 - In dev mode critical CSS is linked as separate file; in prod it's inlined in `<head>`
 - Webpack uses SWC (not Babel) — 5-10x faster
 - SVG sprites generated automatically from `icons/mono/` and `icons/multi/`
-- Images auto-optimized + WebP + AVIF generated
+- Images auto-optimized (imagemin), SVG sprites (mono + multi)
 - Node.js >= 22 required

@@ -9,14 +9,14 @@
     &__title {
         font-size: rem(24);
         font-weight: 600;
-        color: rgb(var(--color-accent));
+        color: var(--color-accent);
     }
 
     &__text {
         margin-top: rem(12);
         font-size: rem(16);
         line-height: 1.5;
-        color: rgb(var(--color-gray));
+        color: var(--color-gray);
     }
 
     &__list {
