@@ -1,66 +1,119 @@
-# Gulp Starter
+# Gulp Modern Start
 
-Стартовый шаблон для вёрстки с Gulp 5, Pug, SCSS, TypeScript и Webpack.
+> Стартовый шаблон для современной вёрстки: Gulp 5 + Pug + SCSS + TypeScript + Webpack. Быстрая сборка, критический CSS, оптимизация изображений и hot-reload из коробки.
 
-## Быстрый старт
+## 🚀 Быстрый старт
 
 ```bash
+# 1. Клонируй шаблон
+git clone https://github.com/s4m5apu3l/gulp-modern-start.git my-project
+cd my-project
+
+# 2. Установи зависимости
 npm install
+
+# 3. Запусти dev-сервер
 npm run dev
 ```
 
-## Скрипты
+После запуска откроется Browser-sync на `http://localhost:3000`. Изменения в `src/` отображаются мгновенно.
 
-- `npm run dev` — запуск dev-сервера с hot-reload
-- `npm run build` — продакшен-сборка
-- `npm run proxy` — browser-sync с прокси
-- `npm run format` — форматирование Prettier
+## 📦 Скрипты
 
-## Структура
+| Команда | Описание |
+|---------|----------|
+| `npm run dev` | Dev-сервер с hot-reload и source maps |
+| `npm run build` | Production сборка: минификация, инлайн critical CSS, оптимизация assets |
+| `npm run proxy` | Browser-sync поверх существующего сервера |
+| `npm run format` | Форматирование всего проекта через Prettier |
+
+## ✨ Возможности
+
+- **⚡ Gulp 5** — потоковая сборка с минимальной конфигурацией
+- **🎨 Pug** — компактный синтаксис шаблонов, JSON-данные, layout-наследование
+- **🎯 SCSS + PostCSS** — `@use` вместо deprecated `@import`, autoprefixer, cssnano, сортировка media-запросов
+- **🔥 TypeScript + Webpack + SWC** — типобезопасность и скорость компиляции в 5–10× выше Babel
+- **🖼️ Изображения** — авто-оптимизация (imagemin), генерация WebP и AVIF, SVG-спрайты
+- **📱 Browser-sync** — синхронизация скролла/кликов между устройствами
+- **🚀 Critical CSS** — в dev режиме подключается файлом, в production инлайнится в `<head>`
+- **🧹 Prettier** — единый code style из коробки
+
+## 📁 Структура проекта
 
 ```
 src/
-├── assets/          # Шрифты, иконки, картинки, видео
-├── markup/          # Pug-шаблоны
-│   ├── data/        # JSON-данные для шаблонов
-│   ├── layouts/     # Базовые layouts
-│   ├── mixins/      # Переиспользуемые миксины
-│   ├── pages/       # Страницы
-│   └── parts/       # Шапка, подвал, head
-├── scripts/         # TypeScript
-│   └── components/  # Компоненты
-└── styles/          # SCSS
-    ├── base/        # Helpers, миксины, сброс
-    └── blocks/      # Блоки проекта
+├── assets/               # Шрифты, иконки, картинки, видео
+│   ├── icons/
+│   │   ├── mono/         # Монохромные SVG → спрайт с currentColor
+│   │   └── multi/        # Многоцветные SVG → спрайт
+│   ├── images/
+│   └── fonts/
+├── markup/               # Pug-шаблоны
+│   ├── data/             # JSON-данные (доступны как jsonData.filename)
+│   ├── layouts/          # Базовые layouts
+│   ├── mixins/           # Переиспользуемые миксины
+│   ├── pages/            # Страницы
+│   └── parts/            # Шапка, подвал, head
+├── scripts/              # TypeScript
+│   ├── components/       # Компоненты (наследуют Base)
+│   └── main.ts           # Точка входа
+└── styles/               # SCSS
+    ├── base/             # Helpers, миксины, сброс, переменные
+    ├── blocks/           # Блоки проекта (BEM)
+    ├── critical.scss     # Above-the-fold стили
+    └── main.scss         # Точка входа
 ```
 
-## Стек
-
-- **Шаблонизатор:** Pug с `gulp-pug` (оптимизированная версия)
-- **Стили:** SCSS + PostCSS (autoprefixer, cssnano, sort-media-queries)
-- **Скрипты:** TypeScript через Webpack + SWC (в 5–10× быстрее Babel)
-- **Dev-сервер:** Browser-sync
-- **Изображения:** Оптимизация (imagemin), генерация WebP/AVIF, SVG-спрайты
-- **Критический CSS:** Инлайнинг в `<head>` для production
-
-## Архитектура
+## 🛠️ Архитектура
 
 ### Pug
-- JSON-данные из `markup/data/` доступны в шаблонах как `jsonData.имяФайла`
-- Миксины: `+icon('icon-name')`, `+picture('img/photo.jpg')`
-- Layouts с блоками `block content`, `block header`, `block footer`
+- JSON из `markup/data/` доступен в шаблонах как `jsonData.имяФайла`
+- Готовые миксины: `+icon('icon-name')`, `+picture('img/photo.jpg')`
+- Layouts с блоками: `block content`, `block header`, `block footer`
 
 ### SCSS
-- `@use` вместо устаревшего `@import`
-- Система хелперов: `rem()`, media-миксины, `z()`
-- BEM: `.block`, `.block__element`, `.block__parent-child`
+- **Только `@use`** — `@import` запрещён
+- **BEM** нотация: `.block`, `.block__element`, `.block__parent-child`
+- **Хелперы:** `rem()`, `z()`, медиа-миксины (`tablet`, `mobile`, `hover`)
+- **Состояния:** `.is-active`, `.is-hidden`
+- **JS-хуки:** `.js-*` префикс для селекторов, которые используются в скриптах
 
 ### TypeScript
-- Все компоненты наследуются от `Base`
-- Селекторы через `data-js-*` атрибуты
-- Alias `@/` → `src/scripts/`
+- Все компоненты **наследуют** `Base` из `@/components/Base`
+- Селекторы **только** через `data-js-*` атрибуты
+- Путь `@/` → `src/scripts/`
+- События навешиваются в `bindEvents()`, очищаются в `destroy()`
 
-## Требования
+## ➕ Добавление новых сущностей
 
-- Node.js ≥ 22
-- npm ≥ 10
+**Новая страница:**
+1. Создать `src/markup/pages/page-name.pug`
+2. Унаследовать от `layouts/_default.pug`
+3. Добавить в `gulpfile.mjs` в таску `pug` (или если используется glob — автоматически)
+
+**Новый компонент:**
+1. `src/scripts/components/ComponentName/index.ts`
+2. Наследовать `Base`, реализовать `init()` и `bindEvents()`
+3. Импортировать в `src/scripts/main.ts`
+
+**Новый SCSS-блок:**
+1. `src/styles/blocks/_block-name.scss`
+2. Импортировать в `src/styles/main.scss` через `@use 'blocks/block-name'`
+
+## ⚙️ Требования
+
+- **Node.js** ≥ 22.0.0
+- **npm** ≥ 10.0.0
+
+## 🐛 Troubleshooting
+
+| Проблема | Решение |
+|----------|---------|
+| `Error: Cannot find module` | `rm -rf node_modules && npm install` |
+| Порт 3000 занят | Изменить `port` в `gulpfile.mjs` (Browser-sync опция) |
+| SCSS не компилируется после добавления `@import` | Замени на `@use` и проверь namespace |
+| Изображения не оптимизируются | Убедись, что `imagemin-pngquant` установлен корректно (требует libpng) |
+
+## 📜 Лицензия
+
+MIT © [Oroku Slav](https://github.com/s4m5apu3l)
